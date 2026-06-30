@@ -202,27 +202,19 @@ function AccreditationCard({
         transformStyle: "preserve-3d",
       }}
       onClick={onClick}
-      className="group cursor-pointer glass-panel p-6 rounded-2xl border border-[var(--card-border)] hover:border-white/20 transition-colors duration-300 relative overflow-hidden flex flex-col h-full"
+      className="group cursor-pointer glass-panel p-6 rounded-3xl border border-[var(--card-border)] hover:border-white/20 transition-colors duration-300 relative overflow-hidden flex flex-col items-center justify-center aspect-square"
     >
-      {/* Dynamic background glow that follows mouse (approximated via the card rotation) */}
+      {/* Dynamic background glow that follows mouse */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" style={{ transform: "translateZ(-10px)" }} />
       
-      <div className="relative z-10 flex flex-col h-full" style={{ transform: "translateZ(20px)" }}>
-        <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 transition-all duration-300 ${item.hoverColor}`}>
-          <Icon className={`w-6 h-6 text-gray-500 transition-colors duration-300 group-hover:${item.color.split('-')[1]}-400 ${item.color.replace('text-', 'group-hover:text-')}`} />
+      <div className="relative z-10 flex flex-col items-center justify-center w-full h-full" style={{ transform: "translateZ(30px)" }}>
+        <div className={`w-24 h-24 md:w-28 md:h-28 rounded-[2rem] bg-white/5 flex items-center justify-center mb-6 transition-all duration-500 ${item.hoverColor} group-hover:scale-110 shadow-lg`}>
+          <Icon strokeWidth={1.5} className={`w-12 h-12 md:w-14 md:h-14 text-gray-500 transition-colors duration-500 ${item.color.replace('text-', 'group-hover:text-')}`} />
         </div>
         
-        <h3 className="text-xl font-bold mb-2 text-gray-200 group-hover:text-white transition-colors">
+        <h3 className="text-xl md:text-2xl font-bold text-gray-400 group-hover:text-white transition-colors text-center tracking-tight">
           {item.title}
         </h3>
-        <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors flex-grow">
-          {item.shortDesc}
-        </p>
-        
-        <div className="mt-6 flex items-center text-xs font-medium text-gray-500 group-hover:text-white transition-colors">
-          <span>View details</span>
-          <ArrowRight className="w-3 h-3 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-        </div>
       </div>
     </motion.div>
   );
