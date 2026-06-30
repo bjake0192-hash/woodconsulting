@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Mail, Phone, MapPin } from "lucide-react";
 import "./globals.css";
 
 const inter = Inter({ 
@@ -44,17 +45,82 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="py-12 border-t border-[var(--card-border)] mt-24 glass-panel">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-blue-600 flex items-center justify-center">
-                <span className="text-white font-bold text-xs">A</span>
+        <footer className="pt-20 pb-10 border-t border-[var(--card-border)] mt-24 glass-panel relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+              {/* Brand Column */}
+              <div className="md:col-span-1">
+                <div className="flex items-center gap-2 mb-6">
+                  <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center glow-box">
+                    <span className="text-white font-bold text-lg">A</span>
+                  </div>
+                  <span className="font-semibold tracking-tight text-xl">AccreditUK</span>
+                </div>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Elevating UK businesses through expert guidance and streamlined compliance processes. 
+                  Achieve certification with confidence.
+                </p>
+                <div className="space-y-3">
+                  <a href="mailto:hello@accredituk.com" className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors group">
+                    <div className="w-8 h-8 rounded-md bg-white/5 flex items-center justify-center group-hover:bg-blue-500/20 group-hover:text-blue-400 transition-colors">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    hello@accredituk.com
+                  </a>
+                  <a href="tel:+442071234567" className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors group">
+                    <div className="w-8 h-8 rounded-md bg-white/5 flex items-center justify-center group-hover:bg-blue-500/20 group-hover:text-blue-400 transition-colors">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    +44 (0) 20 7123 4567
+                  </a>
+                </div>
               </div>
-              <span className="font-semibold text-sm">AccreditUK © {new Date().getFullYear()}</span>
+
+              {/* Quick Links */}
+              <div className="md:col-span-1 md:ml-auto">
+                <h4 className="text-white font-semibold mb-6">Solutions</h4>
+                <ul className="space-y-4 text-sm text-gray-400">
+                  <li><a href="#" className="hover:text-blue-400 transition-colors">ISO 9001</a></li>
+                  <li><a href="#" className="hover:text-blue-400 transition-colors">ISO 27001</a></li>
+                  <li><a href="#" className="hover:text-blue-400 transition-colors">CHAS Accreditation</a></li>
+                  <li><a href="#" className="hover:text-blue-400 transition-colors">Cyber Essentials</a></li>
+                </ul>
+              </div>
+
+              <div className="md:col-span-1 md:ml-auto">
+                <h4 className="text-white font-semibold mb-6">Company</h4>
+                <ul className="space-y-4 text-sm text-gray-400">
+                  <li><a href="/calculator" className="hover:text-blue-400 transition-colors">Eligibility Calculator</a></li>
+                  <li><a href="#process" className="hover:text-blue-400 transition-colors">Our Process</a></li>
+                  <li><a href="/contact" className="hover:text-blue-400 transition-colors">Contact Us</a></li>
+                  <li><a href="#" className="hover:text-blue-400 transition-colors">Success Stories</a></li>
+                </ul>
+              </div>
+
+              <div className="md:col-span-1 md:ml-auto">
+                <h4 className="text-white font-semibold mb-6">Legal</h4>
+                <ul className="space-y-4 text-sm text-gray-400">
+                  <li><a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+                  <li><a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
+                  <li><a href="#" className="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
+                </ul>
+              </div>
             </div>
-            <div className="flex gap-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+
+            <div className="pt-8 border-t border-[var(--card-border)] flex flex-col md:flex-row justify-between items-center gap-6">
+              <span className="text-sm text-gray-500">© {new Date().getFullYear()} AccreditUK. All rights reserved.</span>
+              
+              <div className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors group">
+                <span>Proudly built by</span>
+                <a href="#" className="flex items-center gap-1.5 font-medium text-gray-300 group-hover:text-white transition-colors">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-500">
+                    <path d="M4 4L20 20M4 20L20 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4 12H12M12 4V12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  Kairo Studio
+                </a>
+              </div>
             </div>
           </div>
         </footer>
