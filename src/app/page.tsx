@@ -74,16 +74,10 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link 
-              href="/calculator"
+              href="/accreditations"
               className="px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all glow-box flex items-center gap-2"
             >
-              Check Your Eligibility <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link 
-              href="/contact"
-              className="px-8 py-4 rounded-full glass-panel hover:bg-white/10 text-white font-semibold transition-all flex items-center gap-2"
-            >
-              Talk to an Expert
+              Check our Accreditations <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
         </div>
