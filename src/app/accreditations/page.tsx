@@ -1,4 +1,4 @@
-"use client";
+make the entire site "use client";
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -259,7 +259,7 @@ export default function AccreditationsPage() {
         </div>
 
         {/* The Full-Bleed Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 w-full max-w-4xl mx-auto flex-grow pb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 w-full max-w-5xl mx-auto flex-grow pb-8">
           {accreditations.map((item, idx) => (
             <AccreditationCard 
               key={item.id} 
