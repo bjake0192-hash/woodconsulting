@@ -202,17 +202,17 @@ function AccreditationCard({
         transformStyle: "preserve-3d",
       }}
       onClick={onClick}
-      className="group cursor-pointer glass-panel p-6 rounded-3xl border border-[var(--card-border)] hover:border-white/20 transition-colors duration-300 relative overflow-hidden flex flex-col items-center justify-center aspect-square"
+      className="group cursor-pointer glass-panel p-4 rounded-[1.5rem] border border-[var(--card-border)] hover:border-white/20 transition-colors duration-300 relative overflow-hidden flex flex-col items-center justify-center aspect-square mx-auto w-full max-w-[200px]"
     >
       {/* Dynamic background glow that follows mouse */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" style={{ transform: "translateZ(-10px)" }} />
       
       <div className="relative z-10 flex flex-col items-center justify-center w-full h-full" style={{ transform: "translateZ(30px)" }}>
-        <div className={`w-24 h-24 md:w-28 md:h-28 rounded-[2rem] bg-white/5 flex items-center justify-center mb-6 transition-all duration-500 ${item.hoverColor} group-hover:scale-110 shadow-lg`}>
-          <Icon strokeWidth={1.5} className={`w-12 h-12 md:w-14 md:h-14 text-gray-500 transition-colors duration-500 ${item.color.replace('text-', 'group-hover:text-')}`} />
+        <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-4 transition-all duration-500 ${item.hoverColor} group-hover:scale-110 shadow-lg`}>
+          <Icon strokeWidth={1.5} className={`w-7 h-7 md:w-8 md:h-8 text-gray-500 transition-colors duration-500 ${item.color.replace('text-', 'group-hover:text-')}`} />
         </div>
         
-        <h3 className="text-xl md:text-2xl font-bold text-gray-400 group-hover:text-white transition-colors text-center tracking-tight">
+        <h3 className="text-sm md:text-base font-bold text-gray-400 group-hover:text-white transition-colors text-center tracking-tight">
           {item.title}
         </h3>
       </div>
@@ -259,7 +259,7 @@ export default function AccreditationsPage() {
         </div>
 
         {/* The Full-Bleed Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full flex-grow pb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 w-full max-w-4xl mx-auto flex-grow pb-8">
           {accreditations.map((item, idx) => (
             <AccreditationCard 
               key={item.id} 
