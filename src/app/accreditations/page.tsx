@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Shield, ShieldCheck, Lock, HardHat, HeartPulse, Server, FileCheck, Award, X, ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
@@ -139,6 +139,95 @@ const accreditations: Accreditation[] = [
   }
 ];
 
+function AccreditationCard({ 
+  item, 
+  onClick 
+}: { 
+  item: Accreditation; 
+  onClick: () => void 
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  
+  // Mouse position values
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Smooth spring physics for the hover follow effect
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 15 });
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 15 });
+
+  // Transform mouse position to rotation and slight translation
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+  const translateX = useTransform(mouseXSpring, [-0.5, 0.5], ["-5px", "5px"]);
+  const translateY = useTransform(mouseYSpring, [-0.5, 0.5], ["-5px", "5px"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    
+    // Calculate mouse position relative to card center (normalized between -0.5 and 0.5)
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    const xPct = (mouseX / width) - 0.5;
+    const yPct = (mouseY / height) - 0.5;
+    
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const Icon = item.icon;
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      style={{
+        rotateX,
+        rotateY,
+        x: translateX,
+        y: translateY,
+        transformStyle: "preserve-3d",
+      }}
+      onClick={onClick}
+      className="group cursor-pointer glass-panel p-6 rounded-2xl border border-[var(--card-border)] hover:border-white/20 transition-colors duration-300 relative overflow-hidden flex flex-col h-full"
+    >
+      {/* Dynamic background glow that follows mouse (approximated via the card rotation) */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" style={{ transform: "translateZ(-10px)" }} />
+      
+      <div className="relative z-10 flex flex-col h-full" style={{ transform: "translateZ(20px)" }}>
+        <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 transition-all duration-300 ${item.hoverColor}`}>
+          <Icon className={`w-6 h-6 text-gray-500 transition-colors duration-300 group-hover:${item.color.split('-')[1]}-400 ${item.color.replace('text-', 'group-hover:text-')}`} />
+        </div>
+        
+        <h3 className="text-xl font-bold mb-2 text-gray-200 group-hover:text-white transition-colors">
+          {item.title}
+        </h3>
+        <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors flex-grow">
+          {item.shortDesc}
+        </p>
+        
+        <div className="mt-6 flex items-center text-xs font-medium text-gray-500 group-hover:text-white transition-colors">
+          <span>View details</span>
+          <ArrowRight className="w-3 h-3 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function AccreditationsPage() {
   const [selectedAccreditation, setSelectedAccreditation] = useState<Accreditation | null>(null);
 
@@ -152,7 +241,7 @@ export default function AccreditationsPage() {
   return (
     <div className="min-h-screen w-full flex flex-col items-center pb-24">
       {/* Header Section */}
-      <section className="relative w-full py-24 flex flex-col items-center justify-center px-6 overflow-hidden border-b border-[var(--card-border)]">
+      <section className="relative w-full py-24 flex flex-col items-center justify-center px-6 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="max-w-3xl mx-auto text-center z-10">
@@ -176,44 +265,15 @@ export default function AccreditationsPage() {
       </section>
 
       {/* Grid Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-20 z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {accreditations.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                whileHover={{ scale: 1.03, y: -5 }}
-                onClick={() => setSelectedAccreditation(item)}
-                className="group cursor-pointer glass-panel p-6 rounded-2xl border border-[var(--card-border)] hover:border-white/20 transition-all duration-300 relative overflow-hidden"
-              >
-                {/* Background glow that appears on hover */}
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/5 to-transparent`} />
-                
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 transition-all duration-300 ${item.hoverColor}`}>
-                    {/* The icon itself transitions from grayscale/dim to full color */}
-                    <Icon className={`w-6 h-6 text-gray-500 transition-colors duration-300 group-hover:${item.color.split('-')[1]}-400 ${item.color.replace('text-', 'group-hover:text-')}`} />
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-2 text-gray-200 group-hover:text-white transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors flex-grow">
-                    {item.shortDesc}
-                  </p>
-                  
-                  <div className="mt-6 flex items-center text-xs font-medium text-gray-500 group-hover:text-white transition-colors">
-                    <span>View details</span>
-                    <ArrowRight className="w-3 h-3 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+      <section className="w-full max-w-7xl mx-auto px-6 py-20 z-10 flex-grow flex items-center justify-center" style={{ perspective: 1000 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+          {accreditations.map((item, idx) => (
+            <AccreditationCard 
+              key={item.id} 
+              item={item} 
+              onClick={() => setSelectedAccreditation(item)} 
+            />
+          ))}
         </div>
       </section>
 
