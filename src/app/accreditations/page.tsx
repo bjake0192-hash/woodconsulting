@@ -1,4 +1,4 @@
-make the entire site "use client";
+"use client";
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";

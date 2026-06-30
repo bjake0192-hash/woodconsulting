@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Mail, Phone, MapPin } from "lucide-react";
+import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ 
@@ -22,20 +23,20 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
         {/* Minimalist Top Navigation */}
-        <nav className="fixed top-0 w-full z-50 glass-panel border-x-0 border-t-0 border-b border-[var(--card-border)]">
+        <nav className="fixed top-0 w-full z-50 glass-panel border-x-0 border-t-0 border-b border-[var(--card-border)] bg-white/80">
           <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center glow-box">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
                 <span className="text-white font-bold text-lg">A</span>
               </div>
-              <span className="font-semibold tracking-tight">AccreditUK</span>
+              <span className="font-semibold tracking-tight text-gray-900">AccreditUK</span>
+            </Link>
+            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+              <a href="/#services" className="hover:text-blue-600 transition-colors">Services</a>
+              <a href="/#process" className="hover:text-blue-600 transition-colors">Process</a>
+              <a href="/calculator" className="hover:text-blue-600 transition-colors">Eligibility Calculator</a>
             </div>
-            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-              <a href="#services" className="hover:text-white transition-colors">Services</a>
-              <a href="#process" className="hover:text-white transition-colors">Process</a>
-              <a href="/calculator" className="hover:text-white transition-colors">Eligibility Calculator</a>
-            </div>
-            <a href="/contact" className="px-4 py-2 rounded-full bg-white text-black text-sm font-semibold hover:bg-gray-200 transition-colors">
+            <a href="/contact" className="px-4 py-2 rounded-full bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition-colors shadow-md">
               Get Started
             </a>
           </div>
@@ -45,7 +46,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="pt-20 pb-10 border-t border-[var(--card-border)] mt-24 glass-panel relative overflow-hidden">
+        <footer className="pt-20 pb-10 border-t border-[var(--card-border)] bg-gray-50 relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -79,31 +80,31 @@ export default function RootLayout({
 
               {/* Quick Links */}
               <div className="md:col-span-1 md:ml-auto">
-                <h4 className="text-white font-semibold mb-6">Solutions</h4>
-                <ul className="space-y-4 text-sm text-gray-400">
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">ISO 9001</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">ISO 27001</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">CHAS Accreditation</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Cyber Essentials</a></li>
+                <h4 className="text-gray-900 font-semibold mb-6">Solutions</h4>
+                <ul className="space-y-4 text-sm text-gray-500">
+                  <li><a href="#" className="hover:text-blue-600 transition-colors">ISO 9001</a></li>
+                  <li><a href="#" className="hover:text-blue-600 transition-colors">ISO 27001</a></li>
+                  <li><a href="#" className="hover:text-blue-600 transition-colors">CHAS Accreditation</a></li>
+                  <li><a href="#" className="hover:text-blue-600 transition-colors">Cyber Essentials</a></li>
                 </ul>
               </div>
 
               <div className="md:col-span-1 md:ml-auto">
-                <h4 className="text-white font-semibold mb-6">Company</h4>
-                <ul className="space-y-4 text-sm text-gray-400">
-                  <li><a href="/calculator" className="hover:text-blue-400 transition-colors">Eligibility Calculator</a></li>
-                  <li><a href="#process" className="hover:text-blue-400 transition-colors">Our Process</a></li>
-                  <li><a href="/contact" className="hover:text-blue-400 transition-colors">Contact Us</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Success Stories</a></li>
+                <h4 className="text-gray-900 font-semibold mb-6">Company</h4>
+                <ul className="space-y-4 text-sm text-gray-500">
+                  <li><a href="/calculator" className="hover:text-blue-600 transition-colors">Eligibility Calculator</a></li>
+                  <li><a href="/#process" className="hover:text-blue-600 transition-colors">Our Process</a></li>
+                  <li><a href="/contact" className="hover:text-blue-600 transition-colors">Contact Us</a></li>
+                  <li><a href="#" className="hover:text-blue-600 transition-colors">Success Stories</a></li>
                 </ul>
               </div>
 
               <div className="md:col-span-1 md:ml-auto">
-                <h4 className="text-white font-semibold mb-6">Legal</h4>
-                <ul className="space-y-4 text-sm text-gray-400">
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
+                <h4 className="text-gray-900 font-semibold mb-6">Legal</h4>
+                <ul className="space-y-4 text-sm text-gray-500">
+                  <li><a href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</a></li>
+                  <li><a href="#" className="hover:text-blue-600 transition-colors">Terms of Service</a></li>
+                  <li><a href="#" className="hover:text-blue-600 transition-colors">Cookie Policy</a></li>
                 </ul>
               </div>
             </div>
@@ -111,10 +112,10 @@ export default function RootLayout({
             <div className="pt-8 border-t border-[var(--card-border)] flex flex-col md:flex-row justify-between items-center gap-6">
               <span className="text-sm text-gray-500">© {new Date().getFullYear()} AccreditUK. All rights reserved.</span>
               
-              <div className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors group">
+              <div className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800 transition-colors group">
                 <span>Proudly built by</span>
-                <a href="#" className="flex items-center gap-1.5 font-medium text-gray-300 group-hover:text-white transition-colors">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-500">
+                <a href="#" className="flex items-center gap-1.5 font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-600">
                     <path d="M4 4L20 20M4 20L20 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M4 12H12M12 4V12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
