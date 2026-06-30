@@ -239,17 +239,20 @@ export default function AccreditationsPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center pb-24">
-      {/* Header Section */}
-      <section className="relative w-full py-24 flex flex-col items-center justify-center px-6 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+    <div className="min-h-[calc(100vh-64px)] w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden bg-[var(--background)]">
+      {/* Dynamic Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Grid Section */}
+      <section className="w-full flex-grow flex flex-col justify-center z-10 max-w-[1600px] mx-auto" style={{ perspective: 1200 }}>
         
-        <div className="max-w-3xl mx-auto text-center z-10">
+        {/* Subtle Integrated Header inside the grid area */}
+        <div className="text-center mb-10 mt-4 md:mt-0">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-bold tracking-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
           >
             Our <span className="gradient-text-blue glow-text">Accreditations</span>
           </motion.h1>
@@ -257,16 +260,14 @@ export default function AccreditationsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="text-lg text-gray-400 max-w-2xl mx-auto"
+            className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto"
           >
-            Explore the comprehensive suite of certifications and accreditations we help our clients achieve. Hover to discover more and click for detailed insights.
+            Explore our comprehensive suite of certifications. Hover to discover more and click for insights.
           </motion.p>
         </div>
-      </section>
 
-      {/* Grid Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-20 z-10 flex-grow flex items-center justify-center" style={{ perspective: 1000 }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+        {/* The Full-Bleed Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full flex-grow pb-8">
           {accreditations.map((item, idx) => (
             <AccreditationCard 
               key={item.id} 
