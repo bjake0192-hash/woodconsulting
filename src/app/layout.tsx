@@ -31,7 +31,7 @@ export default function RootLayout({
               <Link href="/#services" className="hover:text-blue-600 transition-colors">Services</Link>
               <Link href="/#news" className="hover:text-blue-600 transition-colors">Industry News</Link>
               <Link href="/accreditations" className="hover:text-blue-600 transition-colors">Accreditations</Link>
-              <Link href="/calculator" className="hover:text-blue-600 transition-colors">Eligibility Calculator</Link>
+              <Link href="/calculator" className="hover:text-blue-600 transition-colors">Accreditation Calculator</Link>
             </div>
             <Link href="/contact" className="px-5 py-2 rounded-full bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-all shadow-md">
               Get Started
@@ -89,7 +89,7 @@ export default function RootLayout({
               <div className="md:col-span-1 md:ml-auto">
                 <h4 className="text-slate-900 font-bold mb-6 tracking-tight">Company</h4>
                 <ul className="space-y-4 text-sm text-slate-500 font-medium">
-                  <li><Link href="/calculator" className="hover:text-blue-600 transition-colors">Eligibility Calculator</Link></li>
+                  <li><Link href="/calculator" className="hover:text-blue-600 transition-colors">Accreditation Calculator</Link></li>
                   <li><Link href="/#news" className="hover:text-blue-600 transition-colors">Industry News</Link></li>
                   <li><Link href="/contact" className="hover:text-blue-600 transition-colors">Contact Us</Link></li>
                   <li><Link href="/accreditations" className="hover:text-blue-600 transition-colors">Success Stories</Link></li>

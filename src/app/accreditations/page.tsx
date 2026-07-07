@@ -174,7 +174,7 @@ function AccreditationCard({ item }: { item: Accreditation }) {
             onClick={(e) => e.stopPropagation()}
             className="mt-4 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-black uppercase tracking-widest text-center transition-colors shadow-lg shadow-blue-500/20"
           >
-            Check Eligibility
+            Run Calculator
           </Link>
         </div>
       </motion.div>

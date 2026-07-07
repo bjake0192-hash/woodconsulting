@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, CheckCircle2, AlertCircle } from "lucide-react";
+import { ChevronRight, CheckCircle2, AlertCircle, Shield, Award, Zap, HardHat } from "lucide-react";
 import Link from "next/link";
 
 export const runtime = "edge";
@@ -11,19 +11,47 @@ const questions = [
   {
     id: "industry",
     question: "What is your primary industry?",
-    options: ["Construction", "Healthcare", "Technology / IT", "Manufacturing", "Other"],
+    options: ["Construction", "Electrical", "Technology / IT", "Manufacturing", "Healthcare"],
   },
   {
-    id: "employees",
-    question: "How many employees do you have?",
-    options: ["1-10", "11-50", "51-200", "201+"],
+    id: "goals",
+    question: "What is your main goal for accreditation?",
+    options: ["Win bigger contracts", "Improve internal quality", "Meet legal requirements", "Enhance brand reputation"],
   },
   {
-    id: "current_accreditation",
-    question: "Do you currently hold any ISO accreditations?",
-    options: ["Yes, multiple", "Yes, one", "No, but we are working on it", "No, starting from scratch"],
+    id: "readiness",
+    question: "How ready is your current documentation?",
+    options: ["Non-existent", "Partial / Outdated", "Mostly complete", "Ready for audit"],
   },
 ];
+
+const recommendations: Record<string, any[]> = {
+  "Construction": [
+    { name: "CHAS", benefit: "Pre-qualify for 2,500+ UK buyers instantly.", icon: HardHat, color: "text-yellow-500" },
+    { name: "Constructionline", benefit: "The gold standard for UK supply chain compliance.", icon: Award, color: "text-indigo-500" },
+    { name: "SafeContractor", benefit: "Demonstrate safety excellence to major brands.", icon: Shield, color: "text-orange-500" }
+  ],
+  "Electrical": [
+    { name: "NICEIC", benefit: "Mandatory for high-end commercial electrical work.", icon: Zap, color: "text-red-500" },
+    { name: "ISO 9001", benefit: "Standardize quality across your electrical installs.", icon: Award, color: "text-blue-500" }
+  ],
+  "Technology / IT": [
+    { name: "ISO 27001", benefit: "Crucial for protecting data and winning tech tenders.", icon: Shield, color: "text-purple-500" },
+    { name: "Cyber Essentials", benefit: "Government-backed security baseline for UK tech.", icon: Zap, color: "text-cyan-500" }
+  ],
+  "Manufacturing": [
+    { name: "ISO 9001", benefit: "Optimize production efficiency and reduce waste.", icon: Award, color: "text-blue-500" },
+    { name: "ISO 14001", benefit: "Meet environmental targets and sustainability goals.", icon: Shield, color: "text-green-500" }
+  ],
+  "Healthcare": [
+    { name: "ISO 9001", benefit: "Ensure consistent patient care and quality management.", icon: Award, color: "text-blue-500" },
+    { name: "ISO 27001", benefit: "Protect sensitive patient data against cyber threats.", icon: Shield, color: "text-purple-500" }
+  ],
+  "Other": [
+    { name: "ISO 9001", benefit: "Universal standard for quality and business growth.", icon: Award, color: "text-blue-500" },
+    { name: "Cyber Essentials", benefit: "Basic security required for most modern tenders.", icon: Zap, color: "text-cyan-500" }
+  ]
+};
 
 export default function CalculatorPage() {
   const [step, setStep] = useState(0);
@@ -41,7 +69,6 @@ export default function CalculatorPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setShowResults(true);
@@ -49,27 +76,27 @@ export default function CalculatorPage() {
   };
 
   const progress = ((step) / questions.length) * 100;
+  const industryRecs = recommendations[answers.industry] || recommendations["Other"];
 
   return (
     <div className="min-h-[90vh] flex flex-col items-center justify-center px-6 py-20 relative bg-white overflow-hidden">
-      {/* Background elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-800/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="w-full max-w-2xl z-10">
+      <div className="w-full max-w-3xl z-10">
         <div className="text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-6"
           >
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Smart Assessment</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Smart Analysis</span>
           </motion.div>
           <h1 className="text-4xl md:text-7xl font-black mb-4 tracking-tighter text-slate-900 leading-[0.9]">
-            Eligibility <span className="text-blue-600">Calculator</span>
+            Accreditation <span className="text-blue-600">Calculator</span>
           </h1>
           <p className="text-slate-500 text-lg font-medium max-w-md mx-auto">
-            Find out which accreditations fit your business profile and get a tailored roadmap in minutes.
+            Discover the high-impact certifications tailored for your industry and goals.
           </p>
         </div>
 
@@ -86,8 +113,8 @@ export default function CalculatorPage() {
                 {step < questions.length ? (
                   <>
                     <div className="flex justify-between text-[10px] font-black text-slate-400 mb-8 uppercase tracking-[0.2em]">
-                      <span>Step {step + 1} of {questions.length}</span>
-                      <span>{Math.round(progress)}% Completed</span>
+                      <span>Question {step + 1} of {questions.length}</span>
+                      <span>{Math.round(progress)}% Complete</span>
                     </div>
                     
                     <div className="w-full h-1.5 bg-slate-100 rounded-full mb-12 overflow-hidden">
@@ -101,7 +128,7 @@ export default function CalculatorPage() {
 
                     <h2 className="text-2xl md:text-3xl font-bold mb-8 tracking-tight text-slate-900 leading-tight">{questions[step].question}</h2>
                     
-                    <div className="space-y-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {questions[step].options.map((option, idx) => (
                         <button
                           key={idx}
@@ -127,7 +154,7 @@ export default function CalculatorPage() {
                         onClick={() => setStep(step - 1)}
                         className="mt-10 text-[10px] text-slate-400 hover:text-slate-900 transition-colors font-black uppercase tracking-[0.2em]"
                       >
-                        ← Previous Step
+                        ← Previous Question
                       </button>
                     )}
                   </>
@@ -137,8 +164,8 @@ export default function CalculatorPage() {
                       <div className="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-blue-500/20">
                         <AlertCircle className="w-8 h-8 text-blue-600" />
                       </div>
-                      <h2 className="text-3xl font-bold mb-3 tracking-tight text-slate-900">Almost there!</h2>
-                      <p className="text-slate-500 font-medium leading-relaxed">Enter your details to reveal your personalized accreditation roadmap.</p>
+                      <h2 className="text-3xl font-bold mb-3 tracking-tight text-slate-900">Analysis Complete!</h2>
+                      <p className="text-slate-500 font-medium leading-relaxed">Enter your details to unlock your personalized recommendation report.</p>
                     </div>
 
                     <div className="space-y-4">
@@ -155,21 +182,13 @@ export default function CalculatorPage() {
                     <button 
                       type="submit" 
                       disabled={isSubmitting}
-                      className="w-full py-5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all shadow-xl flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-8"
+                      className="w-full py-5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all shadow-xl flex justify-center items-center gap-2 disabled:opacity-50 mt-8"
                     >
                       {isSubmitting ? (
                         <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       ) : (
-                        <>Generate Results <ChevronRight className="w-4 h-4" /></>
+                        <>Reveal My Roadmap <ChevronRight className="w-4 h-4" /></>
                       )}
-                    </button>
-                    
-                    <button 
-                      type="button"
-                      onClick={() => setStep(questions.length - 1)}
-                      className="w-full mt-4 text-[10px] text-slate-400 hover:text-slate-900 transition-colors font-black uppercase tracking-[0.2em]"
-                    >
-                      ← Back to questions
                     </button>
                   </form>
                 )}
@@ -179,43 +198,72 @@ export default function CalculatorPage() {
                 key="results"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-8"
+                className="text-center py-4"
               >
                 <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl shadow-blue-500/30">
                   <CheckCircle2 className="w-10 h-10 text-white" />
                 </div>
-                <h2 className="text-4xl font-black mb-4 tracking-tighter text-slate-900">Roadmap Ready</h2>
-                <p className="text-slate-500 mb-10 max-w-md mx-auto text-lg font-medium leading-relaxed">
-                  Based on your inputs, we've identified the fastest path to compliance for your {answers.industry?.toLowerCase() || 'business'} company.
+                <h2 className="text-4xl font-black mb-4 tracking-tighter text-slate-900">Your Recommended Roadmap</h2>
+                <p className="text-slate-500 mb-10 max-w-lg mx-auto text-lg font-medium leading-relaxed">
+                  Based on your role in <span className="text-blue-600 font-bold">{answers.industry}</span>, these are the essential accreditations to reach your goal of <span className="text-blue-600 font-bold">{answers.goals?.toLowerCase()}</span>.
                 </p>
                 
-                <div className="glass-panel rounded-3xl p-8 mb-10 text-left border-slate-100 bg-slate-50/50">
-                  <h3 className="font-bold text-xl mb-6 flex items-center gap-3 tracking-tight text-slate-900">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 text-left">
+                  {industryRecs.map((rec, idx) => (
+                    <div key={idx} className="p-6 rounded-3xl border border-slate-100 bg-slate-50/50 flex flex-col">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center shadow-sm">
+                          <rec.icon className={`w-5 h-5 ${rec.color}`} />
+                        </div>
+                        <h4 className="font-bold text-slate-900 uppercase tracking-tighter">{rec.name}</h4>
+                      </div>
+                      <p className="text-sm text-slate-500 font-medium leading-relaxed">{rec.benefit}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="glass-panel rounded-3xl p-8 mb-10 text-left border-blue-100 bg-blue-50/30">
+                  <h3 className="font-bold text-xl mb-4 flex items-center gap-3 tracking-tight text-slate-900">
                     <span className="w-2 h-2 rounded-full bg-blue-600" /> 
-                    Next Steps
+                    How WOOD Helps You
                   </h3>
-                  <ul className="space-y-4 text-slate-600 font-bold text-sm">
-                    <li className="flex items-start gap-4">
-                      <div className="mt-0.5 w-6 h-6 rounded-lg bg-white border border-slate-200 text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0">1</div>
-                      <span>Schedule a free 15-minute gap analysis call</span>
+                  <p className="text-sm text-slate-600 font-medium leading-relaxed mb-6">
+                    Navigating UK standards is complex. We handle the heavy lifting—from documentation and gap analysis to the final audit—ensuring a 98% first-time pass rate.
+                  </p>
+                  <ul className="space-y-3 text-slate-700 font-bold text-xs uppercase tracking-widest">
+                    <li className="flex items-center gap-3">
+                      <div className="w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center text-blue-600">✓</div>
+                      Zero-stress documentation prep
                     </li>
-                    <li className="flex items-start gap-4">
-                      <div className="mt-0.5 w-6 h-6 rounded-lg bg-white border border-slate-200 text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0">2</div>
-                      <span>Review the ISO 9001 prep checklist sent to your inbox</span>
+                    <li className="flex items-center gap-3">
+                      <div className="w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center text-blue-600">✓</div>
+                      Expert audit representation
                     </li>
-                    <li className="flex items-start gap-4">
-                      <div className="mt-0.5 w-6 h-6 rounded-lg bg-white border border-slate-200 text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0">3</div>
-                      <span>Assign an internal compliance champion</span>
+                    <li className="flex items-center gap-3">
+                      <div className="w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center text-blue-600">✓</div>
+                      Guaranteed first-time compliance
                     </li>
                   </ul>
                 </div>
 
-                <Link 
-                  href="/contact"
-                  className="px-10 py-5 rounded-full bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-xl inline-block"
-                >
-                  Book Gap Analysis
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link 
+                    href="/contact"
+                    className="px-10 py-5 rounded-full bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-xl"
+                  >
+                    Claim Free Gap Analysis
+                  </Link>
+                  <button 
+                    onClick={() => {
+                      setStep(0);
+                      setAnswers({});
+                      setShowResults(false);
+                    }}
+                    className="px-10 py-5 rounded-full bg-white border border-slate-200 text-slate-500 font-bold hover:bg-slate-50 transition-all"
+                  >
+                    Start Over
+                  </button>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

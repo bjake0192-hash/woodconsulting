@@ -111,7 +111,7 @@ export default function Home() {
               href="/calculator"
               className="px-10 py-5 rounded-full bg-white border border-slate-200 text-slate-900 font-bold hover:bg-slate-50 transition-all shadow-sm"
             >
-              Try Calculator
+              Accreditation Calculator
             </Link>
           </motion.div>
         </div>
