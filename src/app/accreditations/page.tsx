@@ -207,21 +207,12 @@ function AccreditationCard({ item }: { item: Accreditation }) {
 
 export default function AccreditationsPage() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-24 px-6 relative overflow-hidden bg-white">
+    <div className="min-h-screen w-full flex flex-col items-center py-16 px-6 relative overflow-hidden bg-white">
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.03),transparent_70%)] pointer-events-none" />
       
       <div className="max-w-7xl w-full z-10">
-        <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 mb-6 border border-blue-100"
-          >
-            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Industry Standards</span>
-          </motion.div>
-          
+        <div className="text-center mb-16">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

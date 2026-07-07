@@ -34,20 +34,11 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center w-full bg-white">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[80vh] flex flex-col items-center justify-center px-6 overflow-hidden">
+      <section className="relative w-full min-h-[70vh] flex flex-col items-center justify-center px-6 overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.03),transparent_70%)] pointer-events-none" />
         
-        <div className="max-w-4xl mx-auto text-center z-10 pt-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-6"
-          >
-            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Premium UK Compliance</span>
-          </motion.div>
-          
+        <div className="max-w-4xl mx-auto text-center z-10 pt-8">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

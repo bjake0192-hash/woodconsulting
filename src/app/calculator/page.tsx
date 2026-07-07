@@ -78,19 +78,12 @@ export default function CalculatorPage() {
   const industryRecs = recommendations[answers.industry] || recommendations["Other"];
 
   return (
-    <div className="min-h-[90vh] flex flex-col items-center justify-center px-6 py-20 relative bg-white overflow-hidden">
+    <div className="min-h-[90vh] flex flex-col items-center justify-center px-6 py-12 relative bg-white overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-800/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="w-full max-w-3xl z-10">
-        <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-6"
-          >
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Smart Analysis</span>
-          </motion.div>
+        <div className="text-center mb-10">
           <h1 className="text-4xl md:text-7xl font-black mb-4 tracking-tighter text-slate-900 leading-[0.9]">
             Accreditation <span className="text-blue-600">Calculator</span>
           </h1>

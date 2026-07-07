@@ -20,19 +20,12 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-20 px-6 relative bg-white overflow-hidden">
+    <div className="min-h-screen pt-16 pb-16 px-6 relative bg-white overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-800/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-6"
-          >
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Contact Us</span>
-          </motion.div>
+        <div className="text-center mb-12">
           <h1 className="text-4xl md:text-8xl font-black mb-4 tracking-tighter text-slate-900 leading-[0.9]">
             Let's Start Your <span className="text-blue-600">Journey</span>
           </h1>

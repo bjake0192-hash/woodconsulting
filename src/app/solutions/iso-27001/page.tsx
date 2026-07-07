@@ -7,20 +7,11 @@ export const dynamic = "force-static";
 
 export default function ISO27001Page() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-24 px-6 relative overflow-hidden bg-white">
+    <div className="min-h-screen w-full flex flex-col items-center py-16 px-6 relative overflow-hidden bg-white">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.03),transparent_70%)] pointer-events-none" />
       
       <div className="max-w-4xl w-full z-10">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 mb-6 border border-blue-100"
-          >
-            <Shield className="w-4 h-4 text-blue-600" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Information Security</span>
-          </motion.div>
-          
+        <div className="text-center mb-12">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
