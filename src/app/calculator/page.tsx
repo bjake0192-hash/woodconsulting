@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ChevronRight, AlertCircle } from "lucide-react";
+import { ChevronRight, CheckCircle2, AlertCircle } from "lucide-react";
 import Link from "next/link";
+
+export const runtime = "edge";
 
 const questions = [
   {

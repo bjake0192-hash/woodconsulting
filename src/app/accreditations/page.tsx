@@ -5,6 +5,8 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { Shield, ShieldCheck, Lock, HardHat, HeartPulse, Server, FileCheck, Award, X, ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
+export const runtime = "edge";
+
 type Accreditation = {
   id: string;
   title: string;

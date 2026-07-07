@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen } from "lucide-react";
 import Link from "next/link";
 
+export const runtime = "edge";
+
 const features = [
   {
     title: "ISO Certifications",
