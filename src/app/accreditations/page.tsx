@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Shield, ShieldCheck, Lock, HardHat, Server, FileCheck, Award, Flame, Zap, Truck } from "lucide-react";
 
 export const runtime = "edge";
@@ -11,7 +12,8 @@ type Accreditation = {
   title: string;
   shortDesc: string;
   fullDesc: string;
-  icon: React.ElementType;
+  icon?: React.ElementType;
+  image?: string;
   color: string;
   industry: "Construction" | "Electrical" | "General" | "Security" | "Logistics";
 };
@@ -31,7 +33,7 @@ const accreditations: Accreditation[] = [
     title: "Avetta",
     shortDesc: "Supply Chain Risk Management",
     fullDesc: "Avetta connects the world's leading organizations with qualified suppliers, contractors, and vendors through a rigorous, data-driven compliance and vetting process.",
-    icon: Shield,
+    image: "/Avetta-Logo.webp",
     color: "text-green-400",
     industry: "General",
   },
@@ -40,7 +42,7 @@ const accreditations: Accreditation[] = [
     title: "NICEIC",
     shortDesc: "Electrical Excellence",
     fullDesc: "The UK's primary voluntary regulatory body for the electrical contracting industry. It assesses the electrical competence of businesses for over sixty years to ensure safety and quality.",
-    icon: Zap,
+    image: "/NICEIC-logo.png",
     color: "text-red-500",
     industry: "Electrical",
   },
@@ -49,7 +51,7 @@ const accreditations: Accreditation[] = [
     title: "ISO 9001",
     shortDesc: "Quality Management",
     fullDesc: "The global benchmark for Quality Management Systems (QMS). It provides the tools and principles needed to ensure consistent quality and operational efficiency across your entire organization.",
-    icon: Award,
+    image: "/iso9001.png",
     color: "text-blue-500",
     industry: "General",
   },
@@ -58,7 +60,7 @@ const accreditations: Accreditation[] = [
     title: "ISO 27001",
     shortDesc: "Information Security",
     fullDesc: "The international standard for Information Security Management (ISMS). It provides a robust, technology-agnostic framework for protecting sensitive assets and managing digital risks.",
-    icon: Lock,
+    image: "/iso27001.webp",
     color: "text-purple-500",
     industry: "Security",
   },
@@ -67,7 +69,7 @@ const accreditations: Accreditation[] = [
     title: "Constructionline",
     shortDesc: "Procurement & Supply Chain",
     fullDesc: "The UK's most connected procurement and supply chain management service. It streamlines the PQQ process, helping buyers find pre-vetted, high-quality suppliers efficiently.",
-    icon: FileCheck,
+    image: "/Constructionline-Gold-Logo.png",
     color: "text-indigo-500",
     industry: "Construction",
   },
@@ -76,7 +78,7 @@ const accreditations: Accreditation[] = [
     title: "SafeContractor",
     shortDesc: "H&S Accreditation",
     fullDesc: "A market-leading health & safety accreditation that allows contractors to showcase their commitment to safety, sustainability, and ethical practices to potential buyers.",
-    icon: ShieldCheck,
+    image: "/safecontractor.png",
     color: "text-orange-500",
     industry: "General",
   },
@@ -85,7 +87,7 @@ const accreditations: Accreditation[] = [
     title: "Gas Safe",
     shortDesc: "Gas Safety Register",
     fullDesc: "The official registration body for gas businesses and engineers in the UK. It ensures that only competent, qualified professionals work on gas appliances legally.",
-    icon: Flame,
+    image: "/gassafe.png",
     color: "text-orange-600",
     industry: "General",
   },
@@ -94,7 +96,7 @@ const accreditations: Accreditation[] = [
     title: "Cyber Essentials",
     shortDesc: "Cyber Defense",
     fullDesc: "A UK government-backed scheme that helps organizations protect themselves against a whole range of the most common cyber attacks, providing a clear picture of security levels.",
-    icon: Server,
+    image: "/cyber essentials.png",
     color: "text-cyan-500",
     industry: "Security",
   },
@@ -103,7 +105,7 @@ const accreditations: Accreditation[] = [
     title: "FORS",
     shortDesc: "Fleet Operator Recognition",
     fullDesc: "A voluntary accreditation scheme for fleet operators which aims to raise the level of quality within fleet operations and demonstrate best practice in safety and efficiency.",
-    icon: Truck,
+    image: "/fors logo.jpeg",
     color: "text-blue-400",
     industry: "Logistics",
   }
@@ -133,8 +135,19 @@ function AccreditationCard({ item }: { item: Accreditation }) {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className={`w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 shadow-sm group-hover:bg-blue-50`}>
-            <Icon strokeWidth={1.5} className={`w-8 h-8 ${item.color}`} />
+          <div className={`w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 shadow-sm group-hover:bg-blue-50 relative overflow-hidden`}>
+            {item.image ? (
+              <div className="relative w-10 h-10">
+                <Image 
+                  src={item.image} 
+                  alt={item.title} 
+                  fill 
+                  className="object-contain"
+                />
+              </div>
+            ) : Icon ? (
+              <Icon strokeWidth={1.5} className={`w-8 h-8 ${item.color}`} />
+            ) : null}
           </div>
           
           <h3 className="text-lg font-bold text-slate-900 transition-colors text-center tracking-tighter uppercase">
@@ -158,8 +171,19 @@ function AccreditationCard({ item }: { item: Accreditation }) {
           }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm`}>
-              <Icon strokeWidth={2} className={`w-5 h-5 ${item.color}`} />
+            <div className={`w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm relative overflow-hidden`}>
+              {item.image ? (
+                <div className="relative w-6 h-6">
+                  <Image 
+                    src={item.image} 
+                    alt={item.title} 
+                    fill 
+                    className="object-contain"
+                  />
+                </div>
+              ) : Icon ? (
+                <Icon strokeWidth={2} className={`w-5 h-5 ${item.color}`} />
+              ) : null}
             </div>
             <h3 className="font-bold text-slate-900 tracking-tighter text-sm uppercase">{item.title}</h3>
           </div>
