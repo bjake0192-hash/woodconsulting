@@ -4,6 +4,8 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 import "./globals.css";
 
+export const runtime = "edge";
+
 const inter = Inter({ 
   subsets: ["latin"],
   variable: "--font-inter",
