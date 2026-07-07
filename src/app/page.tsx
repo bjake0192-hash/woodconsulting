@@ -84,43 +84,43 @@ export default function Home() {
       </section>
 
       {/* Trust Banner Section */}
-      <section className="w-full border-y border-[var(--card-border)] bg-gray-50 py-10 overflow-hidden">
+      <section className="w-full border-y border-[var(--card-border)] bg-white/5 py-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-sm font-medium text-gray-500 mb-8 uppercase tracking-widest">
+          <p className="text-center text-xs font-bold text-gray-500 mb-8 uppercase tracking-[0.2em]">
             Trusted by leading UK organizations
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
             {/* Dummy Logos built with SVG */}
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-md bg-gray-900 flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-full"></div>
+              <div className="w-8 h-8 rounded-md bg-white flex items-center justify-center">
+                <div className="w-4 h-4 bg-black rounded-full"></div>
               </div>
-              <span className="font-bold text-xl tracking-tight text-gray-900">BuildCo</span>
+              <span className="font-bold text-xl tracking-tighter text-white">BuildCo</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-900">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
               </svg>
-              <span className="font-bold text-xl tracking-tight text-gray-900">TechFlow</span>
+              <span className="font-bold text-xl tracking-tighter text-white">TechFlow</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-900">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
               </svg>
-              <span className="font-bold text-xl tracking-tight text-gray-900">GlobalMed</span>
+              <span className="font-bold text-xl tracking-tighter text-white">GlobalMed</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex -space-x-2">
-                <div className="w-6 h-6 rounded-full border-2 border-white bg-gray-900"></div>
-                <div className="w-6 h-6 rounded-full border-2 border-white bg-gray-400"></div>
+                <div className="w-6 h-6 rounded-full border-2 border-black bg-white"></div>
+                <div className="w-6 h-6 rounded-full border-2 border-black bg-gray-600"></div>
               </div>
-              <span className="font-bold text-xl tracking-tight text-gray-900">Nexus</span>
+              <span className="font-bold text-xl tracking-tighter text-white">Nexus</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-900">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
               </svg>
-              <span className="font-bold text-xl tracking-tight text-gray-900">Apex</span>
+              <span className="font-bold text-xl tracking-tighter text-white">Apex</span>
             </div>
           </div>
         </div>
@@ -129,8 +129,8 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="w-full max-w-7xl mx-auto px-6 py-24">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Comprehensive Solutions</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">Everything you need to navigate the UK accreditation landscape successfully.</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tighter">Comprehensive Solutions</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">Everything you need to navigate the UK accreditation landscape successfully.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -142,31 +142,31 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ y: -5 }}
-              className="bg-white p-8 rounded-2xl border border-[var(--card-border)] shadow-sm hover:shadow-md transition-all group relative overflow-hidden"
+              className="glass-panel p-8 rounded-2xl shadow-sm hover:shadow-blue-500/10 transition-all group relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-6">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl font-bold mb-3 tracking-tight">{feature.title}</h3>
+              <p className="text-gray-400 leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* Process Section */}
-      <section id="process" className="w-full max-w-7xl mx-auto px-6 py-24 border-t border-[var(--card-border)] bg-gray-50/50">
+      <section id="process" className="w-full max-w-7xl mx-auto px-6 py-24 border-t border-[var(--card-border)] bg-white/2">
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <div className="flex-1">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">A Proven Path to <span className="gradient-text-blue">Certification</span></h2>
-            <p className="text-gray-600 mb-8 leading-relaxed text-lg">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter">A Proven Path to <span className="gradient-text-blue glow-text">Certification</span></h2>
+            <p className="text-gray-400 mb-8 leading-relaxed text-lg">
               We don't just hand you a manual. We work alongside your team through a structured, predictable process that guarantees results and minimizes disruption to your daily operations.
             </p>
             <ul className="space-y-4">
               {['98% First-time pass rate', 'Dedicated compliance manager', 'Custom documentation portal'].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
+                <li key={i} className="flex items-center gap-3 text-gray-300 font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-blue-500" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -182,12 +182,12 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white p-6 rounded-2xl border border-[var(--card-border)] shadow-sm flex gap-6 items-start"
+                  className="glass-panel p-6 rounded-2xl flex gap-6 items-start hover:border-blue-500/30 transition-colors"
                 >
-                  <span className="text-3xl font-bold text-blue-200">{step.number}</span>
+                  <span className="text-3xl font-black text-blue-900/50">{step.number}</span>
                   <div>
-                    <h4 className="text-lg font-semibold mb-1 text-gray-900">{step.title}</h4>
-                    <p className="text-sm text-gray-600">{step.desc}</p>
+                    <h4 className="text-lg font-bold mb-1 tracking-tight">{step.title}</h4>
+                    <p className="text-sm text-gray-400">{step.desc}</p>
                   </div>
                 </motion.div>
               ))}

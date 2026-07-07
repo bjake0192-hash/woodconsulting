@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Phone, Send, CheckCircle2, ChevronRight } from "lucide-react";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,10 +24,10 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto z-10 relative">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-gray-900">
-            Let's Start Your <span className="gradient-text-blue">Journey</span>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tighter">
+            Let's Start Your <span className="gradient-text-blue glow-text">Journey</span>
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Ready to achieve compliance without the headache? Reach out to our team of experts today.
           </p>
         </div>
@@ -36,44 +36,44 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="space-y-10">
             <div>
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Get in touch</h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
+              <h2 className="text-3xl font-bold mb-6 tracking-tight">Get in touch</h2>
+              <p className="text-gray-400 mb-8 leading-relaxed text-lg">
                 Whether you need a full gap analysis, or just have a few questions about which ISO standard is right for your business, we're here to help.
               </p>
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
-                  <Mail className="w-6 h-6 text-blue-600" />
+              <div className="flex items-start gap-5 group">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-blue-600/20 group-hover:border-blue-500/50 transition-all border border-white/10">
+                  <Mail className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1 text-gray-900">Email Us</h3>
-                  <a href="mailto:hello@accredituk.com" className="text-gray-600 hover:text-blue-600 transition-colors">
-                    hello@accredituk.com
+                  <h3 className="font-bold text-lg mb-1 tracking-tight">Email Us</h3>
+                  <a href="mailto:hello@woodconsulting.co.uk" className="text-gray-400 hover:text-white transition-colors font-medium">
+                    hello@woodconsulting.co.uk
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
-                  <Phone className="w-6 h-6 text-blue-600" />
+              <div className="flex items-start gap-5 group">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-blue-600/20 group-hover:border-blue-500/50 transition-all border border-white/10">
+                  <Phone className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1 text-gray-900">Call Us</h3>
-                  <a href="tel:+442071234567" className="text-gray-600 hover:text-blue-600 transition-colors">
+                  <h3 className="font-bold text-lg mb-1 tracking-tight">Call Us</h3>
+                  <a href="tel:+442071234567" className="text-gray-400 hover:text-white transition-colors font-medium">
                     +44 (0) 20 7123 4567
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
-                  <MapPin className="w-6 h-6 text-blue-600" />
+              <div className="flex items-start gap-5 group">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-blue-600/20 group-hover:border-blue-500/50 transition-all border border-white/10">
+                  <MapPin className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1 text-gray-900">Visit Us</h3>
-                  <p className="text-gray-600">
+                  <h3 className="font-bold text-lg mb-1 tracking-tight">Visit Us</h3>
+                  <p className="text-gray-400 font-medium leading-relaxed">
                     124 City Road<br />London, EC1V 2NX<br />United Kingdom
                   </p>
                 </div>
@@ -85,20 +85,20 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white p-8 md:p-10 rounded-3xl border border-[var(--card-border)] shadow-xl shadow-black/5"
+            className="glass-panel p-8 md:p-12 rounded-3xl shadow-2xl shadow-blue-500/5"
           >
             {submitted ? (
               <div className="text-center py-12">
-                <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle2 className="w-10 h-10 text-green-600" />
+                <div className="w-20 h-20 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-green-500/20">
+                  <CheckCircle2 className="w-10 h-10 text-green-500" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">Message Sent!</h3>
-                <p className="text-gray-600 mb-8">
+                <h3 className="text-3xl font-bold mb-3 tracking-tight">Message Sent!</h3>
+                <p className="text-gray-400 mb-8 text-lg">
                   Thank you for reaching out. One of our compliance experts will get back to you within 24 hours.
                 </p>
                 <button 
                   onClick={() => setSubmitted(false)}
-                  className="px-6 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold transition-colors"
+                  className="px-8 py-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-bold transition-all border border-white/10"
                 >
                   Send another message
                 </button>
@@ -107,41 +107,46 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">First Name</label>
-                    <input required type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-medium" placeholder="Jane" />
+                    <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-widest">First Name</label>
+                    <input required type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all font-semibold" placeholder="Jane" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Last Name</label>
-                    <input required type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-medium" placeholder="Doe" />
+                    <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-widest">Last Name</label>
+                    <input required type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all font-semibold" placeholder="Doe" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Work Email</label>
-                  <input required type="email" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-medium" placeholder="jane@company.com" />
+                  <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-widest">Work Email</label>
+                  <input required type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all font-semibold" placeholder="jane@company.co.uk" />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Service of Interest</label>
-                  <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-medium appearance-none">
-                    <option value="" disabled selected>Select an option...</option>
-                    <option value="iso9001">ISO 9001</option>
-                    <option value="iso27001">ISO 27001</option>
-                    <option value="chas">CHAS</option>
-                    <option value="cyber">Cyber Essentials</option>
-                    <option value="other">Other / Not sure</option>
-                  </select>
+                  <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-widest">Service of Interest</label>
+                  <div className="relative">
+                    <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all font-semibold appearance-none cursor-pointer">
+                      <option value="" disabled selected className="bg-black">Select an option...</option>
+                      <option value="iso9001" className="bg-black">ISO 9001</option>
+                      <option value="iso27001" className="bg-black">ISO 27001</option>
+                      <option value="chas" className="bg-black">CHAS</option>
+                      <option value="cyber" className="bg-black">Cyber Essentials</option>
+                      <option value="other" className="bg-black">Other / Not sure</option>
+                    </select>
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                      <ChevronRight className="w-4 h-4 rotate-90" />
+                    </div>
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Message</label>
-                  <textarea required rows={4} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-medium resize-none" placeholder="Tell us about your goals..."></textarea>
+                  <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-widest">Message</label>
+                  <textarea required rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all font-semibold resize-none" placeholder="Tell us about your goals..."></textarea>
                 </div>
 
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all shadow-lg shadow-blue-500/30 flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all shadow-lg shadow-blue-500/30 flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed glow-box"
                 >
                   {isSubmitting ? (
                     <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
