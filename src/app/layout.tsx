@@ -78,10 +78,10 @@ export default function RootLayout({
               <div className="md:col-span-1 md:ml-auto">
                 <h4 className="text-slate-900 font-bold mb-6 tracking-tight">Solutions</h4>
                 <ul className="space-y-4 text-sm text-slate-500 font-medium">
-                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">ISO 9001</a></li>
-                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">ISO 27001</a></li>
-                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">CHAS Accreditation</a></li>
-                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">Cyber Essentials</a></li>
+                  <li><a href="/solutions/iso-9001" className="hover:text-blue-600 transition-colors">ISO 9001</a></li>
+                  <li><a href="/solutions/iso-27001" className="hover:text-blue-600 transition-colors">ISO 27001</a></li>
+                  <li><a href="/solutions/chas" className="hover:text-blue-600 transition-colors">CHAS Accreditation</a></li>
+                  <li><a href="/solutions/cyber-essentials" className="hover:text-blue-600 transition-colors">Cyber Essentials</a></li>
                 </ul>
               </div>
 
@@ -91,16 +91,16 @@ export default function RootLayout({
                   <li><a href="/calculator" className="hover:text-blue-600 transition-colors">Accreditation Calculator</a></li>
                   <li><a href="/news" className="hover:text-blue-600 transition-colors">Industry News</a></li>
                   <li><a href="/contact" className="hover:text-blue-600 transition-colors">Contact Us</a></li>
-                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">Success Stories</a></li>
+                  <li><a href="/company/success-stories" className="hover:text-blue-600 transition-colors">Success Stories</a></li>
                 </ul>
               </div>
 
               <div className="md:col-span-1 md:ml-auto">
                 <h4 className="text-slate-900 font-bold mb-6 tracking-tight">Legal</h4>
                 <ul className="space-y-4 text-sm text-slate-500 font-medium">
-                  <li><a href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</a></li>
-                  <li><a href="#" className="hover:text-blue-600 transition-colors">Terms of Service</a></li>
-                  <li><a href="#" className="hover:text-blue-600 transition-colors">Cookie Policy</a></li>
+                  <li><a href="/legal/privacy-policy" className="hover:text-blue-600 transition-colors">Privacy Policy</a></li>
+                  <li><a href="/legal/terms-of-service" className="hover:text-blue-600 transition-colors">Terms of Service</a></li>
+                  <li><a href="/legal/cookie-policy" className="hover:text-blue-600 transition-colors">Cookie Policy</a></li>
                 </ul>
               </div>
             </div>
