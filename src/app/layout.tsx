@@ -22,10 +22,10 @@ export default function RootLayout({
         <nav className="fixed top-0 w-full z-50 glass-panel border-x-0 border-t-0 border-b border-[var(--card-border)] bg-white/70">
           <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                <span className="text-white font-bold text-lg">W</span>
+              <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                <span className="text-white font-bold text-base">W</span>
               </div>
-              <span className="font-bold tracking-tighter text-xl text-slate-900">WOOD</span>
+              <span className="font-bold tracking-tighter text-lg text-slate-900">WOOD</span>
             </Link>
             <div className="hidden md:flex items-center gap-8 text-sm font-bold text-slate-500">
               <a href="/accreditations" className="hover:text-blue-600 transition-colors">Accreditations</a>
@@ -42,17 +42,17 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="pt-20 pb-10 border-t border-[var(--card-border)] bg-slate-50 relative overflow-hidden">
+        <footer className="pt-16 pb-8 border-t border-[var(--card-border)] bg-slate-50 relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
               {/* Brand Column */}
               <div className="md:col-span-1">
                 <div className="flex items-center gap-2 mb-6">
-                  <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">W</span>
+                  <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <span className="text-white font-bold text-base">W</span>
                   </div>
-                  <a href="/" className="font-bold tracking-tighter text-2xl text-slate-900">WOOD</a>
+                  <a href="/" className="font-bold tracking-tighter text-xl text-slate-900">WOOD</a>
                 </div>
                 <p className="text-slate-500 text-sm leading-relaxed mb-6">
                   Elevating UK businesses through expert guidance and streamlined compliance processes. 
