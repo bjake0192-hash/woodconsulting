@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen, ExternalLink, Newspaper, Calendar, User } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen } from "lucide-react";
 
 export const runtime = "edge";
 
@@ -29,33 +28,6 @@ const steps = [
   { number: "02", title: "Implementation", desc: "Deploy processes and documentation seamlessly." },
   { number: "03", title: "Internal Audit", desc: "Pre-assessment to guarantee you pass first time." },
   { number: "04", title: "Certification", desc: "Gain your official UK accreditation badge." }
-];
-
-const industryNews = [
-  {
-    title: "HSE Announces New Building Safety Regulatory Framework",
-    source: "Health and Safety Executive",
-    date: "Oct 24, 2026",
-    link: "https://www.hse.gov.uk/news/index.htm",
-    category: "Regulation",
-    excerpt: "New measures aimed at enhancing high-rise residential building safety are set to take effect..."
-  },
-  {
-    title: "ISO 9001:2026 Revision: What Your Business Needs to Know",
-    source: "BSI Group",
-    date: "Oct 22, 2026",
-    link: "https://www.bsigroup.com/en-GB/about-bsi/media-centre/",
-    category: "Standards",
-    excerpt: "The upcoming revision of the quality management standard introduces key changes in digital risk..."
-  },
-  {
-    title: "CHAS Updates PQQ Requirements for Construction Suppliers",
-    source: "CHAS UK",
-    date: "Oct 20, 2026",
-    link: "https://www.chas.co.uk/news/",
-    category: "Accreditation",
-    excerpt: "The latest update to the Common Assessment Standard aims to further reduce duplication in the supply chain..."
-  }
 ];
 
 export default function Home() {
@@ -101,78 +73,19 @@ export default function Home() {
             transition={{ delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link 
+            <a 
               href="/accreditations"
               className="px-10 py-5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all shadow-xl flex items-center gap-2 group"
             >
               Check Accreditations <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link 
+            </a>
+            <a 
               href="/calculator"
               className="px-10 py-5 rounded-full bg-white border border-slate-200 text-slate-900 font-bold hover:bg-slate-50 transition-all shadow-sm"
             >
               Accreditation Calculator
-            </Link>
+            </a>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Industry News Section (Replaces Trust Banner) */}
-      <section id="news" className="w-full border-y border-slate-100 bg-slate-50/50 py-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-blue-600/10 flex items-center justify-center text-blue-600">
-                  <Newspaper className="w-4 h-4" />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Live Feed</span>
-              </div>
-              <h2 className="text-4xl font-bold tracking-tighter text-slate-900">Industry Insights</h2>
-            </div>
-            <p className="text-slate-500 max-w-md font-medium">
-              Stay informed with the latest updates in UK compliance, regulatory changes, and accreditation standards.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {industryNews.map((news, idx) => (
-              <motion.a
-                key={idx}
-                href={news.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="group glass-panel p-8 rounded-[2rem] bg-white border border-slate-200 hover:border-blue-500/30 transition-all flex flex-col h-full premium-card-hover"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <span className="px-3 py-1 rounded-full bg-blue-50 text-[10px] font-black uppercase tracking-widest text-blue-600 border border-blue-100">
-                    {news.category}
-                  </span>
-                  <ExternalLink className="w-4 h-4 text-slate-300 group-hover:text-blue-500 transition-colors" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 tracking-tight text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
-                  {news.title}
-                </h3>
-                <p className="text-sm text-slate-500 mb-8 font-medium leading-relaxed">
-                  {news.excerpt}
-                </p>
-                <div className="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-slate-400">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-3 h-3" />
-                    <span>{news.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <User className="w-3 h-3" />
-                    <span>{news.source}</span>
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
         </div>
       </section>
 

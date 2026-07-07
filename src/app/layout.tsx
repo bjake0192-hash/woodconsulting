@@ -28,14 +28,13 @@ export default function RootLayout({
               <span className="font-bold tracking-tighter text-xl text-slate-900">WOOD</span>
             </Link>
             <div className="hidden md:flex items-center gap-8 text-sm font-bold text-slate-500">
-              <Link href="/#services" className="hover:text-blue-600 transition-colors">Services</Link>
-              <Link href="/#news" className="hover:text-blue-600 transition-colors">Industry News</Link>
-              <Link href="/accreditations" className="hover:text-blue-600 transition-colors">Accreditations</Link>
-              <Link href="/calculator" className="hover:text-blue-600 transition-colors">Accreditation Calculator</Link>
+              <a href="/accreditations" className="hover:text-blue-600 transition-colors">Accreditations</a>
+              <a href="/news" className="hover:text-blue-600 transition-colors">Industry News</a>
+              <a href="/calculator" className="hover:text-blue-600 transition-colors">Accreditation Calculator</a>
             </div>
-            <Link href="/contact" className="px-5 py-2 rounded-full bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-all shadow-md">
+            <a href="/contact" className="px-5 py-2 rounded-full bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-all shadow-md">
               Get Started
-            </Link>
+            </a>
           </div>
         </nav>
         
@@ -53,7 +52,7 @@ export default function RootLayout({
                   <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
                     <span className="text-white font-bold text-lg">W</span>
                   </div>
-                  <span className="font-bold tracking-tighter text-2xl text-slate-900">WOOD</span>
+                  <a href="/" className="font-bold tracking-tighter text-2xl text-slate-900">WOOD</a>
                 </div>
                 <p className="text-slate-500 text-sm leading-relaxed mb-6">
                   Elevating UK businesses through expert guidance and streamlined compliance processes. 
@@ -79,20 +78,20 @@ export default function RootLayout({
               <div className="md:col-span-1 md:ml-auto">
                 <h4 className="text-slate-900 font-bold mb-6 tracking-tight">Solutions</h4>
                 <ul className="space-y-4 text-sm text-slate-500 font-medium">
-                  <li><Link href="/accreditations" className="hover:text-blue-600 transition-colors">ISO 9001</Link></li>
-                  <li><Link href="/accreditations" className="hover:text-blue-600 transition-colors">ISO 27001</Link></li>
-                  <li><Link href="/accreditations" className="hover:text-blue-600 transition-colors">CHAS Accreditation</Link></li>
-                  <li><Link href="/accreditations" className="hover:text-blue-600 transition-colors">Cyber Essentials</Link></li>
+                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">ISO 9001</a></li>
+                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">ISO 27001</a></li>
+                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">CHAS Accreditation</a></li>
+                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">Cyber Essentials</a></li>
                 </ul>
               </div>
 
               <div className="md:col-span-1 md:ml-auto">
                 <h4 className="text-slate-900 font-bold mb-6 tracking-tight">Company</h4>
                 <ul className="space-y-4 text-sm text-slate-500 font-medium">
-                  <li><Link href="/calculator" className="hover:text-blue-600 transition-colors">Accreditation Calculator</Link></li>
-                  <li><Link href="/#news" className="hover:text-blue-600 transition-colors">Industry News</Link></li>
-                  <li><Link href="/contact" className="hover:text-blue-600 transition-colors">Contact Us</Link></li>
-                  <li><Link href="/accreditations" className="hover:text-blue-600 transition-colors">Success Stories</Link></li>
+                  <li><a href="/calculator" className="hover:text-blue-600 transition-colors">Accreditation Calculator</a></li>
+                  <li><a href="/news" className="hover:text-blue-600 transition-colors">Industry News</a></li>
+                  <li><a href="/contact" className="hover:text-blue-600 transition-colors">Contact Us</a></li>
+                  <li><a href="/accreditations" className="hover:text-blue-600 transition-colors">Success Stories</a></li>
                 </ul>
               </div>
 

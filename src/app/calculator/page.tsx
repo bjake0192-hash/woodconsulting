@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, CheckCircle2, AlertCircle, Shield, Award, Zap, HardHat } from "lucide-react";
-import Link from "next/link";
 
 export const runtime = "edge";
 
@@ -247,12 +246,12 @@ export default function CalculatorPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link 
+                  <a 
                     href="/contact"
                     className="px-10 py-5 rounded-full bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-xl"
                   >
                     Claim Free Gap Analysis
-                  </Link>
+                  </a>
                   <button 
                     onClick={() => {
                       setStep(0);

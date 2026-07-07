@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Shield, ShieldCheck, Lock, HardHat, Server, FileCheck, Award, Flame, Zap, Truck } from "lucide-react";
-import Link from "next/link";
 
 export const runtime = "edge";
 
@@ -169,13 +168,13 @@ function AccreditationCard({ item }: { item: Accreditation }) {
             {item.fullDesc}
           </p>
 
-          <Link 
+          <a 
             href="/calculator"
             onClick={(e) => e.stopPropagation()}
             className="mt-4 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-black uppercase tracking-widest text-center transition-colors shadow-lg shadow-blue-500/20"
           >
             Run Calculator
-          </Link>
+          </a>
         </div>
       </motion.div>
     </div>
