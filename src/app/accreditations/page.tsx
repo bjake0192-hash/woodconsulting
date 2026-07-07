@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Shield, ShieldCheck, Lock, HardHat, HeartPulse, Server, FileCheck, Award, X, ArrowRight, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Shield, ShieldCheck, Lock, HardHat, Server, FileCheck, Award, Flame, Zap, Truck } from "lucide-react";
 import Link from "next/link";
 
 export const runtime = "edge";
@@ -13,353 +13,224 @@ type Accreditation = {
   shortDesc: string;
   fullDesc: string;
   icon: React.ElementType;
-  benefits: string[];
   color: string;
-  hoverColor: string;
+  industry: "Construction" | "Electrical" | "General" | "Security" | "Logistics";
 };
 
 const accreditations: Accreditation[] = [
   {
-    id: "iso-9001",
-    title: "ISO 9001",
-    shortDesc: "Quality Management Systems",
-    fullDesc: "ISO 9001 is the internationally recognized standard for Quality Management Systems (QMS). It provides a framework and set of principles that ensure a common-sense approach to the management of your organization to consistently satisfy customers and other stakeholders.",
-    icon: Award,
-    benefits: [
-      "Increase your chances of winning public sector contracts",
-      "Improve product and service quality",
-      "Reduce waste and increase efficiency",
-      "Enhance customer satisfaction and retention"
-    ],
-    color: "text-blue-500",
-    hoverColor: "group-hover:text-blue-400 group-hover:bg-blue-500/10",
+    id: "chas",
+    title: "CHAS",
+    shortDesc: "Health & Safety Compliance",
+    fullDesc: "The UK's leading provider of risk management and compliance services. CHAS helps contractors and clients manage health and safety risks effectively through standardized pre-qualification assessments.",
+    icon: HardHat,
+    color: "text-yellow-500",
+    industry: "Construction",
   },
   {
-    id: "iso-14001",
-    title: "ISO 14001",
-    shortDesc: "Environmental Management",
-    fullDesc: "ISO 14001 maps out a framework that a company or organization can follow to set up an effective environmental management system. It helps organizations improve their environmental performance through more efficient use of resources and reduction of waste.",
-    icon: ShieldCheck,
-    benefits: [
-      "Demonstrate compliance with current and future statutory and regulatory requirements",
-      "Increase leadership involvement and engagement of employees",
-      "Improve company reputation and the confidence of stakeholders",
-      "Achieve strategic business aims by incorporating environmental issues into business management"
-    ],
-    color: "text-green-500",
-    hoverColor: "group-hover:text-green-400 group-hover:bg-green-500/10",
+    id: "avetta",
+    title: "Avetta",
+    shortDesc: "Supply Chain Risk Management",
+    fullDesc: "Avetta connects the world's leading organizations with qualified suppliers, contractors, and vendors through a rigorous, data-driven compliance and vetting process.",
+    icon: Shield,
+    color: "text-green-400",
+    industry: "General",
+  },
+  {
+    id: "niceic",
+    title: "NICEIC",
+    shortDesc: "Electrical Excellence",
+    fullDesc: "The UK's primary voluntary regulatory body for the electrical contracting industry. It assesses the electrical competence of businesses for over sixty years to ensure safety and quality.",
+    icon: Zap,
+    color: "text-red-500",
+    industry: "Electrical",
+  },
+  {
+    id: "iso-9001",
+    title: "ISO 9001",
+    shortDesc: "Quality Management",
+    fullDesc: "The global benchmark for Quality Management Systems (QMS). It provides the tools and principles needed to ensure consistent quality and operational efficiency across your entire organization.",
+    icon: Award,
+    color: "text-blue-500",
+    industry: "General",
   },
   {
     id: "iso-27001",
     title: "ISO 27001",
-    shortDesc: "Information Security Management",
-    fullDesc: "ISO 27001 is the international standard that sets out the specification for an information security management system (ISMS). Its best-practice approach helps organizations manage their information security by addressing people, processes, and technology.",
+    shortDesc: "Information Security",
+    fullDesc: "The international standard for Information Security Management (ISMS). It provides a robust, technology-agnostic framework for protecting sensitive assets and managing digital risks.",
     icon: Lock,
-    benefits: [
-      "Protect your data, wherever it lives",
-      "Defend against cyber-attacks",
-      "Avoid regulatory fines and penalties",
-      "Protect your reputation and build trust with clients"
-    ],
     color: "text-purple-500",
-    hoverColor: "group-hover:text-purple-400 group-hover:bg-purple-500/10",
-  },
-  {
-    id: "iso-45001",
-    title: "ISO 45001",
-    shortDesc: "Occupational Health & Safety",
-    fullDesc: "ISO 45001 is the world's international standard for occupational health and safety, issued to protect employees and visitors from work-related accidents and diseases.",
-    icon: HeartPulse,
-    benefits: [
-      "Reduce work-related injuries, illnesses and death",
-      "Eliminate or minimize OH&S risks",
-      "Improve OH&S performance and effectiveness",
-      "Demonstrate your commitment to health and safety"
-    ],
-    color: "text-rose-500",
-    hoverColor: "group-hover:text-rose-400 group-hover:bg-rose-500/10",
-  },
-  {
-    id: "chas",
-    title: "CHAS",
-    shortDesc: "Contractors Health & Safety",
-    fullDesc: "The Contractors Health and Safety Assessment Scheme (CHAS) is created for the construction industry to demonstrate health and safety compliance to clients and principal contractors.",
-    icon: HardHat,
-    benefits: [
-      "Pre-qualify for larger contracts",
-      "Demonstrate compliance with health and safety laws",
-      "Save time and resources on repetitive questionnaires",
-      "Gain visibility to over 2,500 client organizations"
-    ],
-    color: "text-yellow-500",
-    hoverColor: "group-hover:text-yellow-400 group-hover:bg-yellow-500/10",
-  },
-  {
-    id: "cyber-essentials",
-    title: "Cyber Essentials",
-    shortDesc: "Cybersecurity standard",
-    fullDesc: "Cyber Essentials is a UK government-backed, industry-supported scheme to help organizations protect themselves against common online threats.",
-    icon: Server,
-    benefits: [
-      "Reassure customers that you are working to secure your IT against cyber attack",
-      "Attract new business with the promise you have basic cyber security measures in place",
-      "You have a clear picture of your organization's cyber security level",
-      "Required for certain government contracts"
-    ],
-    color: "text-cyan-500",
-    hoverColor: "group-hover:text-cyan-400 group-hover:bg-cyan-500/10",
-  },
-  {
-    id: "safe-contractor",
-    title: "SafeContractor",
-    shortDesc: "Health & Safety accreditation",
-    fullDesc: "Alcumus SafeContractor is a leading third-party accreditation scheme which recognizes extremely rigorous standards in health and safety management amongst contractors.",
-    icon: Shield,
-    benefits: [
-      "Prove your health and safety credentials",
-      "Reduce risk on-site",
-      "Win more work with major brands",
-      "Gain competitive advantage"
-    ],
-    color: "text-orange-500",
-    hoverColor: "group-hover:text-orange-400 group-hover:bg-orange-500/10",
+    industry: "Security",
   },
   {
     id: "constructionline",
     title: "Constructionline",
-    shortDesc: "Supply chain & procurement",
-    fullDesc: "Constructionline is the UK's most connected and progressive provider of procurement and supply chain management services, helping buyers and suppliers work together.",
+    shortDesc: "Procurement & Supply Chain",
+    fullDesc: "The UK's most connected procurement and supply chain management service. It streamlines the PQQ process, helping buyers find pre-vetted, high-quality suppliers efficiently.",
     icon: FileCheck,
-    benefits: [
-      "Access to a vast network of buyers",
-      "Simplified PQQ process",
-      "Demonstrate your compliance to PAS 91 and SSIP",
-      "Increase your visibility to decision-makers"
-    ],
     color: "text-indigo-500",
-    hoverColor: "group-hover:text-indigo-400 group-hover:bg-indigo-500/10",
+    industry: "Construction",
+  },
+  {
+    id: "safecontractor",
+    title: "SafeContractor",
+    shortDesc: "H&S Accreditation",
+    fullDesc: "A market-leading health & safety accreditation that allows contractors to showcase their commitment to safety, sustainability, and ethical practices to potential buyers.",
+    icon: ShieldCheck,
+    color: "text-orange-500",
+    industry: "General",
+  },
+  {
+    id: "gas-safe",
+    title: "Gas Safe",
+    shortDesc: "Gas Safety Register",
+    fullDesc: "The official registration body for gas businesses and engineers in the UK. It ensures that only competent, qualified professionals work on gas appliances legally.",
+    icon: Flame,
+    color: "text-orange-600",
+    industry: "General",
+  },
+  {
+    id: "cyber-essentials",
+    title: "Cyber Essentials",
+    shortDesc: "Cyber Defense",
+    fullDesc: "A UK government-backed scheme that helps organizations protect themselves against a whole range of the most common cyber attacks, providing a clear picture of security levels.",
+    icon: Server,
+    color: "text-cyan-500",
+    industry: "Security",
+  },
+  {
+    id: "fors",
+    title: "FORS",
+    shortDesc: "Fleet Operator Recognition",
+    fullDesc: "A voluntary accreditation scheme for fleet operators which aims to raise the level of quality within fleet operations and demonstrate best practice in safety and efficiency.",
+    icon: Truck,
+    color: "text-blue-400",
+    industry: "Logistics",
   }
 ];
 
-function AccreditationCard({ 
-  item, 
-  onClick 
-}: { 
-  item: Accreditation; 
-  onClick: () => void 
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  
-  // Mouse position values
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  // Smooth spring physics for the hover follow effect
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 15 });
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 15 });
-
-  // Transform mouse position to rotation and slight translation
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
-  const translateX = useTransform(mouseXSpring, [-0.5, 0.5], ["-5px", "5px"]);
-  const translateY = useTransform(mouseYSpring, [-0.5, 0.5], ["-5px", "5px"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    
-    // Calculate mouse position relative to card center (normalized between -0.5 and 0.5)
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    
-    const xPct = (mouseX / width) - 0.5;
-    const yPct = (mouseY / height) - 0.5;
-    
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+function AccreditationCard({ item }: { item: Accreditation }) {
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const Icon = item.icon;
 
   return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      style={{
-        rotateX,
-        rotateY,
-        x: translateX,
-        y: translateY,
-        transformStyle: "preserve-3d",
-      }}
-      onClick={onClick}
-      className="group cursor-pointer glass-panel p-4 rounded-[1.5rem] border border-[var(--card-border)] hover:border-white/20 transition-colors duration-300 relative overflow-hidden flex flex-col items-center justify-center aspect-square mx-auto w-full max-w-[200px]"
+    <div 
+      className="relative w-full aspect-square cursor-pointer group"
+      onClick={() => setIsFlipped(!isFlipped)}
+      style={{ perspective: "1000px" }}
     >
-      {/* Dynamic background glow that follows mouse */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" style={{ transform: "translateZ(-10px)" }} />
-      
-      <div className="relative z-10 flex flex-col items-center justify-center w-full h-full" style={{ transform: "translateZ(30px)" }}>
-        <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-4 transition-all duration-500 ${item.hoverColor} group-hover:scale-110 shadow-lg`}>
-          <Icon strokeWidth={1.5} className={`w-7 h-7 md:w-8 md:h-8 text-gray-500 transition-colors duration-500 ${item.color.replace('text-', 'group-hover:text-')}`} />
+      <motion.div
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+        className="w-full h-full relative"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Front Side */}
+        <div 
+          className="absolute inset-0 backface-hidden glass-panel p-6 rounded-[2rem] flex flex-col items-center justify-center border border-white/10 group-hover:border-blue-500/50 transition-colors duration-500"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          <div className={`w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 shadow-lg group-hover:bg-white/10`}>
+            <Icon strokeWidth={1.5} className={`w-8 h-8 ${item.color}`} />
+          </div>
+          
+          <h3 className="text-lg font-bold text-white transition-colors text-center tracking-tighter uppercase">
+            {item.title}
+          </h3>
+          <p className="text-[10px] text-gray-500 mt-1 font-black tracking-widest uppercase">
+            {item.industry}
+          </p>
+          
+          <div className="mt-4 flex items-center gap-1 text-[10px] font-black text-blue-500/50 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+            <span>Tap to flip</span>
+          </div>
         </div>
-        
-        <h3 className="text-sm md:text-base font-bold text-gray-400 group-hover:text-white transition-colors text-center tracking-tight">
-          {item.title}
-        </h3>
-      </div>
-    </motion.div>
+
+        {/* Back Side */}
+        <div 
+          className="absolute inset-0 backface-hidden glass-panel p-6 rounded-[2rem] flex flex-col border border-blue-500/30 bg-blue-950/20"
+          style={{ 
+            backfaceVisibility: "hidden",
+            transform: "rotateY(180deg)"
+          }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center`}>
+              <Icon strokeWidth={2} className={`w-5 h-5 ${item.color}`} />
+            </div>
+            <h3 className="font-bold text-white tracking-tighter text-sm uppercase">{item.title}</h3>
+          </div>
+          
+          <p className="text-[11px] text-gray-400 leading-relaxed font-medium mb-auto overflow-hidden">
+            {item.fullDesc}
+          </p>
+
+          <Link 
+            href="/calculator"
+            onClick={(e) => e.stopPropagation()}
+            className="mt-4 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-black uppercase tracking-widest text-center transition-colors shadow-lg shadow-blue-500/20"
+          >
+            Check Eligibility
+          </Link>
+        </div>
+      </motion.div>
+    </div>
   );
 }
 
 export default function AccreditationsPage() {
-  const [selectedAccreditation, setSelectedAccreditation] = useState<Accreditation | null>(null);
-
-  // Close modal on outside click
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      setSelectedAccreditation(null);
-    }
-  };
-
   return (
-    <div className="min-h-[calc(100vh-64px)] w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden bg-[var(--background)]">
-      {/* Dynamic Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-
-      {/* Grid Section */}
-      <section className="w-full flex-grow flex flex-col justify-center z-10 max-w-[1600px] mx-auto" style={{ perspective: 1200 }}>
-        
-        {/* Subtle Integrated Header inside the grid area */}
-        <div className="text-center mb-10 mt-4 md:mt-0">
+    <div className="min-h-screen w-full flex flex-col items-center py-24 px-6 relative overflow-hidden bg-black">
+      {/* Background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05),transparent_70%)] pointer-events-none" />
+      
+      <div className="max-w-7xl w-full z-10">
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel mb-6 border border-blue-500/30"
+          >
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200">Industry Standards</span>
+          </motion.div>
+          
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-white"
           >
             Our <span className="gradient-text-blue glow-text">Accreditations</span>
           </motion.h1>
+          
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto"
+            transition={{ delay: 0.2 }}
+            className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed"
           >
-            Explore our comprehensive suite of certifications. Hover to discover more and click for insights.
+            We specialize in streamlining the certification process for the UK's most demanding industries. Tap any card to learn more about our core competencies.
           </motion.p>
         </div>
 
-        {/* The Full-Bleed Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 w-full max-w-5xl mx-auto flex-grow pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {accreditations.map((item, idx) => (
-            <AccreditationCard 
-              key={item.id} 
-              item={item} 
-              onClick={() => setSelectedAccreditation(item)} 
-            />
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.05 + 0.3 }}
+            >
+              <AccreditationCard item={item} />
+            </motion.div>
           ))}
         </div>
-      </section>
-
-      {/* Lightbox / Modal */}
-      <AnimatePresence>
-        {selectedAccreditation && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={handleBackdropClick}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-md"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="w-full max-w-2xl glass-panel rounded-3xl overflow-hidden shadow-2xl border border-white/10 flex flex-col max-h-[90vh]"
-            >
-              {/* Modal Header */}
-              <div className="relative p-6 sm:p-8 border-b border-white/10 flex items-start justify-between bg-white/5">
-                <div className="flex items-center gap-4">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center bg-white/10 ${selectedAccreditation.color}`}>
-                    <selectedAccreditation.icon className="w-7 h-7" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                      {selectedAccreditation.title}
-                    </h2>
-                    <p className="text-gray-400 font-medium mt-1">
-                      {selectedAccreditation.shortDesc}
-                    </p>
-                  </div>
-                </div>
-                <button 
-                  onClick={() => setSelectedAccreditation(null)}
-                  className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Modal Body */}
-              <div className="p-6 sm:p-8 overflow-y-auto custom-scrollbar">
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-white mb-3">Overview</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    {selectedAccreditation.fullDesc}
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-4">Key Benefits</h3>
-                  <ul className="space-y-3">
-                    {selectedAccreditation.benefits.map((benefit, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className={`w-5 h-5 mt-0.5 shrink-0 ${selectedAccreditation.color}`} />
-                        <span className="text-gray-300">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Modal Footer */}
-              <div className="p-6 sm:p-8 border-t border-white/10 bg-black/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p className="text-sm text-gray-400 text-center sm:text-left">
-                  Ready to achieve {selectedAccreditation.title}?
-                </p>
-                <div className="flex gap-3 w-full sm:w-auto">
-                  <Link 
-                    href="/calculator"
-                    onClick={() => setSelectedAccreditation(null)}
-                    className="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium transition-colors text-center text-sm"
-                  >
-                    Check Eligibility
-                  </Link>
-                  <Link 
-                    href="/contact"
-                    onClick={() => setSelectedAccreditation(null)}
-                    className="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors glow-box text-center text-sm"
-                  >
-                    Get Started
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </div>
     </div>
   );
 }
