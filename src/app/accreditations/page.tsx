@@ -135,9 +135,9 @@ function AccreditationCard({ item }: { item: Accreditation }) {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className={`w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 shadow-sm group-hover:bg-blue-50 relative overflow-hidden`}>
+          <div className={`w-24 h-24 flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 relative overflow-hidden`}>
             {item.image ? (
-              <div className="relative w-10 h-10">
+              <div className="relative w-full h-full">
                 <Image 
                   src={item.image} 
                   alt={item.title} 
@@ -146,7 +146,7 @@ function AccreditationCard({ item }: { item: Accreditation }) {
                 />
               </div>
             ) : Icon ? (
-              <Icon strokeWidth={1.5} className={`w-8 h-8 ${item.color}`} />
+              <Icon strokeWidth={1.5} className={`w-12 h-12 ${item.color}`} />
             ) : null}
           </div>
           
@@ -171,9 +171,9 @@ function AccreditationCard({ item }: { item: Accreditation }) {
           }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm relative overflow-hidden`}>
+            <div className={`w-14 h-14 flex items-center justify-center relative overflow-hidden`}>
               {item.image ? (
-                <div className="relative w-6 h-6">
+                <div className="relative w-full h-full">
                   <Image 
                     src={item.image} 
                     alt={item.title} 
@@ -182,7 +182,7 @@ function AccreditationCard({ item }: { item: Accreditation }) {
                   />
                 </div>
               ) : Icon ? (
-                <Icon strokeWidth={2} className={`w-5 h-5 ${item.color}`} />
+                <Icon strokeWidth={2} className={`w-8 h-8 ${item.color}`} />
               ) : null}
             </div>
             <h3 className="font-bold text-slate-900 tracking-tighter text-sm uppercase">{item.title}</h3>
