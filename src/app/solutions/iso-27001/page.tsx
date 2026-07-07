@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Shield, CheckCircle2, ArrowRight } from "lucide-react";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 export default function ISO27001Page() {
   return (

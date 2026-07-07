@@ -3,8 +3,6 @@ import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import "./globals.css";
 
-export const runtime = "edge";
-
 export const metadata: Metadata = {
   title: "Wood Consulting | Premium UK Accreditations",
   description: "Simplifying UK compliance and accreditations for businesses.",

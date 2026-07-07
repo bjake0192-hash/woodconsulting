@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, MapPin, Phone, Send, CheckCircle2, ChevronRight } from "lucide-react";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Newspaper, ExternalLink, Calendar, User } from "lucide-react";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 const industryNews = [
   {

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, CheckCircle2, ArrowRight } from "lucide-react";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 export default function CyberEssentialsPage() {
   return (

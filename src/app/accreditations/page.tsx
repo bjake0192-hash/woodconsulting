@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Shield, ShieldCheck, Lock, HardHat, Server, FileCheck, Award, Flame, Zap, Truck } from "lucide-react";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 type Accreditation = {
   id: string;

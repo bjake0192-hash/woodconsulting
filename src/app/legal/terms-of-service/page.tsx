@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 export default function TermsOfServicePage() {
   return (

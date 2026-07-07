@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, CheckCircle2, AlertCircle, Shield, Award, Zap, HardHat } from "lucide-react";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 const questions = [
   {

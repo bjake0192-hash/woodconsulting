@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen } from "lucide-react";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 
 const features = [
   {
