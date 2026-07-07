@@ -59,9 +59,14 @@ export default function CalculatorPage() {
   const [showResults, setShowResults] = useState(false);
 
   const handleSelect = (option: string) => {
-    setAnswers({ ...answers, [questions[step].id]: option });
+    const currentQuestionId = questions[step].id;
+    setAnswers(prev => ({ ...prev, [currentQuestionId]: option }));
+    
     if (step < questions.length - 1) {
-      setTimeout(() => setStep(step + 1), 300);
+      setTimeout(() => setStep(prev => prev + 1), 300);
+    } else {
+      // If it's the last question, wait slightly then show lead form
+      setTimeout(() => setStep(questions.length), 300);
     }
   };
 
