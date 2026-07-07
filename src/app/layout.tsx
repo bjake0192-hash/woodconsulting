@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import { Mail, Phone } from "lucide-react";
 import "./globals.css";
 
 export const runtime = "edge";
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
 export const metadata: Metadata = {
-  title: "UK Accreditations | Expert Guidance & Certification",
-  description: "Gain and maintain UK accreditations with our expert guidance, interactive tools, and streamlined processes.",
+  title: "Wood Consulting | Premium UK Accreditations",
+  description: "Simplifying UK compliance and accreditations for businesses.",
 };
 
 export default function RootLayout({
@@ -22,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable}`}>
-      <body className="antialiased min-h-screen flex flex-col bg-black text-white">
+    <html lang="en" className="scroll-smooth">
+      <body className="antialiased min-h-screen flex flex-col bg-black text-white font-sans">
         {/* Minimalist Top Navigation */}
         <nav className="fixed top-0 w-full z-50 glass-panel border-x-0 border-t-0 border-b border-[var(--card-border)] bg-black/40">
           <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
