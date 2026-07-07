@@ -48,23 +48,32 @@ export default function CalculatorPage() {
     }, 1500);
   };
 
+  const progress = ((step) / questions.length) * 100;
+
   return (
-    <div className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 relative">
+    <div className="min-h-[90vh] flex flex-col items-center justify-center px-6 py-20 relative bg-white overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-800/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="w-full max-w-2xl z-10">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tighter">
-            Eligibility <span className="gradient-text-blue glow-text">Calculator</span>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-6"
+          >
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Smart Assessment</span>
+          </motion.div>
+          <h1 className="text-4xl md:text-7xl font-black mb-4 tracking-tighter text-slate-900 leading-[0.9]">
+            Eligibility <span className="text-blue-600">Calculator</span>
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-slate-500 text-lg font-medium max-w-md mx-auto">
             Find out which accreditations fit your business profile and get a tailored roadmap in minutes.
           </p>
         </div>
 
-        <div className="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden shadow-2xl shadow-blue-500/5">
+        <div className="glass-panel p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden bg-white border border-slate-200 shadow-2xl">
           <AnimatePresence mode="wait">
             {!showResults ? (
               <motion.div
@@ -76,37 +85,37 @@ export default function CalculatorPage() {
               >
                 {step < questions.length ? (
                   <>
-                    <div className="flex justify-between text-xs font-bold text-gray-500 mb-8 uppercase tracking-widest">
+                    <div className="flex justify-between text-[10px] font-black text-slate-400 mb-8 uppercase tracking-[0.2em]">
                       <span>Step {step + 1} of {questions.length}</span>
-                      <span>{Math.round(((step) / questions.length) * 100)}% Completed</span>
+                      <span>{Math.round(progress)}% Completed</span>
                     </div>
                     
-                    <div className="w-full h-1.5 bg-white/5 rounded-full mb-8 overflow-hidden">
+                    <div className="w-full h-1.5 bg-slate-100 rounded-full mb-12 overflow-hidden">
                       <motion.div 
-                        className="h-full bg-blue-600 shadow-[0_0_10px_rgba(59,130,246,0.5)]"
+                        className="h-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.3)]"
                         initial={{ width: 0 }}
-                        animate={{ width: `${((step) / questions.length) * 100}%` }}
+                        animate={{ width: `${progress}%` }}
                         transition={{ duration: 0.3 }}
                       />
                     </div>
 
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6 tracking-tight">{questions[step].question}</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-8 tracking-tight text-slate-900 leading-tight">{questions[step].question}</h2>
                     
                     <div className="space-y-3">
                       {questions[step].options.map((option, idx) => (
                         <button
                           key={idx}
                           onClick={() => handleSelect(option)}
-                          className={`w-full text-left p-5 rounded-2xl border transition-all font-semibold tracking-tight ${
+                          className={`w-full text-left p-6 rounded-2xl border transition-all font-bold tracking-tight premium-card-hover ${
                             answers[questions[step].id] === option 
-                              ? "bg-blue-600/20 border-blue-500 text-white shadow-lg shadow-blue-500/10" 
-                              : "bg-white/5 border-white/10 hover:border-white/20 text-gray-400 hover:text-white hover:bg-white/10"
+                              ? "bg-blue-600 border-blue-600 text-white shadow-xl shadow-blue-500/20" 
+                              : "bg-white border-slate-200 hover:border-blue-500/50 text-slate-600 hover:text-blue-600"
                           }`}
                         >
                           <div className="flex justify-between items-center">
                             <span>{option}</span>
                             {answers[questions[step].id] === option && (
-                              <CheckCircle2 className="w-5 h-5 text-blue-500" />
+                              <CheckCircle2 className="w-5 h-5 text-white" />
                             )}
                           </div>
                         </button>
@@ -116,49 +125,49 @@ export default function CalculatorPage() {
                     {step > 0 && (
                       <button 
                         onClick={() => setStep(step - 1)}
-                        className="mt-8 text-sm text-gray-500 hover:text-white transition-colors font-bold uppercase tracking-widest"
+                        className="mt-10 text-[10px] text-slate-400 hover:text-slate-900 transition-colors font-black uppercase tracking-[0.2em]"
                       >
-                        ← Previous
+                        ← Previous Step
                       </button>
                     )}
                   </>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="text-center mb-8">
-                      <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-blue-500/20">
-                        <AlertCircle className="w-8 h-8 text-blue-500" />
+                    <div className="text-center mb-10">
+                      <div className="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-blue-500/20">
+                        <AlertCircle className="w-8 h-8 text-blue-600" />
                       </div>
-                      <h2 className="text-3xl font-bold mb-2 tracking-tight">Almost there!</h2>
-                      <p className="text-gray-400">Enter your details to reveal your personalized accreditation roadmap.</p>
+                      <h2 className="text-3xl font-bold mb-3 tracking-tight text-slate-900">Almost there!</h2>
+                      <p className="text-slate-500 font-medium leading-relaxed">Enter your details to reveal your personalized accreditation roadmap.</p>
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-widest">Full Name</label>
-                        <input required type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all font-semibold" placeholder="John Doe" />
+                        <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-[0.2em]">Full Name</label>
+                        <input required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white transition-all font-bold" placeholder="John Doe" />
                       </div>
                       <div>
-                        <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-widest">Work Email</label>
-                        <input required type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all font-semibold" placeholder="john@company.co.uk" />
+                        <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-[0.2em]">Work Email</label>
+                        <input required type="email" className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-white transition-all font-bold" placeholder="john@company.co.uk" />
                       </div>
                     </div>
 
                     <button 
                       type="submit" 
                       disabled={isSubmitting}
-                      className="w-full py-5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all shadow-lg shadow-blue-500/30 flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-4 glow-box"
+                      className="w-full py-5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all shadow-xl flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-8"
                     >
                       {isSubmitting ? (
                         <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       ) : (
-                        <>Get My Results <ChevronRight className="w-4 h-4" /></>
+                        <>Generate Results <ChevronRight className="w-4 h-4" /></>
                       )}
                     </button>
                     
                     <button 
                       type="button"
                       onClick={() => setStep(questions.length - 1)}
-                      className="w-full mt-4 text-sm text-gray-500 hover:text-white transition-colors font-bold uppercase tracking-widest"
+                      className="w-full mt-4 text-[10px] text-slate-400 hover:text-slate-900 transition-colors font-black uppercase tracking-[0.2em]"
                     >
                       ← Back to questions
                     </button>
@@ -172,30 +181,30 @@ export default function CalculatorPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="text-center py-8"
               >
-                <div className="w-20 h-20 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-green-500/20">
-                  <CheckCircle2 className="w-10 h-10 text-green-500" />
+                <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl shadow-blue-500/30">
+                  <CheckCircle2 className="w-10 h-10 text-white" />
                 </div>
-                <h2 className="text-4xl font-bold mb-4 tracking-tighter">Your Roadmap is Ready</h2>
-                <p className="text-gray-400 mb-8 max-w-md mx-auto text-lg">
+                <h2 className="text-4xl font-black mb-4 tracking-tighter text-slate-900">Roadmap Ready</h2>
+                <p className="text-slate-500 mb-10 max-w-md mx-auto text-lg font-medium leading-relaxed">
                   Based on your inputs, we've identified the fastest path to compliance for your {answers.industry?.toLowerCase() || 'business'} company.
                 </p>
                 
-                <div className="glass-panel rounded-2xl p-8 mb-8 text-left border-white/5">
-                  <h3 className="font-bold text-xl mb-6 flex items-center gap-3 tracking-tight">
-                    <span className="w-2 h-2 rounded-full bg-blue-500 glow-box" /> 
-                    Recommended Next Steps
+                <div className="glass-panel rounded-3xl p-8 mb-10 text-left border-slate-100 bg-slate-50/50">
+                  <h3 className="font-bold text-xl mb-6 flex items-center gap-3 tracking-tight text-slate-900">
+                    <span className="w-2 h-2 rounded-full bg-blue-600" /> 
+                    Next Steps
                   </h3>
-                  <ul className="space-y-4 text-gray-300 font-medium">
+                  <ul className="space-y-4 text-slate-600 font-bold text-sm">
                     <li className="flex items-start gap-4">
-                      <div className="mt-0.5 w-6 h-6 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-xs font-bold shrink-0 border border-blue-500/20">1</div>
+                      <div className="mt-0.5 w-6 h-6 rounded-lg bg-white border border-slate-200 text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0">1</div>
                       <span>Schedule a free 15-minute gap analysis call</span>
                     </li>
                     <li className="flex items-start gap-4">
-                      <div className="mt-0.5 w-6 h-6 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-xs font-bold shrink-0 border border-blue-500/20">2</div>
+                      <div className="mt-0.5 w-6 h-6 rounded-lg bg-white border border-slate-200 text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0">2</div>
                       <span>Review the ISO 9001 prep checklist sent to your inbox</span>
                     </li>
                     <li className="flex items-start gap-4">
-                      <div className="mt-0.5 w-6 h-6 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-xs font-bold shrink-0 border border-blue-500/20">3</div>
+                      <div className="mt-0.5 w-6 h-6 rounded-lg bg-white border border-slate-200 text-blue-600 flex items-center justify-center text-[10px] font-black shrink-0">3</div>
                       <span>Assign an internal compliance champion</span>
                     </li>
                   </ul>
@@ -203,9 +212,9 @@ export default function CalculatorPage() {
 
                 <Link 
                   href="/contact"
-                  className="px-10 py-5 rounded-2xl bg-white text-black font-bold hover:bg-gray-200 transition-all shadow-xl inline-block"
+                  className="px-10 py-5 rounded-full bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-xl inline-block"
                 >
-                  Book Your Gap Analysis
+                  Book Gap Analysis
                 </Link>
               </motion.div>
             )}

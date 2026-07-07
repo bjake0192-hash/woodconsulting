@@ -129,43 +129,43 @@ function AccreditationCard({ item }: { item: Accreditation }) {
       >
         {/* Front Side */}
         <div 
-          className="absolute inset-0 backface-hidden glass-panel p-6 rounded-[2rem] flex flex-col items-center justify-center border border-white/10 group-hover:border-blue-500/50 transition-colors duration-500"
+          className="absolute inset-0 backface-hidden glass-panel p-6 rounded-[2rem] flex flex-col items-center justify-center border border-slate-200 group-hover:border-blue-500/50 transition-colors duration-500 bg-white"
           style={{ backfaceVisibility: "hidden" }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className={`w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 shadow-lg group-hover:bg-white/10`}>
+          <div className={`w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 shadow-sm group-hover:bg-blue-50`}>
             <Icon strokeWidth={1.5} className={`w-8 h-8 ${item.color}`} />
           </div>
           
-          <h3 className="text-lg font-bold text-white transition-colors text-center tracking-tighter uppercase">
+          <h3 className="text-lg font-bold text-slate-900 transition-colors text-center tracking-tighter uppercase">
             {item.title}
           </h3>
-          <p className="text-[10px] text-gray-500 mt-1 font-black tracking-widest uppercase">
+          <p className="text-[10px] text-slate-400 mt-1 font-black tracking-widest uppercase">
             {item.industry}
           </p>
           
-          <div className="mt-4 flex items-center gap-1 text-[10px] font-black text-blue-500/50 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="mt-4 flex items-center gap-1 text-[10px] font-black text-blue-600/50 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
             <span>Tap to flip</span>
           </div>
         </div>
 
         {/* Back Side */}
         <div 
-          className="absolute inset-0 backface-hidden glass-panel p-6 rounded-[2rem] flex flex-col border border-blue-500/30 bg-blue-950/20"
+          className="absolute inset-0 backface-hidden glass-panel p-6 rounded-[2rem] flex flex-col border border-blue-500/30 bg-blue-50/50"
           style={{ 
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)"
           }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className={`w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center`}>
+            <div className={`w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-100 shadow-sm`}>
               <Icon strokeWidth={2} className={`w-5 h-5 ${item.color}`} />
             </div>
-            <h3 className="font-bold text-white tracking-tighter text-sm uppercase">{item.title}</h3>
+            <h3 className="font-bold text-slate-900 tracking-tighter text-sm uppercase">{item.title}</h3>
           </div>
           
-          <p className="text-[11px] text-gray-400 leading-relaxed font-medium mb-auto overflow-hidden">
+          <p className="text-[11px] text-slate-600 leading-relaxed font-medium mb-auto overflow-hidden">
             {item.fullDesc}
           </p>
 
@@ -184,35 +184,35 @@ function AccreditationCard({ item }: { item: Accreditation }) {
 
 export default function AccreditationsPage() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-24 px-6 relative overflow-hidden bg-black">
+    <div className="min-h-screen w-full flex flex-col items-center py-24 px-6 relative overflow-hidden bg-white">
       {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05),transparent_70%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.03),transparent_70%)] pointer-events-none" />
       
       <div className="max-w-7xl w-full z-10">
         <div className="text-center mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel mb-6 border border-blue-500/30"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 mb-6 border border-blue-100"
           >
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200">Industry Standards</span>
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Industry Standards</span>
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-white"
+            className="text-5xl md:text-8xl font-black tracking-tighter mb-6 text-slate-900 leading-none"
           >
-            Our <span className="gradient-text-blue glow-text">Accreditations</span>
+            Our <span className="text-blue-600">Accreditations</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed"
+            className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed font-medium"
           >
             We specialize in streamlining the certification process for the UK's most demanding industries. Tap any card to learn more about our core competencies.
           </motion.p>
