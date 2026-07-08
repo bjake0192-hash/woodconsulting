@@ -7,73 +7,77 @@ export const dynamic = "force-static";
 
 const features = [
   {
-    title: "ISO Certifications",
-    description: "Achieve ISO 9001, 14001, and 27001 with our streamlined compliance framework.",
-    icon: <ShieldCheck className="w-6 h-6 text-blue-600" />
+    title: "ISO CERTIFICATIONS",
+    description: "Achieve ISO 9001, 14001, and 27001 with our precision-engineered compliance framework.",
+    icon: <ShieldCheck className="w-5 h-5" />
   },
   {
-    title: "Industry Specific",
-    description: "Tailored guidance for Construction (CHAS), Healthcare, and Tech accreditations.",
-    icon: <BookOpen className="w-6 h-6 text-blue-600" />
+    title: "INDUSTRY SPECIFIC",
+    description: "Authoritative guidance for Construction (CHAS), Healthcare, and Tech sectors in the UK.",
+    icon: <BookOpen className="w-5 h-5" />
   },
   {
-    title: "Continuous Compliance",
-    description: "Stay compliant year-round with automated tracking and expert audits.",
-    icon: <TrendingUp className="w-6 h-6 text-blue-600" />
+    title: "CONTINUOUS COMPLIANCE",
+    description: "Operational excellence maintained through automated tracking and strategic audits.",
+    icon: <TrendingUp className="w-5 h-5" />
   }
 ];
 
 const steps = [
-  { number: "01", title: "Gap Analysis", desc: "We identify exactly what you need to meet the standard." },
-  { number: "02", title: "Implementation", desc: "Deploy processes and documentation seamlessly." },
-  { number: "03", title: "Internal Audit", desc: "Pre-assessment to guarantee you pass first time." },
-  { number: "04", title: "Certification", desc: "Gain your official UK accreditation badge." }
+  { number: "01", title: "GAP ANALYSIS", desc: "Precise identification of your compliance trajectory." },
+  { number: "02", title: "IMPLEMENTATION", desc: "Seamless deployment of high-standard documentation." },
+  { number: "03", title: "INTERNAL AUDIT", desc: "Strategic pre-assessment to guarantee first-time success." },
+  { number: "04", title: "CERTIFICATION", desc: "Achievement of your official UK accreditation badge." }
 ];
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center w-full bg-white">
+    <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[70vh] flex flex-col items-center justify-center px-6 overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.03),transparent_70%)] pointer-events-none" />
+      <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center px-6 pt-32 pb-24 overflow-hidden bg-background">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(197,179,150,0.08),transparent_60%)]" />
         
-        <div className="max-w-4xl mx-auto text-center z-10 pt-8">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+        <div className="max-w-6xl mx-auto text-center z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black tracking-tighter mb-6 leading-[0.9] text-slate-900"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/5 bg-white/5 mb-10"
           >
-            Master <span className="text-blue-600">Accreditations</span> with Confidence
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-kairo">Compliance Redefined</span>
+          </motion.div>
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.8 }}
+            className="text-6xl md:text-9xl font-black tracking-kairo mb-10 leading-[0.85] text-bone uppercase"
+          >
+            Master <span className="text-accent italic">Accreditations</span> <br /> 
+            With <span className="text-muted-kairo">Authority</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-base md:text-lg text-slate-500 mb-10 max-w-xl mx-auto leading-relaxed font-medium"
+            className="text-lg md:text-xl text-muted-kairo mb-14 max-w-2xl mx-auto leading-relaxed font-medium"
           >
-            We simplify complex compliance requirements into clear, actionable steps. 
-            Gain and maintain the accreditations that unlock new contracts.
+            Simplifying complex UK compliance into strategic, operational steps. 
+            Unlock growth through authoritative certification.
           </motion.p>
           
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <a 
-              href="/accreditations"
-              className="px-8 py-4 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold transition-all shadow-lg flex items-center gap-2 group text-sm"
-            >
-              Check Accreditations <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <a href="/accreditations" className="kairo-button px-10 py-5 text-sm uppercase tracking-widest group">
+              Explore Accreditations 
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a 
-              href="/calculator"
-              className="px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-900 font-bold hover:bg-slate-50 transition-all shadow-sm text-sm"
-            >
+            <a href="/calculator" className="text-sm font-bold uppercase tracking-widest text-muted-kairo hover:text-bone transition-colors pb-1 border-b border-white/10 hover:border-accent">
               Accreditation Calculator
             </a>
           </motion.div>
@@ -81,13 +85,26 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="w-full max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tighter text-slate-900">Comprehensive Solutions</h2>
-          <p className="text-slate-500 max-w-xl mx-auto text-base font-medium">Everything you need to navigate the UK accreditation landscape successfully.</p>
+      <section className="w-full max-w-7xl mx-auto px-6 py-40">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-24">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-7xl font-black mb-6 tracking-kairo text-bone uppercase leading-[0.9]">
+              Strategic <br /> <span className="text-accent">Solutions</span>
+            </h2>
+            <p className="text-muted-kairo text-lg font-medium leading-relaxed">
+              Every tool and framework needed to successfully navigate 
+              the authoritative landscape of UK accreditations.
+            </p>
+          </div>
+          <div className="pb-2">
+            <a href="/accreditations" className="text-sm font-bold uppercase tracking-widest text-accent hover:text-bone transition-colors flex items-center gap-3 group">
+              View All Services
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, idx) => (
             <motion.div
               key={idx}
@@ -95,60 +112,61 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glass-panel p-8 rounded-[2rem] border border-slate-100 bg-slate-50/30 hover:bg-white hover:border-blue-500/20 transition-all group premium-card-hover"
+              className="kairo-card flex flex-col items-start"
             >
-              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-6 border border-slate-200 shadow-sm group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-10 border border-white/5 text-accent">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 tracking-tight text-slate-900">{feature.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed font-medium">{feature.description}</p>
+              <h3 className="text-xl font-black mb-4 tracking-kairo text-bone uppercase">{feature.title}</h3>
+              <p className="text-muted-kairo text-sm leading-relaxed font-medium">{feature.description}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* Process Section */}
-      <section id="process" className="w-full max-w-7xl mx-auto px-6 py-24 border-t border-slate-100 bg-slate-50/30">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+      <section className="w-full px-6 py-40 bg-white/5 rounded-[3rem] mb-20 mx-4 md:mx-10 max-w-[calc(100%-2rem)] md:max-w-[calc(100%-5rem)]">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-start">
           <div className="flex-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-4">
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">The Methodology</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tighter text-slate-900">A Proven Path to <span className="text-blue-600">Certification</span></h2>
-            <p className="text-slate-500 mb-8 leading-relaxed text-lg font-medium">
-              We don't just hand you a manual. We work alongside your team through a structured, predictable process that guarantees results and minimizes disruption.
+            <h2 className="text-4xl md:text-7xl font-black mb-10 tracking-kairo text-bone uppercase leading-[0.9]">
+              Operational <br /> <span className="text-accent">Success</span>
+            </h2>
+            <p className="text-muted-kairo mb-12 leading-relaxed text-xl font-medium max-w-xl">
+              We move beyond simple manuals. We integrate with your team through 
+              a structured, high-standard process that guarantees certification.
             </p>
-            <ul className="space-y-4">
-              {['98% First-time pass rate', 'Dedicated compliance manager', 'Custom documentation portal'].map((item, i) => (
-                <li key={i} className="flex items-center gap-4 text-slate-700 font-bold text-base">
-                  <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-500/30">
-                    <CheckCircle2 className="w-3 h-3" />
-                  </div>
-                  <span>{item}</span>
-                </li>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {[
+                { label: 'SUCCESS RATE', value: '98%' },
+                { label: 'UK PARTNERS', value: '500+' },
+                { label: 'ISO EXPERTISE', value: '15 Yrs' },
+                { label: 'CLIENT SUPPORT', value: '24/7' }
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col gap-2">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-muted-kairo">{stat.label}</span>
+                  <span className="text-4xl font-black text-accent tracking-kairo uppercase">{stat.value}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
           
-          <div className="flex-1 w-full">
-            <div className="grid grid-cols-1 gap-4">
-              {steps.map((step, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="glass-panel p-6 rounded-[1.5rem] flex gap-6 items-center hover:border-blue-500/30 transition-colors bg-white premium-card-hover"
-                >
-                  <span className="text-3xl font-black text-slate-100 group-hover:text-blue-50 transition-colors">{step.number}</span>
-                  <div>
-                    <h4 className="text-lg font-bold mb-1 tracking-tight text-slate-900">{step.title}</h4>
-                    <p className="text-xs text-slate-500 font-medium">{step.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="flex-1 w-full space-y-6">
+            {steps.map((step, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="flex gap-10 items-start p-10 rounded-[2rem] bg-background border border-white/5 hover:border-accent/30 transition-colors group"
+              >
+                <span className="text-5xl font-black text-white/5 group-hover:text-accent/20 transition-colors tracking-kairo">{step.number}</span>
+                <div className="pt-2">
+                  <h4 className="text-xl font-black mb-2 tracking-kairo text-bone uppercase">{step.title}</h4>
+                  <p className="text-muted-kairo text-sm font-medium leading-relaxed">{step.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

@@ -130,12 +130,12 @@ function AccreditationCard({ item }: { item: Accreditation }) {
       >
         {/* Front Side */}
         <div 
-          className="absolute inset-0 backface-hidden glass-panel p-6 rounded-[2rem] flex flex-col items-center justify-center border border-slate-200 group-hover:border-blue-500/50 transition-colors duration-500 bg-white"
+          className="absolute inset-0 backface-hidden kairo-card flex flex-col items-center justify-center border border-white/5 group-hover:border-accent/30 transition-all duration-500 bg-white/5"
           style={{ backfaceVisibility: "hidden" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,179,150,0.05),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className={`w-24 h-24 flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 relative overflow-hidden`}>
+          <div className={`w-28 h-28 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 relative overflow-hidden grayscale group-hover:grayscale-0`}>
             {item.image ? (
               <div className="relative w-full h-full">
                 <Image 
@@ -146,31 +146,27 @@ function AccreditationCard({ item }: { item: Accreditation }) {
                 />
               </div>
             ) : Icon ? (
-              <Icon strokeWidth={1.5} className={`w-12 h-12 ${item.color}`} />
+              <Icon strokeWidth={1.5} className={`w-14 h-14 ${item.color}`} />
             ) : null}
           </div>
           
-          <h3 className="text-lg font-bold text-slate-900 transition-colors text-center tracking-tighter uppercase">
+          <h3 className="text-lg font-black text-bone transition-colors text-center tracking-kairo uppercase">
             {item.title}
           </h3>
-          <p className="text-[10px] text-slate-400 mt-1 font-black tracking-widest uppercase">
+          <p className="text-[10px] text-muted-kairo mt-1 font-bold tracking-[0.2em] uppercase">
             {item.industry}
           </p>
-          
-          <div className="mt-4 flex items-center gap-1 text-[10px] font-black text-blue-600/50 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-            <span>Tap to flip</span>
-          </div>
         </div>
 
         {/* Back Side */}
         <div 
-          className="absolute inset-0 backface-hidden glass-panel p-6 rounded-[2rem] flex flex-col border border-blue-500/30 bg-blue-50/50"
+          className="absolute inset-0 backface-hidden kairo-card flex flex-col border border-accent/20 bg-background/95"
           style={{ 
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)"
           }}
         >
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-4 mb-6">
             <div className={`w-14 h-14 flex items-center justify-center relative overflow-hidden`}>
               {item.image ? (
                 <div className="relative w-full h-full">
@@ -185,19 +181,19 @@ function AccreditationCard({ item }: { item: Accreditation }) {
                 <Icon strokeWidth={2} className={`w-8 h-8 ${item.color}`} />
               ) : null}
             </div>
-            <h3 className="font-bold text-slate-900 tracking-tighter text-sm uppercase">{item.title}</h3>
+            <h3 className="font-black text-bone tracking-kairo text-lg uppercase">{item.title}</h3>
           </div>
           
-          <p className="text-[11px] text-slate-600 leading-relaxed font-medium mb-auto overflow-hidden">
+          <p className="text-sm text-muted-kairo leading-relaxed font-medium mb-auto overflow-hidden">
             {item.fullDesc}
           </p>
 
           <a 
             href="/calculator"
             onClick={(e) => e.stopPropagation()}
-            className="mt-4 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-black uppercase tracking-widest text-center transition-colors shadow-lg shadow-blue-500/20"
+            className="kairo-button w-full text-[11px] uppercase tracking-widest justify-center mt-6"
           >
-            Run Calculator
+            Run Assessment
           </a>
         </div>
       </motion.div>
@@ -207,32 +203,33 @@ function AccreditationCard({ item }: { item: Accreditation }) {
 
 export default function AccreditationsPage() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-16 px-6 relative overflow-hidden bg-white">
+    <div className="min-h-screen w-full flex flex-col items-center py-24 px-6 relative overflow-hidden bg-background">
       {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.03),transparent_70%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(197,179,150,0.05),transparent_60%)] pointer-events-none" />
       
       <div className="max-w-7xl w-full z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-24">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-8xl font-black tracking-tighter mb-6 text-slate-900 leading-none"
+            className="text-5xl md:text-9xl font-black tracking-kairo mb-8 text-bone leading-none uppercase"
           >
-            Our <span className="text-blue-600">Accreditations</span>
+            Core <span className="text-accent italic">Competencies</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed font-medium"
+            className="text-muted-kairo max-w-2xl mx-auto text-xl leading-relaxed font-medium"
           >
-            We specialize in streamlining the certification process for the UK's most demanding industries. Tap any card to learn more about our core competencies.
+            We move beyond simple manuals. We integrate with your team through 
+            a structured, high-standard process that guarantees certification.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8">
           {accreditations.map((item, idx) => (
             <motion.div
               key={item.id}
