@@ -65,7 +65,6 @@ export default function CalculatorPage() {
     if (step < questions.length - 1) {
       setTimeout(() => setStep(prev => prev + 1), 300);
     } else {
-      // If it's the last question, wait slightly then show lead form
       setTimeout(() => setStep(questions.length), 300);
     }
   };
@@ -83,64 +82,84 @@ export default function CalculatorPage() {
   const industryRecs = recommendations[answers.industry] || recommendations["Other"];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative bg-background overflow-hidden">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-40 relative bg-background overflow-hidden">
+      {/* Cinematic Atmospheric Background */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(197,179,150,0.1),transparent_60%)] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="w-full max-w-4xl z-10">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-8xl font-black mb-6 tracking-kairo text-bone uppercase leading-[0.85]">
-            Accreditation <br /><span className="text-accent italic">Calculator</span>
+      <div className="w-full max-w-5xl z-10">
+        <div className="text-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 mb-10 backdrop-blur-md"
+          >
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Strategic Engine</span>
+          </motion.div>
+
+          <h1 className="text-6xl md:text-[10rem] font-black mb-10 tracking-kairo text-bone uppercase leading-[0.8]">
+            ACCREDITATION <br /><span className="text-accent italic">ANALYSIS</span>
           </h1>
-          <p className="text-muted-kairo text-xl font-medium max-w-xl mx-auto leading-relaxed">
-            Operational analysis of high-impact certifications tailored for your strategic goals.
+          <p className="text-muted-kairo text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed tracking-tight">
+            Operational analysis of high-impact certifications tailored for your strategic UK objectives.
           </p>
         </div>
 
-        <div className="kairo-card relative overflow-hidden bg-white/5 border border-white/5 shadow-2xl">
+        <div className="w-full max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
             {!showResults ? (
               <motion.div
                 key="questions"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
                 className="w-full"
               >
                 {step < questions.length ? (
-                  <>
-                    <div className="flex justify-between text-[11px] font-bold text-muted-kairo mb-10 uppercase tracking-[0.2em]">
-                      <span>Analysis Point {step + 1} / {questions.length}</span>
-                      <span>{Math.round(progress)}% Progress</span>
+                  <div className="kairo-card bg-white/5 border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)]">
+                    <div className="flex justify-between items-end mb-16">
+                      <div className="space-y-2">
+                        <p className="text-[10px] font-black text-accent uppercase tracking-[0.3em]">Progress</p>
+                        <h3 className="text-3xl font-black text-bone tracking-kairo uppercase">
+                          Point {step + 1} <span className="text-muted-kairo/30">/ {questions.length}</span>
+                        </h3>
+                      </div>
+                      <span className="text-4xl font-black text-white/5 tracking-kairo">{Math.round(progress)}%</span>
                     </div>
                     
-                    <div className="w-full h-px bg-white/10 mb-16 relative">
+                    <div className="w-full h-px bg-white/5 mb-20 relative">
                       <motion.div 
-                        className="h-px bg-accent absolute top-0 left-0"
+                        className="h-px bg-accent absolute top-0 left-0 shadow-[0_0_20px_rgba(197,179,150,0.5)]"
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                       />
                     </div>
 
-                    <h2 className="text-3xl md:text-5xl font-black mb-12 tracking-kairo text-bone uppercase leading-[0.9]">{questions[step].question}</h2>
+                    <h2 className="text-4xl md:text-6xl font-black mb-16 tracking-kairo text-bone uppercase leading-[0.9] max-w-2xl">
+                      {questions[step].question}
+                    </h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {questions[step].options.map((option, idx) => (
                         <button
                           key={idx}
                           onClick={() => handleSelect(option)}
-                          className={`w-full text-left p-8 rounded-[1.5rem] border transition-all duration-500 font-black tracking-kairo uppercase text-sm ${
+                          className={`w-full text-left p-10 rounded-[2.5rem] border transition-all duration-700 font-black tracking-kairo uppercase text-sm group ${
                             answers[questions[step].id] === option 
                               ? "bg-accent border-accent text-accent-foreground shadow-2xl shadow-accent/20" 
-                              : "bg-background border-white/5 hover:border-accent/30 text-muted-kairo hover:text-bone"
+                              : "bg-background/50 border-white/5 hover:border-accent/40 text-muted-kairo hover:text-bone"
                           }`}
                         >
                           <div className="flex justify-between items-center">
                             <span>{option}</span>
-                            {answers[questions[step].id] === option && (
-                              <CheckCircle2 className="w-5 h-5" />
-                            )}
+                            <div className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
+                              answers[questions[step].id] === option 
+                                ? "border-accent-foreground bg-accent-foreground/10" 
+                                : "border-white/10 group-hover:border-accent/50"
+                            }`}>
+                              {answers[questions[step].id] === option && <CheckCircle2 className="w-3.5 h-3.5" />}
+                            </div>
                           </div>
                         </button>
                       ))}
@@ -149,46 +168,48 @@ export default function CalculatorPage() {
                     {step > 0 && (
                       <button 
                         onClick={() => setStep(step - 1)}
-                        className="mt-12 text-[11px] text-muted-kairo hover:text-accent transition-colors font-bold uppercase tracking-[0.2em] flex items-center gap-2"
+                        className="mt-16 text-[10px] text-muted-kairo hover:text-accent transition-colors font-black uppercase tracking-[0.3em] flex items-center gap-3 group"
                       >
-                        <ChevronRight className="w-4 h-4 rotate-180" />
-                        Previous Step
+                        <div className="w-8 h-px bg-white/10 group-hover:bg-accent group-hover:w-12 transition-all" />
+                        Previous Analysis
                       </button>
                     )}
-                  </>
+                  </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-8 max-w-lg mx-auto py-6">
-                    <div className="text-center mb-12">
-                      <div className="w-20 h-20 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-accent/20">
-                        <AlertCircle className="w-10 h-10 text-accent" />
+                  <div className="kairo-card max-w-2xl mx-auto border-accent/20 bg-accent/5 shadow-2xl shadow-accent/5">
+                    <form onSubmit={handleSubmit} className="space-y-12 py-6">
+                      <div className="text-center">
+                        <div className="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-10 border border-accent/20">
+                          <AlertCircle className="w-10 h-10 text-accent" />
+                        </div>
+                        <h2 className="text-5xl font-black mb-6 tracking-kairo text-bone uppercase leading-none">ANALYSIS COMPLETE</h2>
+                        <p className="text-muted-kairo font-medium text-xl tracking-tight">Secure your personalized operational roadmap.</p>
                       </div>
-                      <h2 className="text-4xl font-black mb-4 tracking-kairo text-bone uppercase leading-none">Data Ready</h2>
-                      <p className="text-muted-kairo font-medium text-lg">Secure your personalized operational roadmap.</p>
-                    </div>
 
-                    <div className="space-y-6">
-                      <div className="space-y-3">
-                        <label className="block text-[11px] font-bold text-muted-kairo uppercase tracking-[0.2em]">Full Name</label>
-                        <input required type="text" className="w-full bg-background border border-white/10 rounded-2xl px-8 py-5 text-bone focus:outline-none focus:border-accent transition-all font-bold placeholder:text-muted-kairo/30" placeholder="John Doe" />
+                      <div className="space-y-8">
+                        <div className="space-y-4">
+                          <label className="block text-[10px] font-black text-accent uppercase tracking-[0.3em]">Full Name</label>
+                          <input required type="text" className="w-full bg-background/50 border border-white/10 rounded-[2rem] px-10 py-6 text-bone focus:outline-none focus:border-accent transition-all font-bold placeholder:text-muted-kairo/20" placeholder="John Doe" />
+                        </div>
+                        <div className="space-y-4">
+                          <label className="block text-[10px] font-black text-accent uppercase tracking-[0.3em]">Operational Email</label>
+                          <input required type="email" className="w-full bg-background/50 border border-white/10 rounded-[2rem] px-10 py-6 text-bone focus:outline-none focus:border-accent transition-all font-bold placeholder:text-muted-kairo/20" placeholder="john@company.co.uk" />
+                        </div>
                       </div>
-                      <div className="space-y-3">
-                        <label className="block text-[11px] font-bold text-muted-kairo uppercase tracking-[0.2em]">Operational Email</label>
-                        <input required type="email" className="w-full bg-background border border-white/10 rounded-2xl px-8 py-5 text-bone focus:outline-none focus:border-accent transition-all font-bold placeholder:text-muted-kairo/30" placeholder="john@company.co.uk" />
-                      </div>
-                    </div>
 
-                    <button 
-                      type="submit" 
-                      disabled={isSubmitting}
-                      className="kairo-button w-full py-6 text-[13px] uppercase tracking-widest justify-center mt-10"
-                    >
-                      {isSubmitting ? (
-                        <span className="w-5 h-5 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
-                      ) : (
-                        <>Generate Strategic Roadmap <ChevronRight className="w-4 h-4" /></>
-                      )}
-                    </button>
-                  </form>
+                      <button 
+                        type="submit" 
+                        disabled={isSubmitting}
+                        className="kairo-button w-full py-8 text-sm justify-center shadow-2xl shadow-accent/20"
+                      >
+                        {isSubmitting ? (
+                          <span className="w-6 h-6 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
+                        ) : (
+                          <>GENERATE STRATEGIC ROADMAP <ChevronRight className="w-5 h-5" /></>
+                        )}
+                      </button>
+                    </form>
+                  </div>
                 )}
               </motion.div>
             ) : (
@@ -196,55 +217,70 @@ export default function CalculatorPage() {
                 key="results"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-6"
+                className="w-full"
               >
-                <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-accent/30">
-                  <CheckCircle2 className="w-12 h-12 text-accent-foreground" />
+                <div className="text-center mb-24">
+                  <div className="w-32 h-32 bg-accent rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_0_50px_rgba(197,179,150,0.3)]">
+                    <CheckCircle2 className="w-16 h-16 text-accent-foreground" />
+                  </div>
+                  <h2 className="text-6xl md:text-[8rem] font-black mb-8 tracking-kairo text-bone uppercase leading-[0.8]">OPERATIONAL <br /><span className="text-accent italic">ROADMAP</span></h2>
+                  <p className="text-muted-kairo text-xl md:text-2xl font-medium tracking-tight max-w-3xl mx-auto">
+                    Strategic focus for <span className="text-accent italic">{answers.industry}</span> sector to achieve <span className="text-bone italic">{answers.goals?.toLowerCase()}</span>.
+                  </p>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-kairo text-bone uppercase leading-none">Operational Roadmap</h2>
-                <p className="text-muted-kairo mb-16 max-w-2xl mx-auto text-xl font-medium leading-relaxed">
-                  Strategic focus for <span className="text-accent italic">{answers.industry}</span> sector to achieve <span className="text-bone italic">{answers.goals?.toLowerCase()}</span>.
-                </p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
                   {industryRecs.map((rec, idx) => (
-                    <div key={idx} className="p-10 rounded-[2.5rem] bg-background border border-white/5 flex flex-col">
-                      <div className="flex items-center gap-5 mb-8">
-                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-accent">
-                          <rec.icon className={`w-7 h-7`} />
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="kairo-card bg-white/5 border-white/10 flex flex-col group hover:border-accent/40"
+                    >
+                      <div className="flex items-center gap-6 mb-10">
+                        <div className="w-16 h-16 rounded-[1.5rem] bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-700">
+                          <rec.icon className={`w-8 h-8`} />
                         </div>
-                        <h4 className="font-black text-bone text-xl uppercase tracking-kairo">{rec.name}</h4>
+                        <h4 className="font-black text-bone text-2xl uppercase tracking-kairo">{rec.name}</h4>
                       </div>
-                      <p className="text-muted-kairo text-base font-medium leading-relaxed">{rec.benefit}</p>
-                    </div>
+                      <p className="text-muted-kairo text-lg font-medium leading-relaxed tracking-tight">{rec.benefit}</p>
+                    </motion.div>
                   ))}
                 </div>
 
-                <div className="p-10 rounded-[2.5rem] mb-16 text-left border border-accent/20 bg-accent/5">
-                  <h3 className="font-black text-2xl mb-6 flex items-center gap-4 tracking-kairo text-bone uppercase">
-                    <div className="w-2 h-2 rounded-full bg-accent" /> 
-                    Execution with WOOD
-                  </h3>
-                  <p className="text-muted-kairo text-lg font-medium leading-relaxed mb-10 max-w-3xl">
-                    We eliminate operational friction. Our methodology handles documentation, 
-                    gap analysis, and audit representation to guarantee first-time success.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    {[
-                      'Strategic Prep',
-                      'Audit Leadership',
-                      'Guaranteed Pass'
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-4 text-bone font-black text-[11px] uppercase tracking-widest">
-                        <div className="w-6 h-6 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">✓</div>
-                        {item}
-                      </div>
-                    ))}
+                <div className="kairo-card border-accent/20 bg-accent/5 mb-24 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-12 opacity-[0.03]">
+                    <Shield className="w-64 h-64 text-accent" />
+                  </div>
+                  <div className="relative z-10">
+                    <h3 className="font-black text-3xl md:text-5xl mb-8 flex items-center gap-6 tracking-kairo text-bone uppercase">
+                      <div className="w-3 h-3 rounded-full bg-accent animate-pulse" /> 
+                      EXECUTION WITH WOOD
+                    </h3>
+                    <p className="text-muted-kairo text-xl font-medium leading-relaxed mb-12 max-w-4xl tracking-tight">
+                      We eliminate operational friction. Our methodology handles documentation, 
+                      gap analysis, and audit representation to guarantee first-time success.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                      {[
+                        'Strategic Prep',
+                        'Audit Leadership',
+                        'Guaranteed Pass'
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center gap-5 text-bone font-black text-xs uppercase tracking-[0.2em]">
+                          <div className="w-8 h-8 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center text-accent">
+                            <CheckCircle2 className="w-4 h-4" />
+                          </div>
+                          {item}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-8 justify-center">
-                  <a href="/contact" className="kairo-button px-12 py-6 text-sm uppercase tracking-widest">
+                <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                  <a href="/contact" className="kairo-button px-16 py-8 text-sm shadow-2xl shadow-accent/20">
                     Claim Strategic Gap Analysis
                   </a>
                   <button 
@@ -253,9 +289,10 @@ export default function CalculatorPage() {
                       setAnswers({});
                       setShowResults(false);
                     }}
-                    className="text-sm font-bold uppercase tracking-widest text-muted-kairo hover:text-bone transition-colors pb-1 border-b border-white/10 hover:border-accent"
+                    className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-kairo hover:text-bone transition-all flex items-center gap-3 group"
                   >
-                    Reset Analysis
+                    Restart Analysis
+                    <div className="w-8 h-px bg-white/10 group-hover:w-12 group-hover:bg-accent transition-all" />
                   </button>
                 </div>
               </motion.div>

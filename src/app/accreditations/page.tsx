@@ -118,24 +118,24 @@ function AccreditationCard({ item }: { item: Accreditation }) {
 
   return (
     <div 
-      className="relative w-full aspect-square cursor-pointer group"
+      className="relative w-full aspect-[4/5] cursor-pointer group"
       onClick={() => setIsFlipped(!isFlipped)}
-      style={{ perspective: "1000px" }}
+      style={{ perspective: "2000px" }}
     >
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+        transition={{ duration: 0.8, type: "spring", stiffness: 100, damping: 20 }}
         className="w-full h-full relative"
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Front Side */}
         <div 
-          className="absolute inset-0 backface-hidden kairo-card flex flex-col items-center justify-center border border-white/5 group-hover:border-accent/30 transition-all duration-500 bg-white/5"
+          className="absolute inset-0 backface-hidden kairo-card flex flex-col items-center justify-center border border-white/5 group-hover:border-accent/40 transition-all duration-700 bg-white/5"
           style={{ backfaceVisibility: "hidden" }}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,179,150,0.05),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,179,150,0.08),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           
-          <div className={`w-28 h-28 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 relative overflow-hidden grayscale group-hover:grayscale-0`}>
+          <div className={`w-32 h-32 flex items-center justify-center mb-10 transition-all duration-700 group-hover:scale-110 relative overflow-hidden grayscale group-hover:grayscale-0 group-hover:brightness-110`}>
             {item.image ? (
               <div className="relative w-full h-full">
                 <Image 
@@ -143,30 +143,36 @@ function AccreditationCard({ item }: { item: Accreditation }) {
                   alt={item.title} 
                   fill 
                   className="object-contain"
+                  unoptimized
                 />
               </div>
             ) : Icon ? (
-              <Icon strokeWidth={1.5} className={`w-14 h-14 ${item.color}`} />
+              <Icon strokeWidth={1} className={`w-16 h-16 ${item.color} opacity-40 group-hover:opacity-100 transition-opacity`} />
             ) : null}
           </div>
           
-          <h3 className="text-lg font-black text-bone transition-colors text-center tracking-kairo uppercase">
+          <h3 className="text-2xl font-black text-bone transition-colors text-center tracking-kairo uppercase">
             {item.title}
           </h3>
-          <p className="text-[10px] text-muted-kairo mt-1 font-bold tracking-[0.2em] uppercase">
+          <p className="text-[10px] text-accent mt-3 font-black tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">
             {item.industry}
           </p>
+
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+            <span className="text-[10px] font-black uppercase tracking-widest text-muted-kairo">View Details</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+          </div>
         </div>
 
         {/* Back Side */}
         <div 
-          className="absolute inset-0 backface-hidden kairo-card flex flex-col border border-accent/20 bg-background/95"
+          className="absolute inset-0 backface-hidden kairo-card flex flex-col border border-accent/30 bg-[#0A0A0A]"
           style={{ 
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)"
           }}
         >
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-5 mb-10">
             <div className={`w-14 h-14 flex items-center justify-center relative overflow-hidden`}>
               {item.image ? (
                 <div className="relative w-full h-full">
@@ -175,26 +181,32 @@ function AccreditationCard({ item }: { item: Accreditation }) {
                     alt={item.title} 
                     fill 
                     className="object-contain"
+                    unoptimized
                   />
                 </div>
               ) : Icon ? (
                 <Icon strokeWidth={2} className={`w-8 h-8 ${item.color}`} />
               ) : null}
             </div>
-            <h3 className="font-black text-bone tracking-kairo text-lg uppercase">{item.title}</h3>
+            <h3 className="font-black text-bone tracking-kairo text-xl uppercase leading-none">{item.title}</h3>
           </div>
           
-          <p className="text-sm text-muted-kairo leading-relaxed font-medium mb-auto overflow-hidden">
+          <p className="text-base text-muted-kairo leading-relaxed font-medium mb-auto overflow-y-auto pr-2 custom-scrollbar">
             {item.fullDesc}
           </p>
 
-          <a 
-            href="/calculator"
-            onClick={(e) => e.stopPropagation()}
-            className="kairo-button w-full text-[11px] uppercase tracking-widest justify-center mt-6"
-          >
-            Run Assessment
-          </a>
+          <div className="mt-10 space-y-4">
+            <a 
+              href="/calculator"
+              onClick={(e) => e.stopPropagation()}
+              className="kairo-button w-full justify-center shadow-xl shadow-accent/10"
+            >
+              Strategic Assessment
+            </a>
+            <button className="w-full text-[10px] font-black uppercase tracking-widest text-muted-kairo hover:text-bone transition-colors">
+              Flip Back
+            </button>
+          </div>
         </div>
       </motion.div>
     </div>
@@ -203,33 +215,42 @@ function AccreditationCard({ item }: { item: Accreditation }) {
 
 export default function AccreditationsPage() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-24 px-6 relative overflow-hidden bg-background">
-      {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(197,179,150,0.05),transparent_60%)] pointer-events-none" />
+    <div className="min-h-screen w-full flex flex-col items-center py-40 px-6 relative overflow-hidden bg-background">
+      {/* Cinematic Background */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(197,179,150,0.1),transparent_60%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="max-w-7xl w-full z-10">
-        <div className="text-center mb-24">
+        <div className="text-center mb-32">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 mb-12 backdrop-blur-md"
+          >
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Strategic Directory</span>
+          </motion.div>
+
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-9xl font-black tracking-kairo mb-8 text-bone leading-none uppercase"
+            className="text-6xl md:text-[10rem] font-black tracking-kairo mb-12 text-bone leading-[0.8] uppercase"
           >
-            Core <span className="text-accent italic">Competencies</span>
+            CORE <br /> <span className="text-accent italic">COMPETENCIES</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-muted-kairo max-w-2xl mx-auto text-xl leading-relaxed font-medium"
+            className="text-muted-kairo max-w-2xl mx-auto text-xl md:text-2xl leading-relaxed font-medium tracking-tight"
           >
             We move beyond simple manuals. We integrate with your team through 
             a structured, high-standard process that guarantees certification.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {accreditations.map((item, idx) => (
             <motion.div
               key={item.id}
@@ -241,6 +262,25 @@ export default function AccreditationsPage() {
             </motion.div>
           ))}
         </div>
+
+        {/* Call to Action Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-40 kairo-card bg-accent/5 border-accent/20 flex flex-col md:flex-row items-center justify-between gap-12"
+        >
+          <div className="max-w-xl">
+            <h2 className="text-4xl font-black mb-6 tracking-kairo text-bone uppercase">Ready for Analysis?</h2>
+            <p className="text-muted-kairo text-lg font-medium leading-relaxed">
+              Don't guess which standard you need. Use our strategic calculator to 
+              determine the highest impact accreditations for your specific operational goals.
+            </p>
+          </div>
+          <a href="/calculator" className="kairo-button px-12 py-6 text-sm">
+            Launch Strategic Calculator
+          </a>
+        </motion.div>
       </div>
     </div>
   );
