@@ -75,6 +75,9 @@ export default function Home() {
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
+        {/* Premium Background Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+        
         {/* Cinematic Atmospheric Glows */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
@@ -94,14 +97,25 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto text-center z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="flex items-center gap-4 justify-center mb-8"
+          >
+            <div className="h-[1px] w-8 bg-accent/40" />
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">UK's Premier Consultancy</span>
+            <div className="h-[1px] w-8 bg-accent/40" />
+          </motion.div>
+
           <motion.h1 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 1, ease: [0.23, 1, 0.32, 1] }}
+            transition={{ delay: 0.2, duration: 1, ease: [0.23, 1, 0.32, 1] }}
             className="text-5xl md:text-7xl font-black tracking-kairo mb-10 leading-[0.8] text-bone uppercase"
           >
             MASTER THE <br />
-            <span className="text-accent italic">STANDARD</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600 italic pr-2">STANDARD</span>
           </motion.h1>
           
           <motion.div
@@ -116,9 +130,12 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a href="/accreditations" className="kairo-button px-10 py-5 group shadow-2xl shadow-accent/30">
-                Explore Services
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <a href="/accreditations" className="kairo-button px-10 py-5 group shadow-2xl shadow-accent/30 relative overflow-hidden">
+                <span className="relative z-10 flex items-center gap-2">
+                  Explore Services
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover:animate-[shimmer_1.5s_infinite]" />
               </a>
               <a href="/calculator" className="text-sm font-bold uppercase tracking-[0.2em] text-muted-kairo hover:text-bone transition-all flex items-center gap-3 group">
                 Strategic Analysis
