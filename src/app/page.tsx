@@ -40,18 +40,6 @@ export default function Home() {
         <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto text-center z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-black/10 bg-black/[0.03] mb-8 backdrop-blur-md"
-          >
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-            </span>
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">UK Operational Authority</span>
-          </motion.div>
-
           <motion.h1 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}

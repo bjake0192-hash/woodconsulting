@@ -89,14 +89,6 @@ export default function CalculatorPage() {
 
       <div className="w-full max-w-5xl z-10">
         <div className="text-center mb-24">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 mb-10 backdrop-blur-md"
-          >
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Strategic Engine</span>
-          </motion.div>
-
           <h1 className="text-6xl md:text-[10rem] font-black mb-10 tracking-kairo text-bone uppercase leading-[0.8]">
             ACCREDITATION <br /><span className="text-accent italic">ANALYSIS</span>
           </h1>

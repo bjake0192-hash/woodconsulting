@@ -119,14 +119,6 @@ export default function AccreditationsPage() {
       
       <div className="max-w-7xl w-full z-10">
         <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-black/10 bg-black/[0.03] mb-8 backdrop-blur-md"
-          >
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Strategic Directory</span>
-          </motion.div>
-
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
