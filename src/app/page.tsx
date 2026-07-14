@@ -26,18 +26,25 @@ function HeroBubble({ item, index }: { item: any; index: number }) {
     <motion.div
       animate={{ y: [0, -15, 0] }}
       transition={{ duration: 4, repeat: Infinity, delay: index * 0.4, ease: "easeInOut" }}
-      className="w-[120px] h-[120px] rounded-full glass-panel flex flex-col items-center justify-center border-2 border-transparent hover:border-accent bg-white/50 hover:bg-white/90 shadow-xl overflow-hidden relative group cursor-pointer hover:scale-125 transition-all duration-500 z-20"
+      className="w-[120px] h-[120px] rounded-full bg-white/40 backdrop-blur-xl flex flex-col items-center justify-center border border-white/80 shadow-[0_8px_32px_-4px_rgba(0,0,0,0.06),inset_0_4px_6px_rgba(255,255,255,0.5)] hover:shadow-[0_16px_48px_-12px_rgba(0,82,255,0.25),inset_0_4px_8px_rgba(255,255,255,0.8)] hover:bg-white/60 hover:border-accent/30 overflow-hidden relative group cursor-pointer hover:scale-110 hover:-translate-y-1 transition-all duration-500 z-20"
     >
-      <div className="w-[65%] h-[65%] relative flex items-center justify-center -mt-4 group-hover:scale-110 transition-transform">
+      {/* 3D Glass Reflection Highlight */}
+      <div className="absolute top-1 left-1/2 -translate-x-1/2 w-[70%] h-[30%] bg-gradient-to-b from-white/90 to-transparent rounded-t-full blur-[1px] opacity-80 pointer-events-none" />
+      
+      {/* Subtle Inner Bottom Glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[40%] bg-accent/5 rounded-b-full blur-[10px] pointer-events-none group-hover:bg-accent/15 transition-colors" />
+
+      <div className="w-[55%] h-[55%] relative flex items-center justify-center -mt-4 group-hover:scale-110 transition-transform drop-shadow-sm">
         {item.image ? (
-          <Image src={item.image} alt={item.title} fill className="object-contain p-1" unoptimized />
+          <Image src={item.image} alt={item.title} fill className="object-contain drop-shadow-md" unoptimized />
         ) : Icon ? (
-          <Icon strokeWidth={2} className={`w-full h-full ${item.color} p-1`} />
+          <Icon strokeWidth={1.5} className={`w-full h-full ${item.color} drop-shadow-md`} />
         ) : null}
       </div>
-      <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
-        <path id={`curve-hero-${item.id}`} d="M 12 50 A 38 38 0 0 0 88 50" fill="transparent" />
-        <text className="font-black tracking-widest uppercase" fill="currentColor" style={{ fontSize: '9px' }}>
+      
+      <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none text-foreground/50 group-hover:text-foreground transition-colors">
+        <path id={`curve-hero-${item.id}`} d="M 14 50 A 36 36 0 0 0 86 50" fill="transparent" />
+        <text className="font-black tracking-[0.2em] uppercase" fill="currentColor" style={{ fontSize: '8px' }}>
           <textPath href={`#curve-hero-${item.id}`} startOffset="50%" textAnchor="middle">{item.title}</textPath>
         </text>
       </svg>
