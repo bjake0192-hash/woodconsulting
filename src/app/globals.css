@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #E1E0CC;
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --accent: #C5B396;
-  --accent-foreground: #000000;
-  --muted: #888888;
-  --muted-foreground: #666666;
+  --background: #FAFAFA;
+  --foreground: #111111;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --accent: #0052FF;
+  --accent-foreground: #FFFFFF;
+  --muted: #E4E4E7;
+  --muted-foreground: #71717A;
 }
 
 @theme inline {
@@ -16,10 +16,12 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
-  --radius-kairo: 2.5rem;
-  --radius-kairo-lg: 4rem;
+  --radius-kairo: 1.5rem;
+  --radius-kairo-lg: 2rem;
 }
 
 body {
@@ -30,12 +32,13 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Kairo Inspired UI Utilities */
+/* Modern Glass Panels */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.05);
 }
 
 .kairo-button {
@@ -44,43 +47,42 @@ body {
   border-radius: 9999px;
   padding: 0.875rem 2rem;
   font-weight: 600;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   border: 1px solid transparent;
+  box-shadow: 0 4px 12px rgba(0, 82, 255, 0.2);
 }
 
 .kairo-button:hover {
-  background: transparent;
-  color: var(--accent);
-  border-color: var(--accent);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 82, 255, 0.3);
 }
 
 .kairo-card {
-  background: var(--card-bg);
+  background: #FFFFFF;
   border-radius: var(--radius-kairo);
-  padding: 3rem;
+  padding: 2.5rem;
   border: 1px solid var(--card-border);
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .kairo-card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(0, 0, 0, 0.15);
   transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08);
 }
 
 .tracking-kairo {
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
 }
 
 .leading-kairo {
-  line-height: 0.85;
+  line-height: 0.9;
 }
 
 .text-bone {
@@ -88,7 +90,7 @@ body {
 }
 
 .text-muted-kairo {
-  color: #888888;
+  color: var(--muted-foreground);
 }
 
 .bento-grid {
@@ -97,16 +99,16 @@ body {
   gap: 1.5rem;
 }
 
-/* Animated Gradients */
+/* Modern Subtle Gradients */
 .bg-glow {
-  background: radial-gradient(circle at center, var(--accent) 0%, transparent 70%);
-  filter: blur(120px);
-  opacity: 0.05;
+  background: radial-gradient(circle at center, rgba(0, 82, 255, 0.08) 0%, transparent 70%);
+  filter: blur(80px);
+  opacity: 1;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -114,10 +116,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222222;
+  background: #D4D4D8;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333333;
+  background: #A1A1AA;
 }

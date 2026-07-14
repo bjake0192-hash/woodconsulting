@@ -36,14 +36,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-24 overflow-hidden">
         {/* Cinematic Atmospheric Glows */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(197,179,150,0.12),transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto text-center z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 mb-12 backdrop-blur-md"
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-black/10 bg-black/[0.03] mb-12 backdrop-blur-md"
           >
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
@@ -74,13 +74,13 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-              <a href="/accreditations" className="kairo-button px-12 py-6 group shadow-2xl shadow-accent/20">
+              <a href="/accreditations" className="kairo-button px-12 py-6 group shadow-2xl shadow-accent/30">
                 Explore Services
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <a href="/calculator" className="text-sm font-bold uppercase tracking-[0.2em] text-muted-kairo hover:text-bone transition-all flex items-center gap-3 group">
                 Strategic Analysis
-                <div className="w-8 h-px bg-white/10 group-hover:w-12 group-hover:bg-accent transition-all" />
+                <div className="w-8 h-px bg-black/10 group-hover:w-12 group-hover:bg-accent transition-all" />
               </a>
             </div>
           </motion.div>
@@ -90,7 +90,7 @@ export default function Home() {
         <motion.div 
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 -left-20 w-64 h-64 bg-accent/5 rounded-full blur-[100px] pointer-events-none"
+          className="absolute top-1/4 -left-20 w-64 h-64 bg-accent/10 rounded-full blur-[100px] pointer-events-none"
         />
       </section>
 
@@ -104,7 +104,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="pb-4">
-            <a href="/accreditations" className="kairo-button !bg-transparent !border-white/10 hover:!border-accent !text-bone hover:!text-accent">
+            <a href="/accreditations" className="kairo-button !bg-transparent !border-black/10 hover:!border-accent !text-bone hover:!text-accent">
               View All Directory
             </a>
           </div>
@@ -116,7 +116,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="col-span-12 md:col-span-8 kairo-card bg-gradient-to-br from-white/5 to-transparent relative group overflow-hidden"
+            className="col-span-12 md:col-span-8 kairo-card bg-gradient-to-br from-black/[0.03] to-transparent relative group overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:opacity-20 transition-opacity">
               <ShieldCheck className="w-40 h-40 text-accent" />
@@ -134,7 +134,7 @@ export default function Home() {
               </div>
               <div className="flex gap-4 mt-12">
                 {['Audit Ready', 'Documentation', 'GAP Analysis'].map((tag, i) => (
-                  <span key={i} className="px-4 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] font-bold uppercase tracking-widest text-muted-kairo">
+                  <span key={i} className="px-4 py-1.5 rounded-full bg-black/[0.03] border border-black/[0.03] text-[10px] font-bold uppercase tracking-widest text-muted-kairo">
                     {tag}
                   </span>
                 ))}
@@ -148,9 +148,9 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="col-span-12 md:col-span-4 kairo-card border-accent/20 bg-accent/5"
+            className="col-span-12 md:col-span-4 kairo-card border-accent/30 bg-accent/10"
           >
-            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-10 text-accent">
+            <div className="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-10 text-accent">
               <BookOpen className="w-7 h-7" />
             </div>
             <h3 className="text-2xl font-black mb-4 tracking-kairo text-bone uppercase">INDUSTRY SPECIFIC</h3>
@@ -169,14 +169,14 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="col-span-12 md:col-span-4 kairo-card"
           >
-            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-10 text-accent">
+            <div className="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-10 text-accent">
               <TrendingUp className="w-7 h-7" />
             </div>
             <h3 className="text-2xl font-black mb-4 tracking-kairo text-bone uppercase">CONTINUOUS CARE</h3>
             <p className="text-muted-kairo text-base leading-relaxed font-medium mb-8">
               Operational excellence maintained through automated tracking and strategic audits.
             </p>
-            <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+            <div className="h-1 w-full bg-black/[0.03] rounded-full overflow-hidden">
               <motion.div 
                 initial={{ width: 0 }}
                 whileInView={{ width: '100%' }}
@@ -191,7 +191,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="col-span-12 md:col-span-8 kairo-card bg-white/5 border-white/5 group hover:border-accent/30"
+            className="col-span-12 md:col-span-8 kairo-card bg-black/[0.03] border-black/[0.03] group hover:border-accent/30"
           >
             <div className="flex flex-col md:flex-row gap-12 items-center h-full">
               <div className="flex-1">
@@ -206,8 +206,8 @@ export default function Home() {
               </div>
               <div className="flex-1 grid grid-cols-2 gap-4 w-full">
                 {[1, 2, 3, 4].map((_, i) => (
-                  <div key={i} className="aspect-square rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center group-hover:bg-accent/5 transition-colors">
-                    <CheckCircle2 className="w-8 h-8 text-white/10 group-hover:text-accent transition-colors" />
+                  <div key={i} className="aspect-square rounded-2xl bg-black/[0.03] border border-black/[0.03] flex items-center justify-center group-hover:bg-accent/10 transition-colors">
+                    <CheckCircle2 className="w-8 h-8 text-black/10 group-hover:text-accent transition-colors" />
                   </div>
                 ))}
               </div>
@@ -234,16 +234,16 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="relative p-10 rounded-[2.5rem] bg-white/5 border border-white/5 group hover:border-accent/30 transition-all"
+                className="relative p-10 rounded-[2.5rem] bg-black/[0.03] border border-black/[0.03] group hover:border-accent/30 transition-all"
               >
-                <span className="text-6xl font-black text-white/5 group-hover:text-accent/10 transition-colors tracking-kairo absolute top-6 right-8 leading-none">
+                <span className="text-6xl font-black text-black/[0.03] group-hover:text-accent/10 transition-colors tracking-kairo absolute top-6 right-8 leading-none">
                   {step.number}
                 </span>
                 <div className="relative z-10">
                   <h4 className="text-xl font-black mb-4 tracking-kairo text-bone uppercase pt-12">{step.title}</h4>
                   <p className="text-muted-kairo text-sm font-medium leading-relaxed">{step.desc}</p>
                 </div>
-                <div className="mt-10 h-px w-full bg-white/10 group-hover:bg-accent/30 transition-colors" />
+                <div className="mt-10 h-px w-full bg-black/10 group-hover:bg-accent/30 transition-colors" />
               </motion.div>
             ))}
           </div>

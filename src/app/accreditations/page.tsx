@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Shield, ShieldCheck, Lock, HardHat, Server, FileCheck, Award, Flame, Zap, Truck } from "lucide-react";
+import InteractiveBubbles from "./InteractiveBubbles";
 
 export const dynamic = "force-static";
 
@@ -111,113 +110,11 @@ const accreditations: Accreditation[] = [
   }
 ];
 
-function AccreditationCard({ item }: { item: Accreditation }) {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const Icon = item.icon;
-
-  return (
-    <div 
-      className="relative w-full aspect-[4/5] cursor-pointer group"
-      onClick={() => setIsFlipped(!isFlipped)}
-      style={{ perspective: "2000px" }}
-    >
-      <motion.div
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.8, type: "spring", stiffness: 100, damping: 20 }}
-        className="w-full h-full relative"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {/* Front Side */}
-        <div 
-          className="absolute inset-0 backface-hidden kairo-card flex flex-col items-center justify-center border border-white/5 group-hover:border-accent/40 transition-all duration-700 bg-white/5"
-          style={{ backfaceVisibility: "hidden" }}
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,179,150,0.08),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-          
-          <div className={`w-32 h-32 flex items-center justify-center mb-10 transition-all duration-700 group-hover:scale-110 relative overflow-hidden grayscale group-hover:grayscale-0 group-hover:brightness-110`}>
-            {item.image ? (
-              <div className="relative w-full h-full">
-                <Image 
-                  src={item.image} 
-                  alt={item.title} 
-                  fill 
-                  className="object-contain"
-                  unoptimized
-                />
-              </div>
-            ) : Icon ? (
-              <Icon strokeWidth={1} className={`w-16 h-16 ${item.color} opacity-40 group-hover:opacity-100 transition-opacity`} />
-            ) : null}
-          </div>
-          
-          <h3 className="text-2xl font-black text-bone transition-colors text-center tracking-kairo uppercase">
-            {item.title}
-          </h3>
-          <p className="text-[10px] text-accent mt-3 font-black tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">
-            {item.industry}
-          </p>
-
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-            <span className="text-[10px] font-black uppercase tracking-widest text-muted-kairo">View Details</span>
-            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-          </div>
-        </div>
-
-        {/* Back Side */}
-        <div 
-          className="absolute inset-0 backface-hidden kairo-card flex flex-col border border-accent/30 bg-[#0A0A0A]"
-          style={{ 
-            backfaceVisibility: "hidden",
-            transform: "rotateY(180deg)"
-          }}
-        >
-          <div className="flex items-center gap-5 mb-10">
-            <div className={`w-14 h-14 flex items-center justify-center relative overflow-hidden`}>
-              {item.image ? (
-                <div className="relative w-full h-full">
-                  <Image 
-                    src={item.image} 
-                    alt={item.title} 
-                    fill 
-                    className="object-contain"
-                    unoptimized
-                  />
-                </div>
-              ) : Icon ? (
-                <Icon strokeWidth={2} className={`w-8 h-8 ${item.color}`} />
-              ) : null}
-            </div>
-            <h3 className="font-black text-bone tracking-kairo text-xl uppercase leading-none">{item.title}</h3>
-          </div>
-          
-          <p className="text-base text-muted-kairo leading-relaxed font-medium mb-auto overflow-y-auto pr-2 custom-scrollbar">
-            {item.fullDesc}
-          </p>
-
-          <div className="mt-10 space-y-4">
-            <a 
-              href="/calculator"
-              onClick={(e) => e.stopPropagation()}
-              className="kairo-button w-full justify-center shadow-xl shadow-accent/10"
-            >
-              Strategic Assessment
-            </a>
-            <button className="w-full text-[10px] font-black uppercase tracking-widest text-muted-kairo hover:text-bone transition-colors">
-              Flip Back
-            </button>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
 export default function AccreditationsPage() {
   return (
     <div className="min-h-screen w-full flex flex-col items-center py-40 px-6 relative overflow-hidden bg-background">
       {/* Cinematic Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(197,179,150,0.1),transparent_60%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_60%)] pointer-events-none" />
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="max-w-7xl w-full z-10">
@@ -225,7 +122,7 @@ export default function AccreditationsPage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 mb-12 backdrop-blur-md"
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-black/10 bg-black/[0.03] mb-12 backdrop-blur-md"
           >
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Strategic Directory</span>
           </motion.div>
@@ -250,25 +147,21 @@ export default function AccreditationsPage() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {accreditations.map((item, idx) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.05 + 0.3 }}
-            >
-              <AccreditationCard item={item} />
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="w-full mb-32"
+        >
+          <InteractiveBubbles items={accreditations} />
+        </motion.div>
 
         {/* Call to Action Section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-40 kairo-card bg-accent/5 border-accent/20 flex flex-col md:flex-row items-center justify-between gap-12"
+          className="mt-20 kairo-card bg-accent/5 border-accent/20 flex flex-col md:flex-row items-center justify-between gap-12"
         >
           <div className="max-w-xl">
             <h2 className="text-4xl font-black mb-6 tracking-kairo text-bone uppercase">Ready for Analysis?</h2>
