@@ -2,9 +2,48 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen, HardHat } from "lucide-react";
 
 export const dynamic = "force-static";
+
+const heroBubblesLeft = [
+  { id: "chas", title: "CHAS", icon: HardHat, color: "text-yellow-500" },
+  { id: "avetta", title: "Avetta", image: "/Avetta-Logo.webp" },
+  { id: "niceic", title: "NICEIC", image: "/NICEIC-logo.png" },
+  { id: "iso-9001", title: "ISO 9001", image: "/iso9001.png" },
+];
+
+const heroBubblesRight = [
+  { id: "iso-27001", title: "ISO 27001", image: "/iso27001.webp" },
+  { id: "constructionline", title: "Constructionline", image: "/Constructionline-Gold-Logo.png" },
+  { id: "safecontractor", title: "SafeContractor", image: "/safecontractor.png" },
+  { id: "cyber-essentials", title: "Cyber Essentials", image: "/cyber essentials.png" },
+];
+
+function HeroBubble({ item, index }: { item: any; index: number }) {
+  const Icon = item.icon;
+  return (
+    <motion.div
+      animate={{ y: [0, -15, 0] }}
+      transition={{ duration: 4, repeat: Infinity, delay: index * 0.4, ease: "easeInOut" }}
+      className="w-[120px] h-[120px] rounded-full glass-panel flex flex-col items-center justify-center border-2 border-transparent hover:border-accent bg-white/50 hover:bg-white/90 shadow-xl overflow-hidden relative group cursor-pointer hover:scale-125 transition-all duration-500 z-20"
+    >
+      <div className="w-[65%] h-[65%] relative flex items-center justify-center -mt-4 group-hover:scale-110 transition-transform">
+        {item.image ? (
+          <Image src={item.image} alt={item.title} fill className="object-contain p-1" unoptimized />
+        ) : Icon ? (
+          <Icon strokeWidth={2} className={`w-full h-full ${item.color} p-1`} />
+        ) : null}
+      </div>
+      <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
+        <path id={`curve-hero-${item.id}`} d="M 12 50 A 38 38 0 0 0 88 50" fill="transparent" />
+        <text className="font-black tracking-widest uppercase" fill="currentColor" style={{ fontSize: '9px' }}>
+          <textPath href={`#curve-hero-${item.id}`} startOffset="50%" textAnchor="middle">{item.title}</textPath>
+        </text>
+      </svg>
+    </motion.div>
+  );
+}
 
 const features = [
   {
@@ -40,6 +79,20 @@ export default function Home() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
         
+        {/* Left Column Bubbles */}
+        <div className="hidden xl:flex flex-col gap-8 absolute left-12 top-1/2 -translate-y-1/2 z-20">
+          {heroBubblesLeft.map((item, i) => (
+            <HeroBubble key={item.id} item={item} index={i} />
+          ))}
+        </div>
+
+        {/* Right Column Bubbles */}
+        <div className="hidden xl:flex flex-col gap-8 absolute right-12 top-1/2 -translate-y-1/2 z-20">
+          {heroBubblesRight.map((item, i) => (
+            <HeroBubble key={item.id} item={item} index={i} />
+          ))}
+        </div>
+
         <div className="max-w-7xl mx-auto text-center z-10">
           <motion.h1 
             initial={{ opacity: 0, y: 40 }}
