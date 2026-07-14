@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-24 overflow-hidden">
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
         {/* Cinematic Atmospheric Glows */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
@@ -43,7 +43,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-black/10 bg-black/[0.03] mb-12 backdrop-blur-md"
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-black/10 bg-black/[0.03] mb-8 backdrop-blur-md"
           >
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
@@ -56,7 +56,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 1, ease: [0.23, 1, 0.32, 1] }}
-            className="text-7xl md:text-[12rem] font-black tracking-kairo mb-12 leading-[0.8] text-bone uppercase"
+            className="text-6xl md:text-[8rem] font-black tracking-kairo mb-10 leading-[0.8] text-bone uppercase"
           >
             MASTER THE <br />
             <span className="text-accent italic">STANDARD</span>
@@ -68,13 +68,13 @@ export default function Home() {
             transition={{ delay: 0.4 }}
             className="max-w-3xl mx-auto"
           >
-            <p className="text-xl md:text-2xl text-muted-kairo mb-16 leading-relaxed font-medium tracking-tight">
+            <p className="text-lg md:text-xl text-muted-kairo mb-12 leading-relaxed font-medium tracking-tight">
               We eliminate the friction of UK compliance. High-standard <br className="hidden md:block" />
               accreditations delivered through strategic operational excellence.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-              <a href="/accreditations" className="kairo-button px-12 py-6 group shadow-2xl shadow-accent/30">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a href="/accreditations" className="kairo-button px-10 py-5 group shadow-2xl shadow-accent/30">
                 Explore Services
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -95,11 +95,11 @@ export default function Home() {
       </section>
 
       {/* Bento Grid Services Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-40">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-24">
+      <section className="w-full max-w-7xl mx-auto px-6 py-24">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
           <div className="max-w-2xl">
             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">Expertise</p>
-            <h2 className="text-5xl md:text-8xl font-black mb-8 tracking-kairo text-bone uppercase leading-[0.85]">
+            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-kairo text-bone uppercase leading-[0.85]">
               STRATEGIC <br /> <span className="text-accent italic">SOLUTIONS</span>
             </h2>
           </div>
@@ -121,18 +121,18 @@ export default function Home() {
             <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:opacity-20 transition-opacity">
               <ShieldCheck className="w-40 h-40 text-accent" />
             </div>
-            <div className="relative z-10 h-full flex flex-col justify-between min-h-[400px]">
+            <div className="relative z-10 h-full flex flex-col justify-between min-h-[350px]">
               <div>
-                <div className="w-14 h-14 rounded-2xl bg-accent flex items-center justify-center mb-10 text-accent-foreground">
-                  <ShieldCheck className="w-7 h-7" />
+                <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center mb-8 text-accent-foreground">
+                  <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-4xl font-black mb-6 tracking-kairo text-bone uppercase">ISO ACCREDITATIONS</h3>
-                <p className="text-muted-kairo text-xl leading-relaxed font-medium max-w-xl">
+                <h3 className="text-3xl font-black mb-4 tracking-kairo text-bone uppercase">ISO ACCREDITATIONS</h3>
+                <p className="text-muted-kairo text-lg leading-relaxed font-medium max-w-xl">
                   Precision-engineered frameworks for ISO 9001, 14001, and 27001. 
                   We handle the complexity, you claim the authority.
                 </p>
               </div>
-              <div className="flex gap-4 mt-12">
+              <div className="flex gap-4 mt-10">
                 {['Audit Ready', 'Documentation', 'GAP Analysis'].map((tag, i) => (
                   <span key={i} className="px-4 py-1.5 rounded-full bg-black/[0.03] border border-black/[0.03] text-[10px] font-bold uppercase tracking-widest text-muted-kairo">
                     {tag}
@@ -150,11 +150,11 @@ export default function Home() {
             transition={{ delay: 0.1 }}
             className="col-span-12 md:col-span-4 kairo-card border-accent/30 bg-accent/10"
           >
-            <div className="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-10 text-accent">
-              <BookOpen className="w-7 h-7" />
+            <div className="w-12 h-12 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8 text-accent">
+              <BookOpen className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-black mb-4 tracking-kairo text-bone uppercase">INDUSTRY SPECIFIC</h3>
-            <p className="text-muted-kairo text-base leading-relaxed font-medium mb-8">
+            <h3 className="text-xl font-black mb-3 tracking-kairo text-bone uppercase">INDUSTRY SPECIFIC</h3>
+            <p className="text-muted-kairo text-sm leading-relaxed font-medium mb-6">
               Authoritative guidance for Construction (CHAS), Healthcare, and Tech sectors.
             </p>
             <a href="/accreditations" className="text-[10px] font-black uppercase tracking-widest text-accent flex items-center gap-2 group">
@@ -169,11 +169,11 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="col-span-12 md:col-span-4 kairo-card"
           >
-            <div className="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-10 text-accent">
-              <TrendingUp className="w-7 h-7" />
+            <div className="w-12 h-12 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8 text-accent">
+              <TrendingUp className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-black mb-4 tracking-kairo text-bone uppercase">CONTINUOUS CARE</h3>
-            <p className="text-muted-kairo text-base leading-relaxed font-medium mb-8">
+            <h3 className="text-xl font-black mb-3 tracking-kairo text-bone uppercase">CONTINUOUS CARE</h3>
+            <p className="text-muted-kairo text-sm leading-relaxed font-medium mb-6">
               Operational excellence maintained through automated tracking and strategic audits.
             </p>
             <div className="h-1 w-full bg-black/[0.03] rounded-full overflow-hidden">
@@ -193,10 +193,10 @@ export default function Home() {
             transition={{ delay: 0.3 }}
             className="col-span-12 md:col-span-8 kairo-card bg-black/[0.03] border-black/[0.03] group hover:border-accent/30"
           >
-            <div className="flex flex-col md:flex-row gap-12 items-center h-full">
+            <div className="flex flex-col md:flex-row gap-10 items-center h-full">
               <div className="flex-1">
-                <h3 className="text-3xl font-black mb-6 tracking-kairo text-bone uppercase">STRATEGIC ANALYSIS</h3>
-                <p className="text-muted-kairo text-lg leading-relaxed font-medium mb-10">
+                <h3 className="text-2xl font-black mb-4 tracking-kairo text-bone uppercase">STRATEGIC ANALYSIS</h3>
+                <p className="text-muted-kairo text-base leading-relaxed font-medium mb-8">
                   Not sure where to start? Our interactive calculator identifies 
                   the most impactful certifications for your growth trajectory.
                 </p>
@@ -207,7 +207,7 @@ export default function Home() {
               <div className="flex-1 grid grid-cols-2 gap-4 w-full">
                 {[1, 2, 3, 4].map((_, i) => (
                   <div key={i} className="aspect-square rounded-2xl bg-black/[0.03] border border-black/[0.03] flex items-center justify-center group-hover:bg-accent/10 transition-colors">
-                    <CheckCircle2 className="w-8 h-8 text-black/10 group-hover:text-accent transition-colors" />
+                    <CheckCircle2 className="w-6 h-6 text-black/10 group-hover:text-accent transition-colors" />
                   </div>
                 ))}
               </div>
@@ -217,11 +217,11 @@ export default function Home() {
       </section>
 
       {/* Process Section with Refined Steps */}
-      <section className="w-full px-6 py-40 mb-20">
+      <section className="w-full px-6 py-24 mb-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-32">
+          <div className="text-center mb-24">
             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">Methodology</p>
-            <h2 className="text-5xl md:text-9xl font-black tracking-kairo text-bone uppercase leading-[0.8]">
+            <h2 className="text-4xl md:text-7xl font-black tracking-kairo text-bone uppercase leading-[0.8]">
               OPERATIONAL <br /> <span className="text-accent italic">PRECISION</span>
             </h2>
           </div>
@@ -234,16 +234,16 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="relative p-10 rounded-[2.5rem] bg-black/[0.03] border border-black/[0.03] group hover:border-accent/30 transition-all"
+                className="relative p-8 rounded-[2rem] bg-black/[0.03] border border-black/[0.03] group hover:border-accent/30 transition-all"
               >
-                <span className="text-6xl font-black text-black/[0.03] group-hover:text-accent/10 transition-colors tracking-kairo absolute top-6 right-8 leading-none">
+                <span className="text-5xl font-black text-black/[0.03] group-hover:text-accent/10 transition-colors tracking-kairo absolute top-6 right-6 leading-none">
                   {step.number}
                 </span>
                 <div className="relative z-10">
-                  <h4 className="text-xl font-black mb-4 tracking-kairo text-bone uppercase pt-12">{step.title}</h4>
-                  <p className="text-muted-kairo text-sm font-medium leading-relaxed">{step.desc}</p>
+                  <h4 className="text-lg font-black mb-3 tracking-kairo text-bone uppercase pt-10">{step.title}</h4>
+                  <p className="text-muted-kairo text-xs font-medium leading-relaxed">{step.desc}</p>
                 </div>
-                <div className="mt-10 h-px w-full bg-black/10 group-hover:bg-accent/30 transition-colors" />
+                <div className="mt-8 h-px w-full bg-black/10 group-hover:bg-accent/30 transition-colors" />
               </motion.div>
             ))}
           </div>

@@ -112,17 +112,17 @@ const accreditations: Accreditation[] = [
 
 export default function AccreditationsPage() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-40 px-6 relative overflow-hidden bg-background">
+    <div className="min-h-screen w-full flex flex-col items-center py-24 px-6 relative overflow-hidden bg-background">
       {/* Cinematic Background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_60%)] pointer-events-none" />
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="max-w-7xl w-full z-10">
-        <div className="text-center mb-32">
+        <div className="text-center mb-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-black/10 bg-black/[0.03] mb-12 backdrop-blur-md"
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-black/10 bg-black/[0.03] mb-8 backdrop-blur-md"
           >
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Strategic Directory</span>
           </motion.div>
@@ -131,7 +131,7 @@ export default function AccreditationsPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-6xl md:text-[10rem] font-black tracking-kairo mb-12 text-bone leading-[0.8] uppercase"
+            className="text-5xl md:text-7xl font-black tracking-kairo mb-10 text-bone leading-[0.8] uppercase"
           >
             CORE <br /> <span className="text-accent italic">COMPETENCIES</span>
           </motion.h1>
@@ -140,7 +140,7 @@ export default function AccreditationsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-muted-kairo max-w-2xl mx-auto text-xl md:text-2xl leading-relaxed font-medium tracking-tight"
+            className="text-muted-kairo max-w-2xl mx-auto text-lg md:text-xl leading-relaxed font-medium tracking-tight"
           >
             We move beyond simple manuals. We integrate with your team through 
             a structured, high-standard process that guarantees certification.
@@ -151,7 +151,7 @@ export default function AccreditationsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="w-full mb-32"
+          className="w-full mb-20"
         >
           <InteractiveBubbles items={accreditations} />
         </motion.div>
@@ -161,16 +161,16 @@ export default function AccreditationsPage() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 kairo-card bg-accent/5 border-accent/20 flex flex-col md:flex-row items-center justify-between gap-12"
+          className="mt-16 kairo-card bg-accent/5 border-accent/20 flex flex-col md:flex-row items-center justify-between gap-10"
         >
           <div className="max-w-xl">
-            <h2 className="text-4xl font-black mb-6 tracking-kairo text-bone uppercase">Ready for Analysis?</h2>
-            <p className="text-muted-kairo text-lg font-medium leading-relaxed">
+            <h2 className="text-3xl font-black mb-4 tracking-kairo text-bone uppercase">Ready for Analysis?</h2>
+            <p className="text-muted-kairo text-base font-medium leading-relaxed">
               Don't guess which standard you need. Use our strategic calculator to 
               determine the highest impact accreditations for your specific operational goals.
             </p>
           </div>
-          <a href="/calculator" className="kairo-button px-12 py-6 text-sm">
+          <a href="/calculator" className="kairo-button px-10 py-5 text-sm">
             Launch Strategic Calculator
           </a>
         </motion.div>

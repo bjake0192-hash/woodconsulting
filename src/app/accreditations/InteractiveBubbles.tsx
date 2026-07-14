@@ -25,15 +25,15 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
     bubbles: items.map((item, i) => {
       // Random starting positions spread around the center
       const angle = Math.random() * Math.PI * 2;
-      const distance = Math.random() * 200 + 50;
+      const distance = Math.random() * 150 + 30;
       return {
         ...item,
         x: Math.cos(angle) * distance,
         y: Math.sin(angle) * distance,
         vx: (Math.random() - 0.5) * 2,
         vy: (Math.random() - 0.5) * 2,
-        radius: 80, // Base radius
-        targetRadius: 80,
+        radius: 60, // Base radius
+        targetRadius: 60,
         mass: 1,
       };
     }),
@@ -160,18 +160,18 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
   };
 
   const handleBubbleEnter = (index: number) => {
-    physicsRef.current.bubbles[index].targetRadius = 100;
+    physicsRef.current.bubbles[index].targetRadius = 80;
   };
 
   const handleBubbleLeave = (index: number) => {
-    physicsRef.current.bubbles[index].targetRadius = 80;
+    physicsRef.current.bubbles[index].targetRadius = 60;
   };
 
   return (
     <div className="relative w-full">
       <div 
         ref={containerRef}
-        className="w-full h-[600px] relative overflow-hidden rounded-[2.5rem] bg-black/[0.02] border border-black/5"
+        className="w-full h-[450px] relative overflow-hidden rounded-[2rem] bg-black/[0.02] border border-black/5"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
@@ -189,7 +189,7 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
               className="absolute top-0 left-0 rounded-full glass-panel flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-white/90 shadow-xl group z-10 hover:z-20 border-2 hover:border-accent"
               style={{ willChange: 'transform, width, height' }}
             >
-              <div className="w-16 h-16 relative flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 relative flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
                 {item.image ? (
                   <Image 
                     src={item.image} 
@@ -199,10 +199,10 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
                     unoptimized
                   />
                 ) : Icon ? (
-                  <Icon strokeWidth={2} className={`w-8 h-8 ${item.color}`} />
+                  <Icon strokeWidth={2} className={`w-6 h-6 ${item.color}`} />
                 ) : null}
               </div>
-              <span className="text-xs font-black tracking-widest uppercase text-foreground">
+              <span className="text-[10px] font-black tracking-widest uppercase text-foreground">
                 {item.title}
               </span>
             </div>
