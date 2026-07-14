@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<svg viewBox="0 0 100 100" width="300" height="300" style="border:1px solid black">
+  <path id="curve-top" d="M 12 50 A 38 38 0 0 0 88 50" fill="transparent" stroke="red" />
+  <text font-size="9px">
+    <textPath href="#curve-top" startOffset="50%" text-anchor="middle">TOP TEXT</textPath>
+  </text>
+  
+  <path id="curve-bottom" d="M 12 50 A 38 38 0 0 1 88 50" fill="transparent" stroke="blue" />
+  <text font-size="9px">
+    <textPath href="#curve-bottom" startOffset="50%" text-anchor="middle">BOTTOM TEXT</textPath>
+  </text>
+</svg>
+</body>
+</html>

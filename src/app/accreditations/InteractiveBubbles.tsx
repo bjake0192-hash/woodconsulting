@@ -244,17 +244,17 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
                   }`}
                   style={{ backfaceVisibility: "hidden" }}
                 >
-                  <div className="w-1/2 h-1/2 relative flex items-center justify-center -mt-4 group-hover:scale-110 transition-transform">
+                  <div className="w-[65%] h-[65%] relative flex items-center justify-center -mt-4 group-hover:scale-110 transition-transform">
                     {item.image ? (
                       <Image 
                         src={item.image} 
                         alt={item.title} 
                         fill 
-                        className="object-contain p-2"
+                        className="object-contain p-1"
                         unoptimized
                       />
                     ) : Icon ? (
-                      <Icon strokeWidth={2} className={`w-full h-full ${item.color} p-2`} />
+                      <Icon strokeWidth={2} className={`w-full h-full ${item.color} p-1`} />
                     ) : null}
                   </div>
                   
@@ -274,7 +274,7 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
                   className="absolute inset-0 rounded-full bg-white border border-accent/20 flex flex-col items-center justify-center p-8 text-center shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
                   style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
                 >
-                  <div className="w-14 h-14 relative flex items-center justify-center mb-4 rounded-xl bg-black/[0.03]">
+                  <div className="w-20 h-20 relative flex items-center justify-center mb-4 rounded-xl bg-black/[0.03]">
                     {item.image ? (
                       <Image 
                         src={item.image} 
@@ -284,7 +284,7 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
                         unoptimized
                       />
                     ) : Icon ? (
-                      <Icon strokeWidth={2} className={`w-8 h-8 ${item.color}`} />
+                      <Icon strokeWidth={2} className={`w-12 h-12 ${item.color}`} />
                     ) : null}
                   </div>
                   <h3 className="text-xl font-black uppercase tracking-kairo mb-1 leading-tight px-4">{item.title}</h3>
