@@ -18,7 +18,19 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const bubblesRef = useRef<HTMLDivElement[]>([]);
   const requestRef = useRef<number>();
-  const [selectedBubble, setSelectedBubble] = useState<BubbleData | null>(null);
+  
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selectedIdRef = useRef<string | null>(null);
+
+  const handleBubbleClick = (id: string) => {
+    if (selectedIdRef.current === id) {
+      selectedIdRef.current = null;
+      setSelectedId(null);
+    } else {
+      selectedIdRef.current = id;
+      setSelectedId(id);
+    }
+  };
 
   // Physics state
   const physicsRef = useRef({
@@ -34,7 +46,7 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
         vy: (Math.random() - 0.5) * 2,
         radius: 60, // Base radius
         targetRadius: 60,
-        mass: 1,
+        isHovered: false,
       };
     }),
     mouse: { x: 0, y: 0, active: false }
@@ -54,35 +66,46 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
 
       for (let i = 0; i < bubbles.length; i++) {
         const b = bubbles[i];
+        const isSelected = b.id === selectedIdRef.current;
         
-        // Smooth radius transition (for hover effects)
+        b.targetRadius = isSelected ? 170 : (b.isHovered ? 75 : 60);
         b.radius += (b.targetRadius - b.radius) * 0.1;
 
-        // Attract to center
-        const dxCenter = centerX - b.x;
-        const dyCenter = centerY - b.y;
-        b.vx += dxCenter * 0.0005;
-        b.vy += dyCenter * 0.0005;
+        if (isSelected) {
+          // Strong attraction to center for selected bubble
+          const dxCenter = centerX - b.x;
+          const dyCenter = centerY - b.y;
+          b.vx += dxCenter * 0.05;
+          b.vy += dyCenter * 0.05;
+          b.vx *= 0.8; // High damping to settle quickly
+          b.vy *= 0.8;
+        } else {
+          // Attract to center slightly
+          const dxCenter = centerX - b.x;
+          const dyCenter = centerY - b.y;
+          b.vx += dxCenter * 0.0005;
+          b.vy += dyCenter * 0.0005;
 
-        // Slight random movement
-        b.vx += (Math.random() - 0.5) * 0.1;
-        b.vy += (Math.random() - 0.5) * 0.1;
+          // Slight random movement
+          b.vx += (Math.random() - 0.5) * 0.1;
+          b.vy += (Math.random() - 0.5) * 0.1;
 
-        // Mouse repulsion
-        if (state.mouse.active) {
-          const dxMouse = b.x - state.mouse.x;
-          const dyMouse = b.y - state.mouse.y;
-          const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-          if (distMouse < 200) {
-            const force = (200 - distMouse) / 200;
-            b.vx += (dxMouse / distMouse) * force * 0.5;
-            b.vy += (dyMouse / distMouse) * force * 0.5;
+          // Mouse repulsion (only if nothing is selected)
+          if (state.mouse.active && !selectedIdRef.current) {
+            const dxMouse = b.x - state.mouse.x;
+            const dyMouse = b.y - state.mouse.y;
+            const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+            if (distMouse < 200) {
+              const force = (200 - distMouse) / 200;
+              b.vx += (dxMouse / distMouse) * force * 0.5;
+              b.vy += (dyMouse / distMouse) * force * 0.5;
+            }
           }
+
+          b.vx *= 0.92;
+          b.vy *= 0.92;
         }
 
-        // Apply velocity and damping
-        b.vx *= 0.92;
-        b.vy *= 0.92;
         b.x += b.vx;
         b.y += b.vy;
 
@@ -112,18 +135,22 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
             const fx = Math.cos(angle) * force;
             const fy = Math.sin(angle) * force;
 
-            b1.vx -= fx;
-            b1.vy -= fy;
-            b2.vx += fx;
-            b2.vy += fy;
+            // Selected bubble has massive weight so it pushes others away without moving itself
+            const mass1 = b1.id === selectedIdRef.current ? 100 : 1;
+            const mass2 = b2.id === selectedIdRef.current ? 100 : 1;
+            const totalMass = mass1 + mass2;
+
+            b1.vx -= fx * (mass2 / totalMass);
+            b1.vy -= fy * (mass2 / totalMass);
+            b2.vx += fx * (mass1 / totalMass);
+            b2.vy += fy * (mass1 / totalMass);
             
-            // Immediately separate to prevent sticking
-            const sepX = Math.cos(angle) * (overlap / 2);
-            const sepY = Math.sin(angle) * (overlap / 2);
-            b1.x -= sepX;
-            b1.y -= sepY;
-            b2.x += sepX;
-            b2.y += sepY;
+            const sepX = Math.cos(angle) * overlap;
+            const sepY = Math.sin(angle) * overlap;
+            b1.x -= sepX * (mass2 / totalMass);
+            b1.y -= sepY * (mass2 / totalMass);
+            b2.x += sepX * (mass1 / totalMass);
+            b2.y += sepY * (mass1 / totalMass);
           }
         }
       }
@@ -160,23 +187,33 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
   };
 
   const handleBubbleEnter = (index: number) => {
-    physicsRef.current.bubbles[index].targetRadius = 80;
+    physicsRef.current.bubbles[index].isHovered = true;
   };
 
   const handleBubbleLeave = (index: number) => {
-    physicsRef.current.bubbles[index].targetRadius = 60;
+    physicsRef.current.bubbles[index].isHovered = false;
   };
 
   return (
     <div className="relative w-full">
       <div 
         ref={containerRef}
-        className="w-full h-[450px] relative overflow-hidden rounded-[2rem] bg-black/[0.02] border border-black/5"
+        className="w-full h-[550px] relative overflow-hidden rounded-[2rem] bg-black/[0.02] border border-black/5"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
+        {/* Overlay when a bubble is selected */}
+        <div 
+          className={`absolute inset-0 bg-white/60 backdrop-blur-sm transition-opacity duration-700 z-40 ${
+            selectedId ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`} 
+          onClick={() => handleBubbleClick(selectedId!)}
+        />
+
         {items.map((item, i) => {
           const Icon = item.icon;
+          const isSelected = selectedId === item.id;
+
           return (
             <div
               key={item.id}
@@ -185,74 +222,98 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
               }}
               onMouseEnter={() => handleBubbleEnter(i)}
               onMouseLeave={() => handleBubbleLeave(i)}
-              onClick={() => setSelectedBubble(item)}
-              className="absolute top-0 left-0 rounded-full glass-panel flex flex-col items-center justify-center cursor-pointer transition-colors hover:bg-white/90 shadow-xl group z-10 hover:z-20 border-2 hover:border-accent"
-              style={{ willChange: 'transform, width, height' }}
+              onClick={() => handleBubbleClick(item.id)}
+              className="absolute top-0 left-0 rounded-full cursor-pointer group"
+              style={{ 
+                willChange: 'transform, width, height',
+                perspective: "1500px",
+                zIndex: isSelected ? 50 : 10,
+              }}
             >
-              <div className="w-12 h-12 relative flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
-                {item.image ? (
-                  <Image 
-                    src={item.image} 
-                    alt={item.title} 
-                    fill 
-                    className="object-contain p-2"
-                    unoptimized
-                  />
-                ) : Icon ? (
-                  <Icon strokeWidth={2} className={`w-6 h-6 ${item.color}`} />
-                ) : null}
+              <div 
+                className="w-full h-full relative transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
+                style={{ 
+                  transformStyle: "preserve-3d",
+                  transform: isSelected ? "rotateY(180deg)" : "rotateY(0deg)"
+                }}
+              >
+                {/* Front Side */}
+                <div 
+                  className={`absolute inset-0 rounded-full glass-panel flex flex-col items-center justify-center border-2 transition-colors duration-500 shadow-xl overflow-hidden ${
+                    isSelected ? 'border-transparent' : 'border-transparent hover:border-accent bg-white/50 hover:bg-white/90'
+                  }`}
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  <div className="w-1/2 h-1/2 relative flex items-center justify-center -mt-4 group-hover:scale-110 transition-transform">
+                    {item.image ? (
+                      <Image 
+                        src={item.image} 
+                        alt={item.title} 
+                        fill 
+                        className="object-contain p-2"
+                        unoptimized
+                      />
+                    ) : Icon ? (
+                      <Icon strokeWidth={2} className={`w-full h-full ${item.color} p-2`} />
+                    ) : null}
+                  </div>
+                  
+                  {/* Curved Text along the bottom */}
+                  <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
+                    <path id={`curve-${item.id}`} d="M 12 50 A 38 38 0 0 0 88 50" fill="transparent" />
+                    <text className="font-black tracking-widest uppercase" fill="currentColor" style={{ fontSize: '9px' }}>
+                      <textPath href={`#curve-${item.id}`} startOffset="50%" textAnchor="middle">
+                        {item.title}
+                      </textPath>
+                    </text>
+                  </svg>
+                </div>
+
+                {/* Back Side (Detail View) */}
+                <div 
+                  className="absolute inset-0 rounded-full bg-white border border-accent/20 flex flex-col items-center justify-center p-8 text-center shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
+                  style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                >
+                  <div className="w-14 h-14 relative flex items-center justify-center mb-4 rounded-xl bg-black/[0.03]">
+                    {item.image ? (
+                      <Image 
+                        src={item.image} 
+                        alt={item.title} 
+                        fill 
+                        className="object-contain p-2"
+                        unoptimized
+                      />
+                    ) : Icon ? (
+                      <Icon strokeWidth={2} className={`w-8 h-8 ${item.color}`} />
+                    ) : null}
+                  </div>
+                  <h3 className="text-xl font-black uppercase tracking-kairo mb-1 leading-tight px-4">{item.title}</h3>
+                  <p className="text-[9px] font-black tracking-[0.2em] text-accent uppercase mb-4">{item.industry}</p>
+                  
+                  <p className="text-muted-foreground text-xs font-medium leading-relaxed mb-6 line-clamp-4 px-6">
+                    {item.fullDesc}
+                  </p>
+                  
+                  <a 
+                    href="/calculator" 
+                    className="kairo-button !py-3 !px-6 !text-[10px]" 
+                    onClick={e => e.stopPropagation()}
+                  >
+                    Assessment
+                  </a>
+
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); handleBubbleClick(item.id); }}
+                    className="absolute top-10 right-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors opacity-60 hover:opacity-100"
+                  >
+                    ✕
+                  </button>
+                </div>
               </div>
-              <span className="text-[10px] font-black tracking-widest uppercase text-foreground">
-                {item.title}
-              </span>
             </div>
           );
         })}
       </div>
-
-      {/* Info Modal */}
-      {selectedBubble && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/20 backdrop-blur-sm" onClick={() => setSelectedBubble(null)}>
-          <div 
-            className="kairo-card max-w-lg w-full relative"
-            onClick={e => e.stopPropagation()}
-          >
-            <button 
-              onClick={() => setSelectedBubble(null)}
-              className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors"
-            >
-              ✕
-            </button>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 relative flex items-center justify-center rounded-xl bg-black/[0.03]">
-                {selectedBubble.image ? (
-                  <Image 
-                    src={selectedBubble.image} 
-                    alt={selectedBubble.title} 
-                    fill 
-                    className="object-contain p-2"
-                    unoptimized
-                  />
-                ) : selectedBubble.icon ? (
-                  <selectedBubble.icon strokeWidth={2} className={`w-8 h-8 ${selectedBubble.color}`} />
-                ) : null}
-              </div>
-              <div>
-                <h3 className="text-2xl font-black uppercase tracking-kairo">{selectedBubble.title}</h3>
-                <p className="text-[10px] font-black tracking-[0.2em] text-accent uppercase">{selectedBubble.industry}</p>
-              </div>
-            </div>
-            <p className="text-muted-foreground font-medium leading-relaxed mb-8">
-              {selectedBubble.fullDesc}
-            </p>
-            <div className="flex gap-4">
-              <a href="/calculator" className="kairo-button flex-1 justify-center">
-                Strategic Assessment
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
