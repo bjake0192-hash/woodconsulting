@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -104,14 +105,25 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="col-span-12 md:col-span-8 kairo-card bg-gradient-to-br from-black/[0.03] to-transparent relative group overflow-hidden"
+            className="col-span-12 md:col-span-8 kairo-card bg-gradient-to-br from-black/[0.03] to-transparent relative group overflow-hidden p-0"
           >
-            <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:opacity-20 transition-opacity">
+            <div className="absolute inset-0 w-full h-full hidden md:block">
+              <Image 
+                src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Modern%20corporate%20office%20building%20interior%2C%20clean%20lines%2C%20bright%20natural%20light%2C%20minimalist%20glass%20architecture%2C%20high%20quality%2C%20photorealistic&image_size=landscape_16_9" 
+                alt="Corporate Architecture" 
+                fill 
+                className="object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000" 
+                unoptimized 
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent" />
+            </div>
+            
+            <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:opacity-20 transition-opacity z-10">
               <ShieldCheck className="w-40 h-40 text-accent" />
             </div>
-            <div className="relative z-10 h-full flex flex-col justify-between min-h-[350px]">
+            <div className="relative z-10 h-full flex flex-col justify-between min-h-[350px] p-8 md:p-10 w-full md:w-2/3">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center mb-8 text-accent-foreground">
+                <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center mb-8 text-accent-foreground shadow-xl shadow-accent/20">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <h3 className="text-3xl font-black mb-4 tracking-kairo text-bone uppercase">ISO ACCREDITATIONS</h3>
@@ -179,9 +191,18 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="col-span-12 md:col-span-8 kairo-card bg-black/[0.03] border-black/[0.03] group hover:border-accent/30"
+            className="col-span-12 md:col-span-8 kairo-card bg-black/[0.03] border-black/[0.03] group hover:border-accent/30 overflow-hidden relative"
           >
-            <div className="flex flex-col md:flex-row gap-10 items-center h-full">
+            <div className="absolute inset-0 w-full h-full opacity-10 mix-blend-overlay pointer-events-none">
+              <Image 
+                src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Abstract%20geometric%20shapes%2C%20light%20theme%2C%20modern%20technology%20concept%2C%20clean%2C%20white%20and%20blue%20accents%2C%20photorealistic&image_size=landscape_16_9"
+                alt="Abstract Background"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                unoptimized
+              />
+            </div>
+            <div className="flex flex-col md:flex-row gap-10 items-center h-full relative z-10">
               <div className="flex-1">
                 <h3 className="text-2xl font-black mb-4 tracking-kairo text-bone uppercase">STRATEGIC ANALYSIS</h3>
                 <p className="text-muted-kairo text-base leading-relaxed font-medium mb-8">

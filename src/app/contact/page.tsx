@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Mail, MapPin, Phone, Send, CheckCircle2, ChevronRight } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -37,16 +38,26 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start">
           {/* Contact Info */}
-          <div className="space-y-20">
+          <div className="space-y-16">
             <div>
-              <h2 className="text-5xl font-black mb-10 tracking-kairo text-bone uppercase">Get in touch</h2>
+              <h2 className="text-5xl font-black mb-8 tracking-kairo text-bone uppercase">Get in touch</h2>
               <p className="text-muted-kairo mb-12 leading-relaxed text-xl font-medium tracking-tight">
                 Whether you need a full gap analysis, or just have a few questions 
                 about which standard is right for your business, we're here to help.
               </p>
+              
+              <div className="w-full h-48 md:h-64 relative mb-12 rounded-[2rem] overflow-hidden border border-black/5 shadow-xl">
+                <Image 
+                  src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Professional%20consultant%20shaking%20hands%20in%20a%20modern%20bright%20glass%20office%2C%20trust%2C%20partnership%2C%20photorealistic%2C%20high-end&image_size=landscape_16_9" 
+                  alt="Strategic Consulting" 
+                  fill 
+                  className="object-cover hover:scale-105 transition-transform duration-1000" 
+                  unoptimized 
+                />
+              </div>
             </div>
 
-            <div className="space-y-12">
+            <div className="space-y-10">
               {[
                 { icon: Mail, label: "Operational Email", value: "hello@woodconsulting.co.uk", href: "mailto:hello@woodconsulting.co.uk" },
                 { icon: Phone, label: "Direct Line", value: "+44 (0) 20 7123 4567", href: "tel:+442071234567" },
