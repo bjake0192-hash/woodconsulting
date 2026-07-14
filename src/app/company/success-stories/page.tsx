@@ -7,26 +7,26 @@ export const dynamic = "force-static";
 
 export default function SuccessStoriesPage() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-16 px-6 relative overflow-hidden bg-white">
+    <div className="min-h-screen w-full flex flex-col items-center pt-32 pb-24 px-6 relative overflow-hidden bg-background">
       {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.03),transparent_70%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
       
-      <div className="max-w-7xl w-full z-10">
-        <div className="text-center mb-12">
+      <div className="max-w-5xl w-full z-10">
+        <div className="text-center mb-16">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-8xl font-black tracking-tighter mb-6 text-slate-900 leading-none"
+            className="text-5xl md:text-7xl font-black tracking-kairo mb-6 text-bone leading-[0.8] uppercase"
           >
-            Success <span className="text-blue-600">Stories</span>
+            SUCCESS <br /> <span className="text-accent italic">STORIES</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed font-medium"
+            className="text-muted-kairo max-w-2xl mx-auto text-lg leading-relaxed font-medium tracking-tight"
           >
             Real results for real businesses. See how we've helped UK companies achieve and maintain their critical accreditations.
           </motion.p>
@@ -53,20 +53,23 @@ export default function SuccessStoriesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glass-panel p-10 rounded-[2.5rem] border border-slate-100 bg-slate-50/30"
+              className="kairo-card bg-white/5 border-white/5 group hover:border-accent/30 p-10 flex flex-col md:flex-row gap-8 items-start"
             >
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-slate-900">{story.company}</h3>
-                <span className="px-4 py-1.5 rounded-full bg-blue-50 text-[10px] font-black uppercase tracking-widest text-blue-600 border border-blue-100">
-                  {story.accreditation}
-                </span>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-4 mb-6">
+                  <h3 className="text-2xl font-black text-bone tracking-kairo uppercase">{story.company}</h3>
+                  <span className="px-4 py-1.5 rounded-full bg-accent/10 text-[10px] font-black uppercase tracking-widest text-accent border border-accent/20">
+                    {story.accreditation}
+                  </span>
+                </div>
+                <p className="text-xl font-bold text-bone mb-6 tracking-tight">
+                  <span className="text-accent">Result:</span> {story.result}
+                </p>
+                <div className="h-px w-12 bg-white/10 mb-6" />
+                <p className="text-muted-kairo font-medium italic leading-relaxed text-sm">
+                  "{story.quote}"
+                </p>
               </div>
-              <p className="text-lg font-bold text-blue-600 mb-4 tracking-tight">
-                Result: {story.result}
-              </p>
-              <p className="text-slate-500 font-medium italic leading-relaxed">
-                "{story.quote}"
-              </p>
             </motion.div>
           ))}
         </div>

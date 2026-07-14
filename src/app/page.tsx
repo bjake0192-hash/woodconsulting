@@ -45,7 +45,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 1, ease: [0.23, 1, 0.32, 1] }}
-            className="text-6xl md:text-[8rem] font-black tracking-kairo mb-10 leading-[0.8] text-bone uppercase"
+            className="text-5xl md:text-7xl font-black tracking-kairo mb-10 leading-[0.8] text-bone uppercase"
           >
             MASTER THE <br />
             <span className="text-accent italic">STANDARD</span>

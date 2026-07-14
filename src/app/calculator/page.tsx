@@ -82,14 +82,14 @@ export default function CalculatorPage() {
   const industryRecs = recommendations[answers.industry] || recommendations["Other"];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-40 relative bg-background overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-24 relative bg-background overflow-hidden">
       {/* Cinematic Atmospheric Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(197,179,150,0.1),transparent_60%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_60%)] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="w-full max-w-5xl z-10">
-        <div className="text-center mb-24">
-          <h1 className="text-6xl md:text-[10rem] font-black mb-10 tracking-kairo text-bone uppercase leading-[0.8]">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-kairo text-bone uppercase leading-[0.8]">
             ACCREDITATION <br /><span className="text-accent italic">ANALYSIS</span>
           </h1>
           <p className="text-muted-kairo text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed tracking-tight">
@@ -119,16 +119,16 @@ export default function CalculatorPage() {
                       <span className="text-4xl font-black text-white/5 tracking-kairo">{Math.round(progress)}%</span>
                     </div>
                     
-                    <div className="w-full h-px bg-white/5 mb-20 relative">
+                    <div className="w-full h-px bg-white/5 mb-16 relative">
                       <motion.div 
-                        className="h-px bg-accent absolute top-0 left-0 shadow-[0_0_20px_rgba(197,179,150,0.5)]"
+                        className="h-px bg-accent absolute top-0 left-0 shadow-[0_0_20px_rgba(0,82,255,0.5)]"
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                       />
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl font-black mb-16 tracking-kairo text-bone uppercase leading-[0.9] max-w-2xl">
+                    <h2 className="text-3xl md:text-5xl font-black mb-12 tracking-kairo text-bone uppercase leading-[0.9] max-w-2xl">
                       {questions[step].question}
                     </h2>
                     
@@ -211,11 +211,11 @@ export default function CalculatorPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="w-full"
               >
-                <div className="text-center mb-24">
-                  <div className="w-32 h-32 bg-accent rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_0_50px_rgba(197,179,150,0.3)]">
-                    <CheckCircle2 className="w-16 h-16 text-accent-foreground" />
+                <div className="text-center mb-16">
+                  <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-10 shadow-[0_0_50px_rgba(0,82,255,0.3)]">
+                    <CheckCircle2 className="w-12 h-12 text-accent-foreground" />
                   </div>
-                  <h2 className="text-6xl md:text-[8rem] font-black mb-8 tracking-kairo text-bone uppercase leading-[0.8]">OPERATIONAL <br /><span className="text-accent italic">ROADMAP</span></h2>
+                  <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-kairo text-bone uppercase leading-[0.8]">OPERATIONAL <br /><span className="text-accent italic">ROADMAP</span></h2>
                   <p className="text-muted-kairo text-xl md:text-2xl font-medium tracking-tight max-w-3xl mx-auto">
                     Strategic focus for <span className="text-accent italic">{answers.industry}</span> sector to achieve <span className="text-bone italic">{answers.goals?.toLowerCase()}</span>.
                   </p>

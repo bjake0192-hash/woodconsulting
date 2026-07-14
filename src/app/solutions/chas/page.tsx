@@ -7,38 +7,38 @@ export const dynamic = "force-static";
 
 export default function CHASPage() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-16 px-6 relative overflow-hidden bg-white">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.03),transparent_70%)] pointer-events-none" />
+    <div className="min-h-screen w-full flex flex-col items-center pt-32 pb-24 px-6 relative overflow-hidden bg-background">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
       
       <div className="max-w-4xl w-full z-10">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-8xl font-black tracking-tighter mb-6 text-slate-900 leading-none"
+            className="text-5xl md:text-7xl font-black tracking-kairo mb-6 text-bone leading-[0.8] uppercase"
           >
-            CHAS <span className="text-blue-600">Accreditation</span>
+            CHAS <span className="text-accent italic">ACCREDITATION</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed font-medium"
+            className="text-muted-kairo max-w-2xl mx-auto text-lg leading-relaxed font-medium tracking-tight"
           >
             The UK's leading provider of risk management and compliance services. Gain access to the UK's biggest buyers with a CHAS accreditation.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="glass-panel p-10 rounded-[2.5rem] border border-slate-100 bg-slate-50/30"
+            className="kairo-card bg-white/5 border-white/5"
           >
-            <h2 className="text-2xl font-bold mb-6 tracking-tight text-slate-900">Why CHAS?</h2>
+            <h2 className="text-2xl font-black tracking-kairo uppercase mb-6 text-bone">Why CHAS?</h2>
             <ul className="space-y-4">
               {[
                 "Pre-qualify for public and private sector contracts",
@@ -46,8 +46,8 @@ export default function CHASPage() {
                 "Reduce time spent on PQQ questionnaires",
                 "Access a portal of 2,500+ buyer organizations"
               ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-slate-700 font-bold text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
+                <li key={i} className="flex items-center gap-4 text-muted-kairo font-medium text-sm">
+                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -58,17 +58,17 @@ export default function CHASPage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="glass-panel p-10 rounded-[2.5rem] border border-slate-100 bg-slate-50/30"
+            className="kairo-card bg-white/5 border-white/5"
           >
-            <h2 className="text-2xl font-bold mb-6 tracking-tight text-slate-900">How WOOD Helps</h2>
-            <p className="text-slate-500 font-medium leading-relaxed mb-6">
+            <h2 className="text-2xl font-black tracking-kairo uppercase mb-6 text-bone">How WOOD Helps</h2>
+            <p className="text-muted-kairo font-medium leading-relaxed mb-8 text-sm">
               We streamline the CHAS assessment process, helping you prepare your documentation and ensuring you meet all requirements for a successful accreditation.
             </p>
             <a 
               href="/contact"
-              className="inline-flex items-center gap-2 text-blue-600 font-black uppercase tracking-widest text-xs hover:gap-3 transition-all"
+              className="inline-flex items-center gap-3 text-accent font-black uppercase tracking-widest text-[10px] hover:text-bone transition-all group"
             >
-              Get Accredited Now <ArrowRight className="w-4 h-4" />
+              Get Accredited Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </motion.div>
         </div>

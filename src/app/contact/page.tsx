@@ -21,26 +21,26 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen pt-40 pb-24 px-6 relative bg-background overflow-hidden">
+    <div className="min-h-screen pt-32 pb-24 px-6 relative bg-background overflow-hidden">
       {/* Cinematic Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(197,179,150,0.1),transparent_70%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto z-10 relative">
-        <div className="text-center mb-32">
-          <h1 className="text-6xl md:text-[10rem] font-black mb-12 tracking-kairo text-bone leading-[0.8] uppercase">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-kairo text-bone leading-[0.8] uppercase">
             LET'S START <br /><span className="text-accent italic">THE JOURNEY</span>
           </h1>
-          <p className="text-muted-kairo max-w-2xl mx-auto text-xl md:text-2xl font-medium leading-relaxed tracking-tight">
+          <p className="text-muted-kairo max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed tracking-tight">
             Ready to achieve compliance without the friction? Reach out to our team of authoritative experts today.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Contact Info */}
-          <div className="space-y-16">
+          <div className="space-y-12">
             <div>
-              <h2 className="text-5xl font-black mb-8 tracking-kairo text-bone uppercase">Get in touch</h2>
+              <h2 className="text-4xl font-black mb-8 tracking-kairo text-bone uppercase">Get in touch</h2>
               <p className="text-muted-kairo mb-12 leading-relaxed text-xl font-medium tracking-tight">
                 Whether you need a full gap analysis, or just have a few questions 
                 about which standard is right for your business, we're here to help.
