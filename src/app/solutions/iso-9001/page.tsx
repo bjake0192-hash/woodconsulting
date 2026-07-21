@@ -60,7 +60,7 @@ export default function ISO9001Page() {
             transition={{ delay: 0.4 }}
             className="kairo-card bg-white/5 border-white/5"
           >
-            <h2 className="text-2xl font-black tracking-kairo uppercase mb-6 text-bone">How WOOD Helps</h2>
+            <h2 className="text-2xl font-black tracking-kairo uppercase mb-6 text-bone">How RISKWOOD Helps</h2>
             <p className="text-muted-kairo font-medium leading-relaxed mb-8 text-sm">
               We provide a full-service approach to ISO 9001 certification, handling everything from initial gap analysis to documentation and audit representation.
             </p>

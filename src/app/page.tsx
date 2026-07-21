@@ -6,14 +6,11 @@ import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen, HardHat } 
 
 export const dynamic = "force-static";
 
-const heroBubblesLeft = [
+const heroAccreditations = [
   { id: "chas", title: "CHAS", icon: HardHat, color: "text-yellow-500" },
   { id: "avetta", title: "Avetta", image: "/Avetta-Logo.webp" },
   { id: "niceic", title: "NICEIC", image: "/NICEIC-logo.png" },
   { id: "iso-9001", title: "ISO 9001", image: "/iso9001.png" },
-];
-
-const heroBubblesRight = [
   { id: "iso-27001", title: "ISO 27001", image: "/iso27001.webp" },
   { id: "constructionline", title: "Constructionline", image: "/Constructionline-Gold-Logo.png" },
   { id: "safecontractor", title: "SafeContractor", image: "/safecontractor.png" },
@@ -24,30 +21,24 @@ function HeroBubble({ item, index }: { item: any; index: number }) {
   const Icon = item.icon;
   return (
     <motion.div
-      animate={{ y: [0, -15, 0] }}
-      transition={{ duration: 4, repeat: Infinity, delay: index * 0.4, ease: "easeInOut" }}
-      className="w-[120px] h-[120px] rounded-full bg-white/40 backdrop-blur-xl flex flex-col items-center justify-center border border-white/80 shadow-[0_8px_32px_-4px_rgba(0,0,0,0.06),inset_0_4px_6px_rgba(255,255,255,0.5)] hover:shadow-[0_16px_48px_-12px_rgba(0,82,255,0.25),inset_0_4px_8px_rgba(255,255,255,0.8)] hover:bg-white/60 hover:border-accent/30 overflow-hidden relative group cursor-pointer hover:scale-110 hover:-translate-y-1 transition-all duration-500 z-20"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5 + index * 0.1 }}
+      className="w-20 h-20 rounded-full bg-white/40 backdrop-blur-xl flex items-center justify-center border border-white/80 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.05),inset_0_2px_4px_rgba(255,255,255,0.5)] hover:shadow-[0_8px_24px_-4px_rgba(0,82,255,0.15)] hover:bg-white/60 hover:border-accent/30 transition-all duration-300 group cursor-pointer shrink-0 p-4"
     >
-      {/* 3D Glass Reflection Highlight */}
-      <div className="absolute top-1 left-1/2 -translate-x-1/2 w-[70%] h-[30%] bg-gradient-to-b from-white/90 to-transparent rounded-t-full blur-[1px] opacity-80 pointer-events-none" />
-      
-      {/* Subtle Inner Bottom Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[40%] bg-accent/5 rounded-b-full blur-[10px] pointer-events-none group-hover:bg-accent/15 transition-colors" />
-
-      <div className="w-[55%] h-[55%] relative flex items-center justify-center -mt-4 group-hover:scale-110 transition-transform drop-shadow-sm">
+      <div className="w-full h-full relative flex items-center justify-center">
         {item.image ? (
-          <Image src={item.image} alt={item.title} fill className="object-contain drop-shadow-md" unoptimized />
+          <Image 
+            src={item.image} 
+            alt={item.title} 
+            fill 
+            className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" 
+            unoptimized 
+          />
         ) : Icon ? (
-          <Icon strokeWidth={1.5} className={`w-full h-full ${item.color} drop-shadow-md`} />
+          <Icon strokeWidth={1.5} className={`w-full h-full ${item.color} filter grayscale group-hover:grayscale-0 transition-all duration-500`} />
         ) : null}
       </div>
-      
-      <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none text-foreground/50 group-hover:text-foreground transition-colors">
-        <path id={`curve-hero-${item.id}`} d="M 14 50 A 36 36 0 0 0 86 50" fill="transparent" />
-        <text className="font-black tracking-[0.2em] uppercase" fill="currentColor" style={{ fontSize: '8px' }}>
-          <textPath href={`#curve-hero-${item.id}`} startOffset="50%" textAnchor="middle">{item.title}</textPath>
-        </text>
-      </svg>
     </motion.div>
   );
 }
@@ -80,29 +71,14 @@ const steps = [
 export default function Home() {
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
-      {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-24 overflow-hidden">
         {/* Premium Background Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
         
         {/* Cinematic Atmospheric Glows */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
         
-        {/* Left Column Bubbles */}
-        <div className="hidden xl:flex flex-col gap-8 absolute left-12 top-1/2 -translate-y-1/2 z-20">
-          {heroBubblesLeft.map((item, i) => (
-            <HeroBubble key={item.id} item={item} index={i} />
-          ))}
-        </div>
-
-        {/* Right Column Bubbles */}
-        <div className="hidden xl:flex flex-col gap-8 absolute right-12 top-1/2 -translate-y-1/2 z-20">
-          {heroBubblesRight.map((item, i) => (
-            <HeroBubble key={item.id} item={item} index={i} />
-          ))}
-        </div>
-
         <div className="max-w-7xl mx-auto text-center z-10">
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
@@ -111,7 +87,7 @@ export default function Home() {
             className="flex items-center gap-4 justify-center mb-8"
           >
             <div className="h-[1px] w-8 bg-accent/40" />
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">UK's Premier Consultancy</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">UK's Premier Risk Management</span>
             <div className="h-[1px] w-8 bg-accent/40" />
           </motion.div>
 
@@ -121,15 +97,15 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 1, ease: [0.23, 1, 0.32, 1] }}
             className="text-5xl md:text-7xl font-black tracking-kairo mb-10 leading-[0.8] text-bone uppercase"
           >
-            MASTER THE <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600 italic pr-2">STANDARD</span>
+            Master the <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600 italic pr-2">Standard</span>
           </motion.h1>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto mb-16"
           >
             <p className="text-lg md:text-xl text-muted-kairo mb-12 leading-relaxed font-medium tracking-tight">
               We eliminate the friction of UK compliance. High-standard <br className="hidden md:block" />
@@ -144,12 +120,29 @@ export default function Home() {
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover:animate-[shimmer_1.5s_infinite]" />
               </a>
-              <a href="/calculator" className="text-sm font-bold uppercase tracking-[0.2em] text-muted-kairo hover:text-bone transition-all flex items-center gap-3 group">
-                Strategic Analysis
-                <div className="w-8 h-px bg-black/10 group-hover:w-12 group-hover:bg-accent transition-all" />
+              <a href="/calculator" className="kairo-button !bg-transparent !border-black/10 hover:!border-accent !text-muted-kairo hover:!text-accent px-10 py-5 group">
+                <span className="flex items-center gap-2">
+                  Strategic Analysis
+                  <TrendingUp className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                </span>
               </a>
             </div>
           </motion.div>
+
+          {/* Trust Bar Section */}
+          <div className="pt-16 border-t border-black/5">
+            <p className="text-[9px] font-black uppercase tracking-[0.3em] text-muted-kairo mb-8">
+              Accredited & Recognised By
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60 hover:opacity-100 transition-opacity duration-500">
+              {heroAccreditations.map((item, i) => (
+                <HeroBubble key={item.id} item={item} index={i} />
+              ))}
+            </div>
+            <p className="mt-8 text-[9px] font-medium text-muted-kairo/60 italic">
+              Riskwood provides strategic consultancy to help UK businesses achieve and maintain these official standards.
+            </p>
+          </div>
         </div>
 
         {/* Floating Background Elements */}
@@ -166,7 +159,7 @@ export default function Home() {
           <div className="max-w-2xl">
             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">Expertise</p>
             <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-kairo text-bone uppercase leading-[0.85]">
-              STRATEGIC <br /> <span className="text-accent italic">SOLUTIONS</span>
+              Strategic <br /> <span className="text-accent italic">Solutions</span>
             </h2>
           </div>
           <div className="pb-4">
@@ -186,12 +179,13 @@ export default function Home() {
           >
             <div className="absolute inset-0 w-full h-full hidden md:block">
               <Image 
-                src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Modern%20corporate%20office%20building%20interior%2C%20clean%20lines%2C%20bright%20natural%20light%2C%20minimalist%20glass%20architecture%2C%20high%20quality%2C%20photorealistic&image_size=landscape_16_9" 
+                src="/hero-corporate.jpg" 
                 alt="Corporate Architecture" 
                 fill 
                 className="object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000" 
                 unoptimized 
               />
+              {/* TODO: Item 2 - Replace with self-hosted static image /public/hero-corporate.jpg */}
               <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent" />
             </div>
             
@@ -203,8 +197,9 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center mb-8 text-accent-foreground shadow-xl shadow-accent/20">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-3xl font-black mb-4 tracking-kairo text-bone uppercase">ISO ACCREDITATIONS</h3>
+                <h3 className="text-3xl font-black mb-4 tracking-kairo text-bone uppercase">ISO Accreditations</h3>
                 <p className="text-muted-kairo text-lg leading-relaxed font-medium max-w-xl">
+                  {/* TODO: Item 8 - Rewrite jargon-heavy copy with concrete specifics (timelines, deliverables) */}
                   Precision-engineered frameworks for ISO 9001, 14001, and 27001. 
                   We handle the complexity, you claim the authority.
                 </p>
@@ -230,8 +225,9 @@ export default function Home() {
             <div className="w-12 h-12 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8 text-accent">
               <BookOpen className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-black mb-3 tracking-kairo text-bone uppercase">INDUSTRY SPECIFIC</h3>
+            <h3 className="text-xl font-black mb-3 tracking-kairo text-bone uppercase">Industry Specific</h3>
             <p className="text-muted-kairo text-sm leading-relaxed font-medium mb-6">
+              {/* TODO: Item 8 - Rewrite jargon-heavy copy with concrete specifics */}
               Authoritative guidance for Construction (CHAS), Healthcare, and Tech sectors.
             </p>
             <a href="/accreditations" className="text-[10px] font-black uppercase tracking-widest text-accent flex items-center gap-2 group">
@@ -249,8 +245,9 @@ export default function Home() {
             <div className="w-12 h-12 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8 text-accent">
               <TrendingUp className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-black mb-3 tracking-kairo text-bone uppercase">CONTINUOUS CARE</h3>
+            <h3 className="text-xl font-black mb-3 tracking-kairo text-bone uppercase">Continuous Care</h3>
             <p className="text-muted-kairo text-sm leading-relaxed font-medium mb-6">
+              {/* TODO: Item 8 - Rewrite jargon-heavy copy with concrete specifics */}
               Operational excellence maintained through automated tracking and strategic audits.
             </p>
             <div className="h-1 w-full bg-black/[0.03] rounded-full overflow-hidden">
@@ -272,17 +269,19 @@ export default function Home() {
           >
             <div className="absolute inset-0 w-full h-full opacity-10 mix-blend-overlay pointer-events-none">
               <Image 
-                src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Abstract%20geometric%20shapes%2C%20light%20theme%2C%20modern%20technology%20concept%2C%20clean%2C%20white%20and%20blue%20accents%2C%20photorealistic&image_size=landscape_16_9"
+                src="/strategic-bg.jpg"
                 alt="Abstract Background"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-1000"
                 unoptimized
               />
+              {/* TODO: Item 2 - Replace with self-hosted static image /public/strategic-bg.jpg */}
             </div>
             <div className="flex flex-col md:flex-row gap-10 items-center h-full relative z-10">
               <div className="flex-1">
-                <h3 className="text-2xl font-black mb-4 tracking-kairo text-bone uppercase">STRATEGIC ANALYSIS</h3>
+                <h3 className="text-2xl font-black mb-4 tracking-kairo text-bone uppercase">Strategic Analysis</h3>
                 <p className="text-muted-kairo text-base leading-relaxed font-medium mb-8">
+                  {/* TODO: Item 8 - Rewrite jargon-heavy copy with concrete specifics */}
                   Not sure where to start? Our interactive calculator identifies 
                   the most impactful certifications for your growth trajectory.
                 </p>
@@ -304,11 +303,11 @@ export default function Home() {
 
       {/* Process Section with Refined Steps */}
       <section className="w-full px-6 py-24 mb-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl auto">
           <div className="text-center mb-24">
             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">Methodology</p>
             <h2 className="text-4xl md:text-7xl font-black tracking-kairo text-bone uppercase leading-[0.8]">
-              OPERATIONAL <br /> <span className="text-accent italic">PRECISION</span>
+              Operational <br /> <span className="text-accent italic">Precision</span>
             </h2>
           </div>
           

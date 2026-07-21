@@ -14,7 +14,8 @@ const industryNews = [
     link: "https://www.hse.gov.uk/news/index.htm",
     category: "Regulation",
     excerpt: "New measures aimed at enhancing high-rise residential building safety are set to take effect...",
-    image: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Construction%20site%20manager%20reviewing%20blueprints%20on%20a%20digital%20tablet%2C%20wearing%20safety%20helmet%2C%20modern%20construction%2C%20professional%2C%20photorealistic&image_size=landscape_16_9"
+    image: "/news-hse.jpg"
+    // TODO: Item 2 - Replace with self-hosted static image /public/news-hse.jpg
   },
   {
     title: "ISO 9001:2026 Revision: What Your Business Needs to Know",
@@ -23,7 +24,8 @@ const industryNews = [
     link: "https://www.bsigroup.com/en-GB/about-bsi/media-centre/",
     category: "Standards",
     excerpt: "The upcoming revision of the quality management standard introduces key changes in digital risk...",
-    image: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=ISO%20quality%20management%20concept%2C%20digital%20dashboard%20showing%20compliance%20metrics%2C%20glowing%20blue%20accents%2C%20clean%20corporate%20desk%2C%20photorealistic&image_size=landscape_16_9"
+    image: "/news-iso.jpg"
+    // TODO: Item 2 - Replace with self-hosted static image /public/news-iso.jpg
   },
   {
     title: "CHAS Updates PQQ Requirements for Construction Suppliers",
@@ -32,7 +34,8 @@ const industryNews = [
     link: "https://www.chas.co.uk/news/",
     category: "Accreditation",
     excerpt: "The latest update to the Common Assessment Standard aims to further reduce duplication in the supply chain...",
-    image: "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Modern%20logistics%20supply%20chain%2C%20abstract%20geometric%20nodes%20connecting%2C%20bright%20light%20background%2C%20professional%20compliance%20concept&image_size=landscape_16_9"
+    image: "/news-chas.jpg"
+    // TODO: Item 2 - Replace with self-hosted static image /public/news-chas.jpg
   }
 ];
 

@@ -60,7 +60,7 @@ export default function ISO27001Page() {
             transition={{ delay: 0.4 }}
             className="kairo-card bg-white/5 border-white/5"
           >
-            <h2 className="text-2xl font-black tracking-kairo uppercase mb-6 text-bone">How WOOD Helps</h2>
+            <h2 className="text-2xl font-black tracking-kairo uppercase mb-6 text-bone">How RISKWOOD Helps</h2>
             <p className="text-muted-kairo font-medium leading-relaxed mb-8 text-sm">
               Our cybersecurity experts guide you through the complex ISO 27001 framework, ensuring your ISMS is robust, compliant, and ready for audit.
             </p>

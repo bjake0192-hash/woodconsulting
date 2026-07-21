@@ -60,7 +60,7 @@ export default function CyberEssentialsPage() {
             transition={{ delay: 0.4 }}
             className="kairo-card bg-white/5 border-white/5"
           >
-            <h2 className="text-2xl font-black tracking-kairo uppercase mb-6 text-bone">How WOOD Helps</h2>
+            <h2 className="text-2xl font-black tracking-kairo uppercase mb-6 text-bone">How RISKWOOD Helps</h2>
             <p className="text-muted-kairo font-medium leading-relaxed mb-8 text-sm">
               We guide you through the Cyber Essentials self-assessment questionnaire, helping you implement the necessary controls to pass and secure your certification.
             </p>

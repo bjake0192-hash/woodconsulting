@@ -6,6 +6,22 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Riskwood | Premium UK Accreditations",
   description: "Simplifying UK compliance and accreditations for businesses.",
+  robots: "index, follow",
+  openGraph: {
+    title: "Riskwood | Premium UK Accreditations",
+    description: "Simplifying UK compliance and accreditations for businesses.",
+    url: "https://riskwood.co.uk",
+    siteName: "Riskwood",
+    images: [
+      {
+        url: "https://riskwood.co.uk/og-image.jpg", // TODO: Item 11 - Ensure this absolute URL is correct once image exists
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_GB",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -119,7 +135,7 @@ export default function RootLayout({
               
               <div className="flex items-center gap-3 text-[10px] font-bold text-muted-kairo uppercase tracking-widest">
                 <span>Coded with precision by</span>
-                <a href="#" className="flex items-center gap-2 text-bone hover:text-accent transition-colors group">
+                <a href="https://kairostudio.co.uk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-bone hover:text-accent transition-colors group">
                   <div className="w-5 h-5 bg-accent rounded-sm flex items-center justify-center transition-transform group-hover:scale-110">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-accent-foreground">
                       <path d="M4 4L20 20M4 20L20 4" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>

@@ -48,18 +48,19 @@ export default function ContactPage() {
               
               <div className="w-full h-48 md:h-64 relative mb-12 rounded-[2rem] overflow-hidden border border-black/5 shadow-xl">
                 <Image 
-                  src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Professional%20consultant%20shaking%20hands%20in%20a%20modern%20bright%20glass%20office%2C%20trust%2C%20partnership%2C%20photorealistic%2C%20high-end&image_size=landscape_16_9" 
-                  alt="Strategic Consulting" 
+                  src="/strategic-partnership.jpg" 
+                  alt="Strategic Compliance" 
                   fill 
                   className="object-cover hover:scale-105 transition-transform duration-1000" 
                   unoptimized 
                 />
+                {/* TODO: Item 2 - Replace with self-hosted static image /public/strategic-partnership.jpg */}
               </div>
             </div>
 
             <div className="space-y-10">
               {[
-                { icon: Mail, label: "Operational Email", value: "hello@woodconsulting.co.uk", href: "mailto:hello@woodconsulting.co.uk" },
+                { icon: Mail, label: "Operational Email", value: "hello@riskwood.co.uk", href: "mailto:hello@riskwood.co.uk" },
                 { icon: Phone, label: "Direct Line", value: "+44 (0) 20 7123 4567", href: "tel:+442071234567" },
                 { icon: MapPin, label: "Headquarters", value: "71-75 Shelton St, London, WC2H 9JQ", href: "#" }
               ].map((item, idx) => (

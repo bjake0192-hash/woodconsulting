@@ -248,7 +248,7 @@ export default function CalculatorPage() {
                   <div className="relative z-10">
                     <h3 className="font-black text-3xl md:text-5xl mb-8 flex items-center gap-6 tracking-kairo text-bone uppercase">
                       <div className="w-3 h-3 rounded-full bg-accent animate-pulse" /> 
-                      EXECUTION WITH WOOD
+                      EXECUTION WITH RISKWOOD
                     </h3>
                     <p className="text-muted-kairo text-xl font-medium leading-relaxed mb-12 max-w-4xl tracking-tight">
                       We eliminate operational friction. Our methodology handles documentation, 

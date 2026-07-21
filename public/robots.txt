@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riskwood.co.uk/sitemap.xml
