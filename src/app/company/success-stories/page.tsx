@@ -38,7 +38,7 @@ export default function SuccessStoriesPage() {
               company: "BuildCo UK",
               accreditation: "CHAS & Constructionline Gold",
               result: "Won a £2.4M public sector contract within 3 months of accreditation.",
-              quote: "Wood Consulting made the complex PQQ process feel effortless. We couldn't have done it without them."
+              quote: "Riskwood made the complex PQQ process feel effortless. We couldn't have done it without them."
             },
             {
               company: "TechFlow Solutions",

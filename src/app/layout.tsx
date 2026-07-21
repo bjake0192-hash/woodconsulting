@@ -4,7 +4,7 @@ import { Mail, Phone } from "lucide-react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Wood Consulting | Premium UK Accreditations",
+  title: "Riskwood | Premium UK Accreditations",
   description: "Simplifying UK compliance and accreditations for businesses.",
 };
 
@@ -22,9 +22,9 @@ export default function RootLayout({
             <div className="flex items-center gap-8 px-6 py-2">
               <a href="/" className="flex items-center gap-2 group">
                 <div className="w-7 h-7 rounded-full bg-accent flex items-center justify-center transition-transform duration-500 group-hover:rotate-12">
-                  <span className="text-accent-foreground font-bold text-xs">W</span>
+                  <span className="text-accent-foreground font-bold text-xs">R</span>
                 </div>
-                <span className="font-bold tracking-kairo text-sm text-foreground">WOOD</span>
+                <span className="font-bold tracking-kairo text-sm text-foreground">RISKWOOD</span>
               </a>
               
               <div className="hidden md:flex items-center gap-8 text-[11px] font-bold uppercase tracking-[0.15em] text-muted-kairo">
@@ -51,9 +51,9 @@ export default function RootLayout({
               <div className="md:col-span-6">
                 <div className="flex items-center gap-3 mb-6 group">
                   <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-                    <span className="text-accent-foreground font-bold text-sm">W</span>
+                    <span className="text-accent-foreground font-bold text-sm">R</span>
                   </div>
-                  <a href="/" className="font-black tracking-kairo text-xl text-foreground uppercase">WOOD CONSULTING</a>
+                  <a href="/" className="font-black tracking-kairo text-xl text-foreground uppercase">RISKWOOD</a>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-black tracking-kairo text-bone leading-tight uppercase mb-8 max-w-lg">
                   Redefining operational <br />
@@ -66,8 +66,8 @@ export default function RootLayout({
                     </div>
                     <div>
                       <p className="text-[9px] font-bold uppercase tracking-widest text-muted-kairo mb-0.5">Inquiries</p>
-                      <a href="mailto:hello@woodconsulting.co.uk" className="text-sm font-bold text-bone hover:text-accent transition-colors tracking-tight">
-                        hello@woodconsulting.co.uk
+                      <a href="mailto:hello@riskwood.co.uk" className="text-sm font-bold text-bone hover:text-accent transition-colors tracking-tight">
+                        hello@riskwood.co.uk
                       </a>
                     </div>
                   </div>
@@ -110,7 +110,7 @@ export default function RootLayout({
             <div className="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex flex-col gap-1 text-center md:text-left">
                 <span className="text-[10px] font-bold text-muted-kairo uppercase tracking-widest">
-                  © {new Date().getFullYear()} Wood Consulting. 
+                  © {new Date().getFullYear()} Riskwood. 
                 </span>
                 <span className="text-[9px] text-muted-kairo/60 uppercase tracking-[0.2em]">
                   Operational Efficiency Redefined.
