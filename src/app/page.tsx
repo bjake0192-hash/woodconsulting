@@ -134,7 +134,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-primary leading-[1.2] mb-8 tracking-tight">
-              Audit Ready, <span className="text-accent">Every Time.</span>
+              Audit Ready, <br className="hidden md:block" /><span className="text-accent">Every Time.</span>
             </h1>
             <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
               Practical, expert support to help your organisation meet standards, pass audits and build a culture of compliance.
