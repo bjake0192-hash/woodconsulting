@@ -5,7 +5,7 @@
   --foreground: #0f172a;
   --card-bg: #FFFFFF;
   --card-border: #e2e8f0;
-  --accent: #10b981; /* Corporate Green */
+  --accent: #1d4ed8; /* Royal Dark Blue */
   --accent-foreground: #FFFFFF;
   --primary: #0f172a; /* Dark Navy */
   --muted: #f8fafc;
@@ -64,7 +64,7 @@ body {
 }
 
 .kairo-button:hover {
-  background: #059669; /* Darker green */
+  background: #1e40af; /* Darker blue */
 }
 
 .kairo-button-outline {
