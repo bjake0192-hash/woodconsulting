@@ -186,41 +186,42 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="w-full px-6 py-16 bg-white relative">
+      <section className="w-full px-6 py-10 bg-white relative">
         {/* Background Accent */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-3">Our Services</p>
-            <h2 className="text-3xl md:text-4xl font-black text-primary tracking-tight">End-to-End Accreditation Support</h2>
+          <div className="text-center mb-8">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-2">Our Services</p>
+            <h2 className="text-2xl md:text-3xl font-black text-primary tracking-tight">End-to-End Accreditation Support</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((service, idx) => (
               <a 
                 key={idx} 
                 href="/accreditations" 
-                className="group relative bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-accent/50 transition-all duration-300 flex flex-col items-start overflow-hidden"
+                className="group relative bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-accent/50 transition-all duration-300 flex flex-col items-start overflow-hidden"
               >
                 {/* Hover gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 
-                <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center mb-5 text-primary group-hover:bg-accent group-hover:text-white transition-colors duration-300 shadow-sm relative z-10">
-                  <service.icon className="w-6 h-6" />
+                <div className="flex items-center gap-3 mb-3 relative z-10 w-full">
+                  <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-colors duration-300 shadow-sm shrink-0">
+                    <service.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-base font-bold text-primary group-hover:text-accent transition-colors duration-300 leading-tight">
+                    {service.title}
+                  </h3>
                 </div>
                 
-                <h3 className="text-lg font-bold text-primary mb-2 relative z-10 group-hover:text-accent transition-colors duration-300">
-                  {service.title}
-                </h3>
-                
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow relative z-10">
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4 flex-grow relative z-10">
                   {service.description}
                 </p>
                 
-                <div className="mt-auto relative z-10 flex items-center text-xs font-bold uppercase tracking-wider text-muted-foreground group-hover:text-accent transition-colors">
+                <div className="mt-auto relative z-10 flex items-center text-[10px] font-bold uppercase tracking-wider text-muted-foreground group-hover:text-accent transition-colors">
                   Learn More 
-                  <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" />
                 </div>
               </a>
             ))}
