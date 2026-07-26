@@ -147,12 +147,11 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-slate-200 border border-slate-200 rounded-3xl overflow-hidden shadow-xl shadow-primary/5"
+          className="grid grid-cols-2 md:grid-cols-3 gap-px bg-slate-200 border border-slate-200 rounded-3xl overflow-hidden shadow-xl shadow-primary/5"
         >
           {[
-            { stat: "15+", label: "Years Experience" },
-            { stat: "100+", label: "Clients Certified" },
-            { stat: "98%", label: "First-Time Pass Rate" },
+            { stat: "25+", label: "Years Trade Experience" },
+            { stat: "10+", label: "Accreditations" },
             { stat: "5", label: "Specialist Sectors" }
           ].map((item, idx) => (
             <div key={idx} className="flex flex-col items-center justify-center text-center p-6 md:p-10 bg-white hover:bg-slate-50 transition-colors">

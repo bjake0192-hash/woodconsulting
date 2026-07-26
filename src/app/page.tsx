@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     question: "Do you guarantee certification?",
-    answer: "Yes. Our proven methodology and meticulous internal audit processes ensure that when we say you are ready, you will pass your external audit. We have a 98% first-time success rate."
+    answer: "Yes. Our proven methodology and meticulous internal audit processes ensure that when we say you are ready, you will pass your external audit."
   },
   {
     question: "Are you the certification body?",
@@ -121,23 +121,16 @@ export default function Home() {
               <div>
                 <div className="flex items-center gap-2 text-xl md:text-2xl font-black text-primary mb-1">
                   <ShieldCheck className="w-5 h-5 md:w-6 md:h-6 text-accent" />
-                  100+
+                  10+
                 </div>
-                <p className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase tracking-wider">Businesses Supported</p>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 text-xl md:text-2xl font-black text-primary mb-1">
-                  <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-accent" />
-                  98%
-                </div>
-                <p className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase tracking-wider">Audit Success Rate</p>
+                <p className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase tracking-wider">Accreditations</p>
               </div>
               <div>
                 <div className="flex items-center gap-2 text-xl md:text-2xl font-black text-primary mb-1">
                   <TrendingUp className="w-5 h-5 md:w-6 md:h-6 text-accent" />
-                  15+
+                  25+
                 </div>
-                <p className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase tracking-wider">Years Experience</p>
+                <p className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase tracking-wider">Years Trade Experience</p>
               </div>
             </div>
           </div>
