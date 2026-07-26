@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: "Riskwood",
     images: [
       {
-        url: "https://riskwood.co.uk/og-image.jpg", // TODO: Item 11 - Ensure this absolute URL is correct once image exists
+        url: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80",
         width: 1200,
         height: 630,
       },

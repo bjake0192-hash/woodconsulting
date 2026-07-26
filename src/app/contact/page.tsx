@@ -48,13 +48,12 @@ export default function ContactPage() {
               
               <div className="w-full h-48 md:h-64 relative mb-12 rounded-[2rem] overflow-hidden border border-black/5 shadow-xl">
                 <Image 
-                  src="/strategic-partnership.jpg" 
+                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80" 
                   alt="Strategic Compliance" 
                   fill 
                   className="object-cover hover:scale-105 transition-transform duration-1000" 
                   unoptimized 
                 />
-                {/* TODO: Item 2 - Replace with self-hosted static image /public/strategic-partnership.jpg */}
               </div>
             </div>
 

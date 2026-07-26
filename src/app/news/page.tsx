@@ -14,8 +14,7 @@ const industryNews = [
     link: "https://www.hse.gov.uk/news/index.htm",
     category: "Regulation",
     excerpt: "New measures aimed at enhancing high-rise residential building safety are set to take effect...",
-    image: "/news-hse.jpg"
-    // TODO: Item 2 - Replace with self-hosted static image /public/news-hse.jpg
+    image: "https://images.unsplash.com/photo-1507208104886-061d4a0fdf23?auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "ISO 9001:2026 Revision: What Your Business Needs to Know",
@@ -24,8 +23,7 @@ const industryNews = [
     link: "https://www.bsigroup.com/en-GB/about-bsi/media-centre/",
     category: "Standards",
     excerpt: "The upcoming revision of the quality management standard introduces key changes in digital risk...",
-    image: "/news-iso.jpg"
-    // TODO: Item 2 - Replace with self-hosted static image /public/news-iso.jpg
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "CHAS Updates PQQ Requirements for Construction Suppliers",
@@ -34,8 +32,7 @@ const industryNews = [
     link: "https://www.chas.co.uk/news/",
     category: "Accreditation",
     excerpt: "The latest update to the Common Assessment Standard aims to further reduce duplication in the supply chain...",
-    image: "/news-chas.jpg"
-    // TODO: Item 2 - Replace with self-hosted static image /public/news-chas.jpg
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
