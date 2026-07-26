@@ -210,9 +210,9 @@ export default function Home() {
       </section>
 
       {/* Journey Section */}
-      <section className="w-full px-6 py-24 bg-slate-50 border-y border-black/5">
+      <section className="w-full px-6 py-16 bg-slate-50 border-y border-black/5">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">The Accreditation Journey</p>
           </div>
           
