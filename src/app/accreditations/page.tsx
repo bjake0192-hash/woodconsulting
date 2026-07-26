@@ -112,61 +112,98 @@ const accreditations: Accreditation[] = [
 
 export default function AccreditationsPage() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-24 px-6 relative overflow-hidden bg-background">
-      {/* Cinematic Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_60%)] pointer-events-none" />
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
-      
-      <div className="max-w-7xl w-full z-10">
-        <div className="text-center mb-20">
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-black tracking-kairo mb-10 text-bone leading-[0.8] uppercase"
-          >
-            CORE <br /> <span className="text-accent italic">COMPETENCIES</span>
-          </motion.h1>
-          
-          <motion.p 
+    <div className="flex flex-col items-center w-full bg-background min-h-screen">
+      {/* Hero Section */}
+      <section className="relative w-full pt-32 pb-20 px-6 bg-primary overflow-hidden">
+        {/* Background Texture */}
+        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-transparent pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative z-10 text-center">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-muted-kairo max-w-2xl mx-auto text-lg md:text-xl leading-relaxed font-medium tracking-tight"
+            transition={{ delay: 0.1 }}
           >
-            We move beyond simple manuals. We integrate with your team through 
-            a structured, high-standard process that guarantees certification.
-          </motion.p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-6">Our Services</p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8 text-white leading-[1.1]">
+              End-to-End <span className="text-accent">Accreditation</span> Support.
+            </h1>
+            <p className="text-white/70 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed font-medium mb-10">
+              We move beyond simple manuals. We integrate with your team through 
+              a structured, high-standard process that guarantees certification and operational excellence.
+            </p>
+          </motion.div>
         </div>
+      </section>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="w-full mb-20"
-        >
-          <InteractiveBubbles items={accreditations} />
-        </motion.div>
+      {/* Interactive Directory Section */}
+      <section className="w-full py-24 px-6 bg-slate-50 border-b border-black/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-black text-primary tracking-tight mb-4">Explore Frameworks</h2>
+              <p className="text-muted-foreground max-w-xl">
+                Interact with our directory below to learn more about the specific accreditations we help businesses secure across the UK.
+              </p>
+            </div>
+            <a href="/calculator" className="kairo-button shrink-0">
+              Launch Strategic Calculator
+            </a>
+          </div>
 
-        {/* Call to Action Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 kairo-card bg-accent/5 border-accent/20 flex flex-col md:flex-row items-center justify-between gap-10"
-        >
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-black mb-4 tracking-kairo text-bone uppercase">Ready for Analysis?</h2>
-            <p className="text-muted-kairo text-base font-medium leading-relaxed">
-              Don't guess which standard you need. Use our strategic calculator to 
-              determine the highest impact accreditations for your specific operational goals.
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="w-full bg-white rounded-[2rem] shadow-xl shadow-black/5 p-4 md:p-8 border border-black/5"
+          >
+            <InteractiveBubbles items={accreditations} />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Corporate Value Props */}
+      <section className="w-full py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-primary tracking-tight mb-4">The Riskwood Advantage</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Our consultancy approach is built on transparency, industry expertise, and long-term partnerships.
             </p>
           </div>
-          <a href="/calculator" className="kairo-button px-10 py-5 text-sm">
-            Launch Strategic Calculator
-          </a>
-        </motion.div>
-      </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-2xl bg-slate-50 border border-black/5 hover:border-accent transition-colors">
+              <div className="w-12 h-12 rounded bg-white flex items-center justify-center mb-6 text-accent shadow-sm">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-3">Guaranteed Compliance</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Our meticulous gap analysis and internal audit processes ensure you are completely ready before the external auditor arrives.
+              </p>
+            </div>
+            <div className="p-8 rounded-2xl bg-slate-50 border border-black/5 hover:border-accent transition-colors">
+              <div className="w-12 h-12 rounded bg-white flex items-center justify-center mb-6 text-accent shadow-sm">
+                <FileCheck className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-3">Bespoke Documentation</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                We don't do templates. Every policy and procedure is crafted specifically around your unique operational requirements.
+              </p>
+            </div>
+            <div className="p-8 rounded-2xl bg-slate-50 border border-black/5 hover:border-accent transition-colors">
+              <div className="w-12 h-12 rounded bg-white flex items-center justify-center mb-6 text-accent shadow-sm">
+                <Award className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-3">Lead Auditor Expertise</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Our consultants are qualified lead auditors who know exactly what certification bodies look for during assessment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
