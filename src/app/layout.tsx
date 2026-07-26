@@ -46,11 +46,11 @@ export default function RootLayout({
               
               {/* Brand & CTA Column */}
               <div className="lg:col-span-4">
-                <div className="mb-8">
+                <div className="mb-8 bg-white p-6 rounded-2xl shadow-lg inline-block">
                   <img 
                     src="/rw-2.png" 
                     alt="Riskwood Consulting Logo" 
-                    className="h-20 w-auto object-contain" 
+                    className="h-12 md:h-16 w-auto object-contain" 
                   />
                 </div>
                 <h3 className="text-2xl font-black tracking-tight mb-4 uppercase">
