@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Newspaper, ExternalLink, Calendar, User } from "lucide-react";
+import Link from "next/link";
+import { Newspaper, ExternalLink, Calendar, User, ArrowRight } from "lucide-react";
+import { getSortedPostsData } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
@@ -37,6 +39,8 @@ const industryNews = [
 ];
 
 export default function NewsPage() {
+  const blogPosts = getSortedPostsData();
+
   return (
     <div className="min-h-screen w-full flex flex-col items-center pt-8 md:pt-12 pb-24 px-6 relative overflow-hidden bg-slate-50">
       {/* Premium Background */}
@@ -51,7 +55,7 @@ export default function NewsPage() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-black tracking-tight mb-6 text-primary"
           >
-            Industry Insights
+            Industry Insights & Blog
           </motion.h1>
           
           <motion.p 
@@ -61,58 +65,133 @@ export default function NewsPage() {
             className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base leading-relaxed"
           >
             Stay ahead of the curve with the latest regulatory updates, 
-            accreditation standards, and UK compliance news.
+            accreditation standards, and strategic advice from the Riskwood team.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {industryNews.map((news, idx) => (
-            <motion.a
-              key={idx}
-              href={news.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 + 0.2 }}
-              className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-accent/40 transition-all flex flex-col"
-            >
-              <div className="w-full h-48 relative overflow-hidden bg-slate-100">
-                <Image src={news.image} alt={news.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" unoptimized />
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-md border border-white/20 shadow-sm">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-primary">
-                    {news.category}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="flex flex-col flex-1 p-6">
-                <div className="flex items-center gap-4 mb-4 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                  <div className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-accent" />
-                    {news.date}
+        {/* Section 1: Live Industry Updates */}
+        <div className="mb-20">
+          <div className="flex items-center justify-between mb-8 border-b border-slate-200 pb-4">
+            <h2 className="text-2xl font-black text-primary">Live Regulatory Updates</h2>
+            <span className="px-3 py-1 rounded-full bg-slate-100 text-[10px] font-bold uppercase tracking-wider text-slate-500">Auto-updating</span>
+          </div>
+
+          {industryNews.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {industryNews.map((news, idx) => (
+                <motion.a
+                  key={idx}
+                  href={news.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 + 0.2 }}
+                  className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-accent/40 transition-all flex flex-col"
+                >
+                  <div className="w-full h-48 relative overflow-hidden bg-slate-100">
+                    <Image src={news.image} alt={news.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" unoptimized />
+                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-md border border-white/20 shadow-sm">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-primary">
+                        {news.category}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <Newspaper className="w-3.5 h-3.5 text-accent" />
-                    {news.source}
+                  
+                  <div className="flex flex-col flex-1 p-6">
+                    <div className="flex items-center gap-4 mb-4 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-accent" />
+                        {news.date}
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Newspaper className="w-3.5 h-3.5 text-accent" />
+                        {news.source}
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-lg font-bold mb-3 text-primary leading-snug group-hover:text-accent transition-colors">
+                      {news.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
+                      {news.excerpt}
+                    </p>
+                    
+                    <div className="mt-auto flex items-center text-[10px] font-bold uppercase tracking-wider text-primary group-hover:text-accent transition-colors">
+                      Read Article
+                      <ExternalLink className="w-3.5 h-3.5 ml-2 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </div>
                   </div>
-                </div>
-                
-                <h3 className="text-lg font-bold mb-3 text-primary leading-snug group-hover:text-accent transition-colors">
-                  {news.title}
-                </h3>
-                
-                <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
-                  {news.excerpt}
-                </p>
-                
-                <div className="mt-auto flex items-center text-[10px] font-bold uppercase tracking-wider text-primary group-hover:text-accent transition-colors">
-                  Read Article
-                  <ExternalLink className="w-3.5 h-3.5 ml-2 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </div>
-              </div>
-            </motion.a>
-          ))}
+                </motion.a>
+              ))}
+            </div>
+          ) : (
+            <div className="w-full bg-white border border-slate-200 rounded-2xl p-12 text-center shadow-sm">
+              <Newspaper className="w-8 h-8 text-slate-300 mx-auto mb-4" />
+              <h3 className="text-lg font-bold text-primary mb-2">No new regulatory updates this week.</h3>
+              <p className="text-sm text-muted-foreground">We monitor HSE, BSI, and CHAS daily. Check back later for the latest changes.</p>
+            </div>
+          )}
+        </div>
+
+        {/* Section 2: Riskwood Insights Blog */}
+        <div>
+          <div className="flex items-center justify-between mb-8 border-b border-slate-200 pb-4">
+            <h2 className="text-2xl font-black text-primary">Riskwood Insights</h2>
+            <span className="px-3 py-1 rounded-full bg-accent/10 text-[10px] font-bold uppercase tracking-wider text-accent">Our Blog</span>
+          </div>
+
+          {blogPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {blogPosts.map((post, idx) => (
+                <Link
+                  key={idx}
+                  href={`/news/${post.slug}`}
+                  className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-accent/40 transition-all flex flex-col"
+                >
+                  <div className="w-full h-48 relative overflow-hidden bg-slate-100">
+                    <Image src={post.image || "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" unoptimized />
+                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-md border border-white/20 shadow-sm">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-primary">
+                        Article
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col flex-1 p-6">
+                    <div className="flex items-center gap-4 mb-4 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-accent" />
+                        {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <User className="w-3.5 h-3.5 text-accent" />
+                        {post.author || "Riskwood Team"}
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-lg font-bold mb-3 text-primary leading-snug group-hover:text-accent transition-colors">
+                      {post.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
+                      {post.excerpt}
+                    </p>
+                    
+                    <div className="mt-auto flex items-center text-[10px] font-bold uppercase tracking-wider text-primary group-hover:text-accent transition-colors">
+                      Read Full Post
+                      <ArrowRight className="w-3.5 h-3.5 ml-2 transform group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+             <div className="w-full bg-white border border-slate-200 rounded-2xl p-12 text-center shadow-sm">
+              <p className="text-sm text-muted-foreground">Articles coming soon.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
