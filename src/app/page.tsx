@@ -198,9 +198,14 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((service, idx) => (
-              <a 
+              <motion.a 
                 key={idx} 
                 href="/accreditations" 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                whileHover={{ y: -5 }}
                 className="group relative bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-accent/50 transition-all duration-300 flex flex-col items-start overflow-hidden"
               >
                 {/* Hover gradient background */}
@@ -223,7 +228,7 @@ export default function Home() {
                   Learn More 
                   <ArrowRight className="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" />
                 </div>
-              </a>
+              </motion.a>
             ))}
           </div>
         </div>
@@ -237,16 +242,34 @@ export default function Home() {
           </div>
           
           <div className="flex flex-col md:flex-row justify-between items-start gap-8 relative">
-            <div className="hidden md:block absolute top-6 left-12 right-12 h-[2px] bg-slate-200 border-dashed border-t-2 border-slate-300 z-0" />
+            <div className="hidden md:block absolute top-6 left-12 right-12 h-[2px] bg-slate-200 border-dashed border-t-2 border-slate-300 z-0 overflow-hidden">
+              <motion.div 
+                initial={{ width: "0%" }}
+                whileInView={{ width: "100%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
+                className="h-full bg-accent"
+              />
+            </div>
             
             {journeySteps.map((step, idx) => (
-              <div key={idx} className="flex-1 flex flex-col items-center text-center relative z-10">
-                <div className="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center font-black text-xl mb-6 shadow-lg shadow-accent/20">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.15 + 0.5, duration: 0.5 }}
+                className="flex-1 flex flex-col items-center text-center relative z-10 group cursor-default"
+              >
+                <motion.div 
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center font-black text-xl mb-6 shadow-lg shadow-accent/20 group-hover:bg-primary transition-colors duration-300"
+                >
                   {step.number}
-                </div>
-                <h4 className="font-bold text-primary text-sm mb-2 max-w-[120px]">{step.title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed max-w-[140px]">{step.desc}</p>
-              </div>
+                </motion.div>
+                <h4 className="font-bold text-primary text-sm mb-2 max-w-[120px] group-hover:text-accent transition-colors duration-300">{step.title}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed max-w-[140px] group-hover:text-primary transition-colors duration-300">{step.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
