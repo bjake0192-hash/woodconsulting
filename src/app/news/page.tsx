@@ -38,75 +38,77 @@ const industryNews = [
 
 export default function NewsPage() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center pt-8 md:pt-12 pb-24 px-6 relative overflow-hidden bg-background">
-      {/* Cinematic Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(7,30,70,0.08),transparent_60%)] pointer-events-none" />
+    <div className="min-h-screen w-full flex flex-col items-center pt-8 md:pt-12 pb-24 px-6 relative overflow-hidden bg-slate-50">
+      {/* Premium Background */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(7,30,70,0.03),transparent_40%)] pointer-events-none" />
       
-      <div className="max-w-5xl w-full z-10">
+      <div className="max-w-7xl w-full z-10">
         <div className="text-center mb-16">
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-3">Resources & Updates</p>
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-black tracking-kairo mb-8 text-bone leading-[0.8] uppercase"
+            className="text-3xl md:text-5xl font-black tracking-tight mb-6 text-primary"
           >
-            INDUSTRY <br /> <span className="text-accent italic">INSIGHTS</span>
+            Industry Insights
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-muted-kairo max-w-xl mx-auto text-lg leading-relaxed font-medium tracking-tight"
+            className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base leading-relaxed"
           >
             Stay ahead of the curve with the latest regulatory updates, 
             accreditation standards, and UK compliance news.
           </motion.p>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {industryNews.map((news, idx) => (
             <motion.a
               key={idx}
               href={news.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 + 0.2 }}
-              className="group kairo-card bg-white border border-black/5 hover:border-accent/30 transition-all flex flex-col md:flex-row shadow-sm hover:shadow-xl shadow-black/5 p-4 md:p-5 gap-6 items-center"
+              className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-accent/40 transition-all flex flex-col"
             >
-              <div className="w-full md:w-64 h-48 md:h-36 relative overflow-hidden rounded-[1.25rem] shrink-0 bg-black/[0.03]">
+              <div className="w-full h-48 relative overflow-hidden bg-slate-100">
                 <Image src={news.image} alt={news.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" unoptimized />
-              </div>
-              
-              <div className="flex flex-col flex-1 py-2 w-full">
-                <div className="flex flex-wrap items-center gap-4 mb-4">
-                  <span className="px-3 py-1 rounded-full bg-accent/5 text-[9px] font-black uppercase tracking-[0.2em] text-accent border border-accent/20">
+                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-md border border-white/20 shadow-sm">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-primary">
                     {news.category}
                   </span>
-                  <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-kairo">
+                </div>
+              </div>
+              
+              <div className="flex flex-col flex-1 p-6">
+                <div className="flex items-center gap-4 mb-4 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  <div className="flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5 text-accent" />
                     {news.date}
                   </div>
-                  <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted-kairo">
+                  <div className="flex items-center gap-1.5">
                     <Newspaper className="w-3.5 h-3.5 text-accent" />
                     {news.source}
                   </div>
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-black mb-3 tracking-kairo text-bone leading-tight group-hover:text-accent transition-colors uppercase">
+                <h3 className="text-lg font-bold mb-3 text-primary leading-snug group-hover:text-accent transition-colors">
                   {news.title}
                 </h3>
                 
-                <p className="text-muted-kairo text-sm font-medium leading-relaxed tracking-tight line-clamp-2 max-w-2xl">
+                <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
                   {news.excerpt}
                 </p>
-              </div>
-
-              <div className="hidden md:flex items-center justify-center px-4 shrink-0">
-                <div className="w-12 h-12 rounded-full bg-black/[0.02] flex items-center justify-center group-hover:bg-accent transition-colors">
-                  <ExternalLink className="w-5 h-5 text-muted-kairo group-hover:text-accent-foreground transition-colors" />
+                
+                <div className="mt-auto flex items-center text-[10px] font-bold uppercase tracking-wider text-primary group-hover:text-accent transition-colors">
+                  Read Article
+                  <ExternalLink className="w-3.5 h-3.5 ml-2 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </div>
               </div>
             </motion.a>
