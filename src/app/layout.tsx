@@ -36,105 +36,84 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-accent selection:text-accent-foreground">
         <Navbar />
         
-        <main className="flex-grow pt-48">
+        <main className="flex-grow pt-24 md:pt-[7.5rem]">
           {children}
         </main>
 
-        <footer className="bg-primary text-white border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 py-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+        <footer className="bg-primary text-white pt-20 pb-10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
               
-              {/* Brand & CTA Column */}
-              <div className="lg:col-span-4">
-                <div className="mb-8 bg-white p-6 rounded-2xl shadow-lg inline-block">
+              {/* Brand Column */}
+              <div className="lg:col-span-4 pr-0 lg:pr-8">
+                <div className="mb-6 bg-white px-6 py-4 rounded-xl inline-block shadow-lg">
                   <img 
                     src="/rw-2.png" 
                     alt="Riskwood Consulting Logo" 
-                    className="h-12 md:h-16 w-auto object-contain" 
+                    className="h-10 w-auto object-contain" 
                   />
                 </div>
-                <h3 className="text-2xl font-black tracking-tight mb-4 uppercase">
-                  Ready to Become <span className="text-accent">Audit Ready?</span>
-                </h3>
-                <p className="text-sm text-white/70 mb-6 leading-relaxed">
-                  Let's build a stronger, compliant and more resilient business—together.
+                <p className="text-sm text-white/60 leading-relaxed mb-6">
+                  Practical, expert support to help your organisation meet standards, pass audits and build a culture of compliance. Audit ready, every time.
                 </p>
-                <a href="/contact" className="kairo-button inline-flex text-xs">
-                  Schedule a Consultation <ArrowRight className="w-3 h-3" />
-                </a>
+                <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-bold text-accent hover:text-white transition-colors group">
+                  Schedule a Consultation <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
 
-              {/* Value Props Grid */}
-              <div className="lg:col-span-4 grid grid-cols-2 gap-6">
+              {/* Navigation Columns */}
+              <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-10">
+                {/* Services */}
                 <div>
-                  <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center mb-3 text-accent">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <h4 className="font-bold text-sm mb-1">Expert Guidance</h4>
-                  <p className="text-xs text-white/50">Advice from lead auditors.</p>
-                </div>
-                <div>
-                  <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center mb-3 text-accent">
-                    <BookOpen className="w-4 h-4" />
-                  </div>
-                  <h4 className="font-bold text-sm mb-1">Tailored Solutions</h4>
-                  <p className="text-xs text-white/50">Built for your industry.</p>
-                </div>
-                <div>
-                  <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center mb-3 text-accent">
-                    <TrendingUp className="w-4 h-4" />
-                  </div>
-                  <h4 className="font-bold text-sm mb-1">Fixed Fee</h4>
-                  <p className="text-xs text-white/50">Transparent pricing.</p>
-                </div>
-                <div>
-                  <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center mb-3 text-accent">
-                    <CheckCircle2 className="w-4 h-4" />
-                  </div>
-                  <h4 className="font-bold text-sm mb-1">Partnership</h4>
-                  <p className="text-xs text-white/50">Ongoing support.</p>
-                </div>
-              </div>
-
-              {/* Quick Links & Contact */}
-              <div className="lg:col-span-4 grid grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-bold mb-4 text-xs uppercase tracking-wider text-white/50">Quick Links</h4>
-                  <ul className="space-y-3 text-sm text-white/80">
-                    <li><a href="/" className="hover:text-accent transition-colors">Home</a></li>
-                    <li><a href="/accreditations" className="hover:text-accent transition-colors">Services</a></li>
-                    <li><a href="/industries" className="hover:text-accent transition-colors">Industries</a></li>
-                    <li><a href="/about" className="hover:text-accent transition-colors">About</a></li>
+                  <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-white/40">Services</h4>
+                  <ul className="space-y-4 text-sm text-white/80">
+                    <li><Link href="/accreditations" className="hover:text-accent transition-colors">ISO 9001</Link></li>
+                    <li><Link href="/accreditations" className="hover:text-accent transition-colors">ISO 14001</Link></li>
+                    <li><Link href="/accreditations" className="hover:text-accent transition-colors">ISO 45001</Link></li>
+                    <li><Link href="/accreditations" className="hover:text-accent transition-colors">ISO 27001</Link></li>
+                    <li><Link href="/accreditations" className="hover:text-accent transition-colors">Internal Audits</Link></li>
                   </ul>
                 </div>
+
+                {/* Company */}
                 <div>
-                  <h4 className="font-bold mb-4 text-xs uppercase tracking-wider text-white/50">Contact</h4>
+                  <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-white/40">Company</h4>
+                  <ul className="space-y-4 text-sm text-white/80">
+                    <li><Link href="/about" className="hover:text-accent transition-colors">About Us</Link></li>
+                    <li><Link href="/industries" className="hover:text-accent transition-colors">Industries</Link></li>
+                    <li><Link href="/news" className="hover:text-accent transition-colors">Resources</Link></li>
+                    <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
+                  </ul>
+                </div>
+
+                {/* Contact */}
+                <div>
+                  <h4 className="font-bold mb-6 text-xs uppercase tracking-widest text-white/40">Contact Us</h4>
                   <ul className="space-y-4 text-sm text-white/80">
                     <li className="flex items-start gap-3">
                       <Mail className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 
-                      <span className="text-xs">hello@riskwood.co.uk</span>
+                      <span>hello@riskwood.co.uk</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 
-                      <span className="text-xs">+44 1234 567 890</span>
+                      <span>+44 1234 567 890</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 
-                      <span className="text-xs">Birmingham, UK</span>
+                      <span className="leading-relaxed">100 Colmore Row<br />Birmingham<br />B3 3AG</span>
                     </li>
                   </ul>
                 </div>
               </div>
-
             </div>
 
             {/* Footer Bottom */}
-            <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-white/50 gap-4">
-              <p>© 2026 Riskwood Consulting Ltd. All rights reserved.</p>
+            <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-white/40 gap-4">
+              <p>© {new Date().getFullYear()} Riskwood Consulting Ltd. All rights reserved.</p>
               <div className="flex items-center gap-6">
-                <a href="/legal/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="/legal/terms-of-service" className="hover:text-white transition-colors">Terms & Conditions</a>
-                <a href="#" className="w-6 h-6 rounded bg-white/10 flex items-center justify-center hover:bg-accent text-white transition-colors">
+                <Link href="/legal/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                <Link href="/legal/terms-of-service" className="hover:text-white transition-colors">Terms & Conditions</Link>
+                <a href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
                   in
                 </a>
               </div>

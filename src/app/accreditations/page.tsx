@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, ShieldCheck, Lock, HardHat, Server, FileCheck, Award, Flame, Zap, Truck } from "lucide-react";
+import { Shield, ShieldCheck, Lock, HardHat, Server, FileCheck, Award, Flame, Zap, Truck, ArrowRight } from "lucide-react";
 import InteractiveBubbles from "./InteractiveBubbles";
 
 export const dynamic = "force-static";
@@ -114,18 +114,18 @@ export default function AccreditationsPage() {
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[calc(100vh-12rem)] flex items-center px-6 py-12 md:py-0 bg-slate-50 border-b border-black/5 overflow-hidden">
+      <section className="relative w-full pb-16 md:pb-24 pt-0 px-6 bg-slate-50 border-b border-black/5 overflow-hidden">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-6">Our Services</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-primary tracking-tight mb-8 leading-[1.2]">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">Our Services</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary tracking-tight mb-6 leading-[1.2]">
               Comprehensive <br className="hidden md:block" /><span className="text-accent">Accreditation</span> Services.
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
+            <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
               Expert guidance and tailored frameworks to ensure your business achieves and maintains industry-leading compliance.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -142,9 +142,8 @@ export default function AccreditationsPage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="relative w-full md:w-[120%] h-[350px] md:h-[450px] lg:h-[550px] rounded-l-[2rem] rounded-r-none md:-right-6 lg:-right-12 overflow-hidden shadow-2xl shadow-black/10"
+            className="relative w-full md:w-[110%] h-[300px] md:h-[400px] lg:h-[480px] rounded-l-[2rem] rounded-r-none md:-right-6 lg:-right-12 overflow-hidden shadow-2xl shadow-black/10"
           >
-            {/* TODO: Add professional placeholder image /services-hero.jpg */}
             <img 
               src="https://images.unsplash.com/photo-1552581236-e31573ddac28?auto=format&fit=crop&w=1200&q=80" 
               alt="Consulting meeting regarding accreditation" 
@@ -157,18 +156,6 @@ export default function AccreditationsPage() {
       {/* Interactive Directory Section */}
       <section id="directory" className="w-full py-24 px-6 bg-slate-50 border-b border-black/5">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black text-primary tracking-tight mb-4">Explore Frameworks</h2>
-              <p className="text-muted-foreground max-w-xl">
-                Interact with our directory below to learn more about the specific accreditations we help businesses secure across the UK.
-              </p>
-            </div>
-            <a href="/calculator" className="kairo-button shrink-0">
-              Launch Strategic Calculator
-            </a>
-          </div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -181,43 +168,95 @@ export default function AccreditationsPage() {
       </section>
 
       {/* Corporate Value Props */}
-      <section className="w-full py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-primary tracking-tight mb-4">The Riskwood Advantage</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Our consultancy approach is built on transparency, industry expertise, and long-term partnerships.
-            </p>
+      <section className="w-full py-16 md:py-20 px-6 bg-primary text-white relative overflow-hidden">
+        {/* Background Accent */}
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+          {/* Left Column: Sticky Header */}
+          <div className="lg:col-span-5 relative">
+            <div className="lg:sticky lg:top-40">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-3"
+              >
+                Why Choose Us
+              </motion.p>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight mb-4"
+              >
+                The Riskwood <br className="hidden lg:block" />
+                <span className="text-accent">Advantage.</span>
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-white/70 text-sm max-w-sm leading-relaxed mb-6"
+              >
+                Our consultancy approach is built on transparency, industry expertise, and long-term partnerships. We don't just secure your certification; we elevate your operational standards.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
+                 <a href="/about" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-white hover:text-accent transition-colors group">
+                   Meet our expert team
+                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                 </a>
+              </motion.div>
+            </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-2xl bg-slate-50 border border-black/5 hover:border-accent transition-colors">
-              <div className="w-12 h-12 rounded bg-white flex items-center justify-center mb-6 text-accent shadow-sm">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-3">Guaranteed Compliance</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Our meticulous gap analysis and internal audit processes ensure you are completely ready before the external auditor arrives.
-              </p>
-            </div>
-            <div className="p-8 rounded-2xl bg-slate-50 border border-black/5 hover:border-accent transition-colors">
-              <div className="w-12 h-12 rounded bg-white flex items-center justify-center mb-6 text-accent shadow-sm">
-                <FileCheck className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-3">Bespoke Documentation</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                We don't do templates. Every policy and procedure is crafted specifically around your unique operational requirements.
-              </p>
-            </div>
-            <div className="p-8 rounded-2xl bg-slate-50 border border-black/5 hover:border-accent transition-colors">
-              <div className="w-12 h-12 rounded bg-white flex items-center justify-center mb-6 text-accent shadow-sm">
-                <Award className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-3">Lead Auditor Expertise</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Our consultants are qualified lead auditors who know exactly what certification bodies look for during assessment.
-              </p>
-            </div>
+
+          {/* Right Column: Value Props */}
+          <div className="lg:col-span-7 flex flex-col gap-4">
+            {[
+              {
+                icon: ShieldCheck,
+                title: "Guaranteed Compliance",
+                desc: "Our meticulous gap analysis and internal audit processes ensure you are completely ready before the external auditor arrives. We leave nothing to chance.",
+              },
+              {
+                icon: FileCheck,
+                title: "Bespoke Documentation",
+                desc: "We don't do templates. Every policy, manual, and procedure is crafted specifically around your unique operational requirements and business realities.",
+              },
+              {
+                icon: Award,
+                title: "Lead Auditor Expertise",
+                desc: "Our consultants are qualified lead auditors who know exactly what certification bodies look for during assessment, giving you an insider's advantage.",
+              }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 + 0.2, duration: 0.5 }}
+                className="group p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-accent/50 transition-all duration-300"
+              >
+                <div className="flex flex-col sm:flex-row gap-5 items-start">
+                  <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center shrink-0 text-accent group-hover:scale-110 transition-transform duration-300">
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold mb-2 text-white group-hover:text-accent transition-colors">{item.title}</h3>
+                    <p className="text-white/60 leading-relaxed text-xs md:text-sm">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

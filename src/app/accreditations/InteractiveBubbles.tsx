@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Search } from "lucide-react";
 
 type BubbleData = {
   id: string;
@@ -21,6 +22,7 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
   
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selectedIdRef = useRef<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleBubbleClick = (id: string) => {
     if (selectedIdRef.current === id) {
@@ -29,6 +31,25 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
     } else {
       selectedIdRef.current = id;
       setSelectedId(id);
+    }
+  };
+
+  const handleSearch = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return;
+    
+    const found = items.find(item => 
+      item.title.toLowerCase().includes(query) || 
+      item.shortDesc.toLowerCase().includes(query) ||
+      item.id.toLowerCase().includes(query) ||
+      item.industry.toLowerCase().includes(query)
+    );
+
+    if (found) {
+      selectedIdRef.current = found.id;
+      setSelectedId(found.id);
+      setSearchQuery(""); // Optional: clear search after finding
     }
   };
 
@@ -202,9 +223,37 @@ export default function InteractiveBubbles({ items }: { items: BubbleData[] }) {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
+        {/* Top Controls Overlay */}
+        <div className="absolute top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 flex flex-col md:flex-row justify-between items-center gap-4 z-40 pointer-events-none">
+          {/* Search Bar */}
+          <form 
+            onSubmit={handleSearch} 
+            className="pointer-events-auto relative w-full md:w-72 bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-black/5 overflow-hidden flex items-center transition-shadow focus-within:shadow-md focus-within:border-accent/50"
+          >
+            <input 
+              type="text" 
+              placeholder="Search accreditations..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full py-2.5 pl-5 pr-10 bg-transparent text-sm text-primary outline-none placeholder:text-muted-foreground"
+            />
+            <button 
+              type="submit" 
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-accent transition-colors"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          </form>
+
+          {/* Calculator Button */}
+          <a href="/calculator" className="pointer-events-auto kairo-button shrink-0 shadow-sm !rounded-full !py-2.5">
+            Launch Strategic Calculator
+          </a>
+        </div>
+
         {/* Overlay when a bubble is selected */}
         <div 
-          className={`absolute inset-0 bg-white/60 backdrop-blur-sm transition-opacity duration-700 z-40 ${
+          className={`absolute inset-0 bg-white/60 backdrop-blur-sm transition-opacity duration-700 z-30 ${
             selectedId ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`} 
           onClick={() => handleBubbleClick(selectedId!)}

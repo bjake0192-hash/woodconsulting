@@ -9,7 +9,6 @@ const links = [
   { name: "HOME", path: "/" },
   { name: "SERVICES", path: "/accreditations" },
   { name: "INDUSTRIES", path: "/industries" },
-  { name: "CASE STUDIES", path: "/case-studies" },
   { name: "ABOUT", path: "/about" },
   { name: "RESOURCES", path: "/news" },
 ];
@@ -26,22 +25,20 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 w-full z-[100] transition-colors duration-300 ${
         isScrolled 
           ? "bg-slate-100/95 backdrop-blur-md shadow-md border-b border-slate-200" 
           : "bg-slate-50 border-b border-transparent"
       }`}
     >
       <motion.div 
-        animate={{ height: isScrolled ? "9rem" : "12rem" }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="max-w-7xl mx-auto px-6 flex items-center justify-between w-full"
+        className="max-w-7xl mx-auto px-6 flex items-center justify-between w-full h-24 md:h-[7.5rem]"
       >
         <Link href="/" className="flex items-center group">
           <img 
             src="/rw-2.png" 
             alt="Riskwood Consulting Logo" 
-            className="h-[120px] md:h-[144px] w-auto object-contain group-hover:opacity-90 transition-opacity" 
+            className="h-16 md:h-20 w-auto object-contain group-hover:opacity-90 transition-opacity" 
           />
         </Link>
         

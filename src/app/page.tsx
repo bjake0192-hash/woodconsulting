@@ -91,38 +91,7 @@ const faqs = [
   }
 ];
 
-function FAQItem({ faq, isOpen, onClick }: { faq: typeof faqs[0], isOpen: boolean, onClick: () => void }) {
-  return (
-    <div className="border-b border-black/5 last:border-0">
-      <button
-        onClick={onClick}
-        className="w-full py-6 flex items-center justify-between gap-4 text-left group"
-      >
-        <span className="text-lg font-bold text-primary group-hover:text-accent transition-colors">
-          {faq.question}
-        </span>
-        <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
-          {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-        </div>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <p className="pb-6 text-muted-foreground leading-relaxed">
-              {faq.answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+// (FAQItem removed as logic is now inline)
 
 export default function Home() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
@@ -130,16 +99,16 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[calc(100vh-12rem)] flex items-center px-6 py-12 md:py-0 bg-slate-50 border-b border-black/5 overflow-hidden">
+      <section className="relative w-full pb-16 md:pb-24 pt-0 px-6 bg-slate-50 border-b border-black/5 overflow-hidden">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-primary leading-[1.2] mb-8 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary leading-[1.2] mb-6 tracking-tight">
               Audit Ready, <br className="hidden md:block" /><span className="text-accent">Every Time.</span>
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
+            <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
               Practical, expert support to help your organisation meet standards, pass audits and build a culture of compliance.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <a href="/contact" className="kairo-button justify-center">
                 Book a Consultation <ArrowRight className="w-4 h-4" />
               </a>
@@ -173,7 +142,7 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="relative w-full md:w-[120%] h-[350px] md:h-[450px] lg:h-[550px] rounded-l-[2rem] rounded-r-none md:-right-6 lg:-right-12 overflow-hidden shadow-2xl shadow-black/10">
+          <div className="relative w-full md:w-[110%] h-[300px] md:h-[400px] lg:h-[480px] rounded-l-[2rem] rounded-r-none md:-right-6 lg:-right-12 overflow-hidden shadow-2xl shadow-black/10">
             <Image 
               src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" 
               alt="Compliance audit and document review" 
@@ -301,24 +270,65 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full px-6 py-24 bg-slate-50 border-t border-black/5">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">Common Questions</p>
-            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tight mb-6">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground">
+      <section className="w-full px-6 py-20 bg-slate-50 border-t border-black/5 relative overflow-hidden">
+        {/* Subtle background decoration */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-3">Common Questions</p>
+            <h2 className="text-3xl md:text-4xl font-black text-primary tracking-tight mb-4">Frequently Asked Questions</h2>
+            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Everything you need to know about our consultancy process, timelines, and how we guarantee your success.
             </p>
           </div>
           
-          <div className="bg-white rounded-[2rem] p-6 md:p-10 shadow-xl shadow-black/5 border border-black/5">
+          <div className="grid gap-3">
             {faqs.map((faq, idx) => (
-              <FAQItem 
-                key={idx} 
-                faq={faq} 
-                isOpen={openFaqIndex === idx} 
-                onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)} 
-              />
+              <div 
+                key={idx}
+                className={`bg-white rounded-2xl border transition-all duration-300 ${
+                  openFaqIndex === idx 
+                    ? "border-accent/30 shadow-md shadow-accent/5" 
+                    : "border-black/5 hover:border-black/10 shadow-sm"
+                }`}
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+                  className="w-full py-5 px-6 flex items-center justify-between gap-4 text-left group"
+                >
+                  <span className={`text-base font-bold transition-colors ${
+                    openFaqIndex === idx ? "text-accent" : "text-primary group-hover:text-accent"
+                  }`}>
+                    {faq.question}
+                  </span>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                    openFaqIndex === idx 
+                      ? "bg-accent text-white" 
+                      : "bg-slate-50 text-slate-400 group-hover:bg-accent/10 group-hover:text-accent"
+                  }`}>
+                    {openFaqIndex === idx ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                  </div>
+                </button>
+                <AnimatePresence>
+                  {openFaqIndex === idx && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 pt-2">
+                        <div className="w-full h-px bg-slate-100 mb-4" />
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
           </div>
         </div>
