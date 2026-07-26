@@ -23,7 +23,7 @@ const industryNews = [
     link: "https://www.bsigroup.com/en-GB/about-bsi/media-centre/",
     category: "Standards",
     excerpt: "The upcoming revision of the quality management standard introduces key changes in digital risk...",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "CHAS Updates PQQ Requirements for Construction Suppliers",

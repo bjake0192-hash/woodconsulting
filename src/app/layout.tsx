@@ -54,7 +54,7 @@ export default function RootLayout({
               <a href="/news" className="text-white/80 hover:text-white transition-colors">RESOURCES</a>
             </nav>
 
-            <a href="/contact" className="hidden md:inline-flex border border-accent text-accent hover:bg-accent hover:text-white transition-all px-6 py-2 rounded text-xs font-bold uppercase tracking-wider">
+            <a href="/contact" className="hidden md:inline-flex bg-accent text-white hover:bg-accent/90 transition-all px-6 py-2 rounded text-xs font-bold uppercase tracking-wider shadow-sm">
               Contact Us
             </a>
           </div>
