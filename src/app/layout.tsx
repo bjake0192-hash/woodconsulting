@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowRight, ShieldCheck, BookOpen, TrendingUp, CheckCircle2 } from "lucide-react";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,33 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="antialiased min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-accent selection:text-accent-foreground">
-        {/* Corporate Navigation Header */}
-        <header className="w-full bg-primary text-white border-b border-white/10 z-50 sticky top-0">
-          <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-3 group">
-              <div className="w-8 h-8 rounded bg-white flex items-center justify-center">
-                <span className="text-primary font-bold text-lg">R</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold tracking-tight text-lg leading-none">RISKWOOD</span>
-                <span className="text-[9px] font-medium tracking-[0.2em] text-white/60">CONSULTING</span>
-              </div>
-            </a>
-            
-            <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-              <a href="/" className="text-accent hover:text-accent transition-colors">HOME</a>
-              <a href="/accreditations" className="text-white/80 hover:text-white transition-colors">SERVICES</a>
-              <a href="/industries" className="text-white/80 hover:text-white transition-colors">INDUSTRIES</a>
-              <a href="/case-studies" className="text-white/80 hover:text-white transition-colors">CASE STUDIES</a>
-              <a href="/about" className="text-white/80 hover:text-white transition-colors">ABOUT</a>
-              <a href="/news" className="text-white/80 hover:text-white transition-colors">RESOURCES</a>
-            </nav>
-
-            <a href="/contact" className="hidden md:inline-flex bg-accent text-white hover:bg-accent/90 transition-all px-6 py-2 rounded text-xs font-bold uppercase tracking-wider shadow-sm">
-              Contact Us
-            </a>
-          </div>
-        </header>
+        <Navbar />
         
         <main className="flex-grow">
           {children}
