@@ -21,7 +21,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-7.5rem)] pt-12 pb-20 px-6 relative bg-slate-50 overflow-hidden">
+    <div className="min-h-[calc(100vh-7.5rem)] pt-8 md:pt-12 pb-20 px-6 relative bg-slate-50 overflow-hidden">
       {/* Premium Corporate Background */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(7,30,70,0.03),transparent_40%)] pointer-events-none" />
 

@@ -114,7 +114,7 @@ export default function AccreditationsPage() {
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full pb-16 md:pb-24 pt-0 px-6 bg-slate-50 border-b border-black/5 overflow-hidden">
+      <section className="relative w-full pb-16 md:pb-24 pt-8 md:pt-12 px-6 bg-slate-50 border-b border-black/5 overflow-hidden">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

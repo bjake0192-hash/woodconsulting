@@ -120,7 +120,7 @@ export default function CalculatorPage() {
   const industryRecs = recommendations[answers.industry] || recommendations["Other"];
 
   return (
-    <div className="min-h-[calc(100vh-7.5rem)] flex flex-col items-center px-6 pt-12 md:pt-16 pb-20 relative bg-slate-50 overflow-hidden">
+    <div className="min-h-[calc(100vh-7.5rem)] flex flex-col items-center px-6 pt-8 md:pt-12 pb-20 relative bg-slate-50 overflow-hidden">
       <div className="w-full max-w-7xl mx-auto z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         <div className="lg:col-span-5 text-left lg:sticky lg:top-32">
           <div className="mb-8">

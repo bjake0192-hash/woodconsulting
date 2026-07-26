@@ -85,7 +85,7 @@ export default function AboutPage() {
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       
       {/* Hero Section */}
-      <section className="relative w-full pt-4 pb-32 md:pt-6 md:pb-48 px-6 bg-slate-50 border-b border-black/5 overflow-hidden">
+      <section className="relative w-full pt-8 md:pt-12 pb-32 md:pb-48 px-6 bg-slate-50 border-b border-black/5 overflow-hidden">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
