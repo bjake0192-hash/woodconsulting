@@ -33,7 +33,7 @@ export default function Navbar() {
       }`}
     >
       <motion.div 
-        animate={{ height: isScrolled ? "7rem" : "9rem" }}
+        animate={{ height: isScrolled ? "9rem" : "12rem" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="max-w-7xl mx-auto px-6 flex items-center justify-between w-full"
       >
@@ -41,7 +41,7 @@ export default function Navbar() {
           <img 
             src="/rw-2.png" 
             alt="Riskwood Consulting Logo" 
-            className="h-20 md:h-24 w-auto object-contain group-hover:opacity-90 transition-opacity" 
+            className="h-[120px] md:h-[144px] w-auto object-contain group-hover:opacity-90 transition-opacity" 
           />
         </Link>
         

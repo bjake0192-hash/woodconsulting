@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-accent selection:text-accent-foreground">
         <Navbar />
         
-        <main className="flex-grow pt-36">
+        <main className="flex-grow pt-48">
           {children}
         </main>
 
