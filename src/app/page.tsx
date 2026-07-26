@@ -130,7 +130,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[calc(100vh-6rem)] flex items-center px-6 py-12 md:py-0 bg-slate-50 border-b border-black/5 overflow-hidden">
+      <section className="relative w-full min-h-[calc(100vh-9rem)] flex items-center px-6 py-12 md:py-0 bg-slate-50 border-b border-black/5 overflow-hidden">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-primary leading-[1.2] mb-8 tracking-tight">

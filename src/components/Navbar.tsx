@@ -1,10 +1,7 @@
-"use client";
-
 import { useState, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 const links = [
   { name: "HOME", path: "/" },
@@ -19,8 +16,6 @@ export default function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // We use standard state for classes that need to swap, 
-  // but Framer Motion for smooth height/padding transitions.
   useEffect(() => {
     return scrollY.on("change", (latest) => {
       setIsScrolled(latest > 20);
@@ -31,12 +26,12 @@ export default function Navbar() {
     <motion.header
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
         isScrolled 
-          ? "bg-primary/95 backdrop-blur-md shadow-2xl border-b border-white/10" 
-          : "bg-primary border-b border-white/5"
+          ? "bg-slate-100/95 backdrop-blur-md shadow-md border-b border-slate-200" 
+          : "bg-slate-50 border-b border-transparent"
       }`}
     >
       <motion.div 
-        animate={{ height: isScrolled ? "4.5rem" : "6rem" }}
+        animate={{ height: isScrolled ? "7rem" : "9rem" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="max-w-7xl mx-auto px-6 flex items-center justify-between w-full"
       >
@@ -44,7 +39,7 @@ export default function Navbar() {
           <img 
             src="/rw-2.png" 
             alt="Riskwood Consulting Logo" 
-            className="h-10 md:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity" 
+            className="h-20 md:h-24 w-auto object-contain group-hover:opacity-90 transition-opacity" 
           />
         </Link>
         
@@ -53,7 +48,7 @@ export default function Navbar() {
             <Link 
               key={link.name} 
               href={link.path} 
-              className="relative text-xs font-bold tracking-widest text-white/70 hover:text-white transition-colors py-2 group"
+              className="relative text-xs font-bold tracking-widest text-slate-600 hover:text-primary transition-colors py-2 group"
             >
               {link.name}
               {/* Animated underline */}
