@@ -247,8 +247,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Interactive Team Section */}
-      <section className="w-full py-24 px-6 bg-white">
+      {/* Interactive Team Section (Hidden per request) */}
+      <section className="hidden w-full py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div>
