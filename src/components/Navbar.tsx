@@ -7,9 +7,9 @@ import Link from "next/link";
 
 const links = [
   { name: "HOME", path: "/" },
+  { name: "ABOUT", path: "/about" },
   { name: "SERVICES", path: "/accreditations" },
   { name: "INDUSTRIES", path: "/industries" },
-  { name: "ABOUT", path: "/about" },
   { name: "RESOURCES", path: "/news" },
 ];
 
