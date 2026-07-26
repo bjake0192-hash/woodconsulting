@@ -41,13 +41,10 @@ export default function Navbar() {
         className="max-w-7xl mx-auto px-6 flex items-center justify-between w-full"
       >
         <Link href="/" className="flex items-center group">
-          <Image 
+          <img 
             src="/rw-2.png" 
             alt="Riskwood Consulting Logo" 
-            width={160} 
-            height={80} 
             className="h-10 md:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity" 
-            unoptimized 
           />
         </Link>
         

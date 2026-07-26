@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-accent selection:text-accent-foreground">
         <Navbar />
         
-        <main className="flex-grow">
+        <main className="flex-grow pt-24">
           {children}
         </main>
 
@@ -47,13 +47,10 @@ export default function RootLayout({
               {/* Brand & CTA Column */}
               <div className="lg:col-span-4">
                 <div className="mb-8">
-                  <Image 
+                  <img 
                     src="/rw-2.png" 
                     alt="Riskwood Consulting Logo" 
-                    width={160} 
-                    height={80} 
                     className="h-10 w-auto object-contain" 
-                    unoptimized 
                   />
                 </div>
                 <h3 className="text-2xl font-black tracking-tight mb-4 uppercase">
