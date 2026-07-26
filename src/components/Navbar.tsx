@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const links = [
   { name: "HOME", path: "/" },
@@ -39,14 +40,15 @@ export default function Navbar() {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="max-w-7xl mx-auto px-6 flex items-center justify-between w-full"
       >
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded bg-white flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]">
-            <span className="text-primary font-black text-xl">R</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold tracking-tight text-xl leading-none text-white group-hover:text-accent transition-colors">RISKWOOD</span>
-            <span className="text-[9px] font-bold tracking-[0.25em] text-white/60 group-hover:text-white/90 transition-colors mt-0.5">CONSULTING</span>
-          </div>
+        <Link href="/" className="flex items-center group">
+          <Image 
+            src="/rw-2.png" 
+            alt="Riskwood Consulting Logo" 
+            width={160} 
+            height={80} 
+            className="h-10 md:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity" 
+            unoptimized 
+          />
         </Link>
         
         <nav className="hidden md:flex items-center gap-8">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin, ArrowRight, ShieldCheck, BookOpen, TrendingUp, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
@@ -45,14 +46,15 @@ export default function RootLayout({
               
               {/* Brand & CTA Column */}
               <div className="lg:col-span-4">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded bg-white flex items-center justify-center">
-                    <span className="text-primary font-bold text-lg">R</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-bold tracking-tight text-lg leading-none">RISKWOOD</span>
-                    <span className="text-[9px] font-medium tracking-[0.2em] text-white/60">CONSULTING</span>
-                  </div>
+                <div className="mb-8">
+                  <Image 
+                    src="/rw-2.png" 
+                    alt="Riskwood Consulting Logo" 
+                    width={160} 
+                    height={80} 
+                    className="h-10 w-auto object-contain" 
+                    unoptimized 
+                  />
                 </div>
                 <h3 className="text-2xl font-black tracking-tight mb-4 uppercase">
                   Ready to Become <span className="text-accent">Audit Ready?</span>
