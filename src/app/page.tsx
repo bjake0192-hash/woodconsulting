@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen, HardHat, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen, HardHat, ChevronLeft, ChevronRight, Star, Plus, Minus } from "lucide-react";
 
 export const dynamic = "force-static";
 
@@ -68,7 +68,65 @@ const industries = [
   { title: "Retail", image: "/ind-retail.jpg" },
 ];
 
+const faqs = [
+  {
+    question: "How long does it typically take to achieve ISO certification?",
+    answer: "The timeline varies depending on your organization's size and complexity, but most of our clients achieve certification within 3 to 6 months. We map out a clear, structured timeline during the initial gap analysis."
+  },
+  {
+    question: "Do you guarantee certification?",
+    answer: "Yes. Our proven methodology and meticulous internal audit processes ensure that when we say you are ready, you will pass your external audit. We have a 98% first-time success rate."
+  },
+  {
+    question: "Are you the certification body?",
+    answer: "No, Riskwood is an independent consultancy. We act as your compliance partner to build and implement the required systems. Once ready, an independent UKAS-accredited body performs the final audit and issues your certificate."
+  },
+  {
+    question: "Do you provide templates or bespoke documentation?",
+    answer: "We do not use generic templates. Every policy, procedure, and management system is bespoke and crafted specifically around your unique operational requirements and business objectives."
+  },
+  {
+    question: "What happens after we get certified?",
+    answer: "Certification is just the beginning. Our 'Continuous Care' packages include ongoing internal audits, management reviews, and compliance support to ensure you breeze through your annual surveillance audits."
+  }
+];
+
+function FAQItem({ faq, isOpen, onClick }: { faq: typeof faqs[0], isOpen: boolean, onClick: () => void }) {
+  return (
+    <div className="border-b border-black/5 last:border-0">
+      <button
+        onClick={onClick}
+        className="w-full py-6 flex items-center justify-between gap-4 text-left group"
+      >
+        <span className="text-lg font-bold text-primary group-hover:text-accent transition-colors">
+          {faq.question}
+        </span>
+        <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
+          {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+        </div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <p className="pb-6 text-muted-foreground leading-relaxed">
+              {faq.answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function Home() {
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
@@ -199,36 +257,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Case Studies Section */}
+      {/* FAQ Section */}
       <section className="w-full px-6 py-24 bg-slate-50 border-t border-black/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">Case Studies</p>
-              <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tight">Proven Results. Real Impact.</h2>
-            </div>
-            <a href="/case-studies" className="kairo-button-outline">View All Case Studies</a>
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">Common Questions</p>
+            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tight mb-6">Frequently Asked Questions</h2>
+            <p className="text-muted-foreground">
+              Everything you need to know about our consultancy process, timelines, and how we guarantee your success.
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { cat: "Engineering", title: "ISO 9001 Certification Achieved in 12 Weeks", desc: "Delivered a fully tailored QMS and successfully achieved certification at first audit." },
-              { cat: "Manufacturing", title: "Integrated ISO 9001 & ISO 14001 Success", desc: "Streamlined processes and achieved dual certification, reducing non-conformities by 80%." },
-              { cat: "Construction", title: "ISO 45001 Implementation & Audit Readiness", desc: "Implemented an effective H&S management system and achieved audit readiness ahead of tender submissions." }
-            ].map((study, idx) => (
-              <div key={idx} className="kairo-card p-0 overflow-hidden flex flex-col group">
-                <div className="relative h-48 w-full bg-slate-200">
-                  <Image src={`/placeholder-case-${idx+1}.jpg`} alt={study.title} fill className="object-cover" unoptimized />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <p className="text-xs font-black text-accent uppercase tracking-wider mb-3">{study.cat}</p>
-                  <h3 className="text-xl font-black text-primary mb-4">{study.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-8 flex-grow">{study.desc}</p>
-                  <a href="#" className="text-xs font-black text-accent uppercase tracking-wider flex items-center gap-2 group-hover:text-primary transition-colors">
-                    Read Case Study <ArrowRight className="w-3 h-3" />
-                  </a>
-                </div>
-              </div>
+          <div className="bg-white rounded-[2rem] p-6 md:p-10 shadow-xl shadow-black/5 border border-black/5">
+            {faqs.map((faq, idx) => (
+              <FAQItem 
+                key={idx} 
+                faq={faq} 
+                isOpen={openFaqIndex === idx} 
+                onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)} 
+              />
             ))}
           </div>
         </div>
