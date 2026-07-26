@@ -56,15 +56,15 @@ const journeySteps = [
 ];
 
 const industries = [
-  { title: "Construction", image: "https://images.unsplash.com/photo-1541888086-464a9740a6b9?auto=format&fit=crop&w=800&q=80" },
-  { title: "Engineering", image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1af?auto=format&fit=crop&w=800&q=80" },
-  { title: "Manufacturing", image: "https://images.unsplash.com/photo-1565439399-52df03d2745e?auto=format&fit=crop&w=800&q=80" },
-  { title: "Logistics", image: "https://images.unsplash.com/photo-1586528116311-b154fe461159?auto=format&fit=crop&w=800&q=80" },
-  { title: "Healthcare", image: "https://images.unsplash.com/photo-1551076805-e16760c274f7?auto=format&fit=crop&w=800&q=80" },
+  { title: "Construction", image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" },
+  { title: "Engineering", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" },
+  { title: "Manufacturing", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" },
+  { title: "Logistics", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80" },
+  { title: "Healthcare", image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" },
   { title: "Facilities Management", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" },
   { title: "Technology", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" },
   { title: "Public Sector", image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80" },
-  { title: "Education", image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" },
+  { title: "Education", image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" },
   { title: "Retail", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" },
 ];
 
