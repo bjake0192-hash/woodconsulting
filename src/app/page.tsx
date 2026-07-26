@@ -68,16 +68,16 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full pt-20 pb-32 px-6 bg-slate-50 border-b border-black/5 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <section className="relative w-full min-h-[calc(100vh-5rem)] flex items-center px-6 py-12 md:py-0 bg-slate-50 border-b border-black/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary leading-[1.1] mb-6 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-primary leading-[1.1] mb-6 tracking-tight">
               Helping Businesses Achieve & Maintain Industry <span className="text-accent">Accreditation.</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
               Practical, expert support to help your organisation meet standards, pass audits and build a culture of compliance.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <a href="/contact" className="kairo-button justify-center">
                 Book a Consultation <ArrowRight className="w-4 h-4" />
               </a>
@@ -86,32 +86,32 @@ export default function Home() {
               </a>
             </div>
             
-            <div className="flex flex-wrap gap-8 md:gap-12 items-center">
+            <div className="flex flex-wrap gap-6 md:gap-10 items-center">
               <div>
-                <div className="flex items-center gap-2 text-2xl font-black text-primary mb-1">
-                  <ShieldCheck className="w-6 h-6 text-accent" />
+                <div className="flex items-center gap-2 text-xl md:text-2xl font-black text-primary mb-1">
+                  <ShieldCheck className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                   100+
                 </div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Businesses Supported</p>
+                <p className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase tracking-wider">Businesses Supported</p>
               </div>
               <div>
-                <div className="flex items-center gap-2 text-2xl font-black text-primary mb-1">
-                  <CheckCircle2 className="w-6 h-6 text-accent" />
+                <div className="flex items-center gap-2 text-xl md:text-2xl font-black text-primary mb-1">
+                  <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                   98%
                 </div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Audit Success Rate</p>
+                <p className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase tracking-wider">Audit Success Rate</p>
               </div>
               <div>
-                <div className="flex items-center gap-2 text-2xl font-black text-primary mb-1">
-                  <TrendingUp className="w-6 h-6 text-accent" />
+                <div className="flex items-center gap-2 text-xl md:text-2xl font-black text-primary mb-1">
+                  <TrendingUp className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                   15+
                 </div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Years Experience</p>
+                <p className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase tracking-wider">Years Experience</p>
               </div>
             </div>
           </div>
           
-          <div className="relative h-[500px] md:h-[600px] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/10">
+          <div className="relative w-full h-[350px] md:h-[450px] lg:h-[550px] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/10">
             <Image 
               src="/hero-consultants.jpg" 
               alt="Consultants working with clients" 
