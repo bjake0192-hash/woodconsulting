@@ -38,7 +38,7 @@ export default function Navbar() {
           <img 
             src="/rw-2.png" 
             alt="Riskwood Consulting Logo" 
-            className="h-16 md:h-20 w-auto object-contain group-hover:opacity-90 transition-opacity" 
+            className="h-32 md:h-40 w-auto object-contain shrink-0 group-hover:opacity-90 transition-opacity" 
           />
         </Link>
         
