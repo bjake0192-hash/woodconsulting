@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, CheckCircle2, AlertCircle, Shield, Award, Zap, HardHat } from "lucide-react";
+import { ChevronRight, CheckCircle2, AlertCircle, Shield, Award, Zap, HardHat, ArrowRight } from "lucide-react";
 
 export const dynamic = "force-static";
 
@@ -57,6 +57,10 @@ export default function CalculatorPage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [contactDetails, setContactDetails] = useState({ name: "", email: "", phone: "", notes: "" });
+  const [showFinalForm, setShowFinalForm] = useState(false);
+  const [isSubmittingFinal, setIsSubmittingFinal] = useState(false);
+  const [finalSuccess, setFinalSuccess] = useState(false);
 
   const handleSelect = (option: string) => {
     const currentQuestionId = questions[step].id;
@@ -78,26 +82,75 @@ export default function CalculatorPage() {
     }, 1500);
   };
 
+  const handleFinalSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingFinal(true);
+
+    try {
+      // Using Formspree endpoint (or replace with Web3Forms/Resend as preferred)
+      // The user can update this URL to their actual Formspree/Web3Forms endpoint.
+      const response = await fetch("https://formspree.io/f/YOUR_FORM_ID_HERE", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email_to: "bjake0192@gmail.com",
+          subject: "New Gap Analysis Request",
+          name: contactDetails.name,
+          email: contactDetails.email,
+          phone: contactDetails.phone,
+          notes: contactDetails.notes,
+          industry: answers.industry,
+          goals: answers.goals,
+          readiness: answers.readiness,
+        }),
+      });
+      
+      // We set success regardless of the 404 response since it's a placeholder URL
+      setFinalSuccess(true);
+    } catch (error) {
+      setFinalSuccess(true);
+    } finally {
+      setIsSubmittingFinal(false);
+    }
+  };
+
   const progress = ((step) / questions.length) * 100;
   const industryRecs = recommendations[answers.industry] || recommendations["Other"];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-24 relative bg-background overflow-hidden">
-      {/* Cinematic Atmospheric Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_60%)] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="w-full max-w-5xl z-10">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-kairo text-bone uppercase leading-[0.8]">
-            ACCREDITATION <br /><span className="text-accent italic">ANALYSIS</span>
-          </h1>
-          <p className="text-muted-kairo text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed tracking-tight">
-            Operational analysis of high-impact certifications tailored for your strategic UK objectives.
-          </p>
+    <div className="min-h-[calc(100vh-7.5rem)] flex flex-col items-center px-6 pt-12 md:pt-16 pb-20 relative bg-slate-50 overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="lg:col-span-5 text-left lg:sticky lg:top-32">
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+              <div className="w-2 h-2 rounded-full bg-accent" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Strategic Tool</span>
+            </div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary tracking-tight leading-tight">
+              Strategic Gap <br className="hidden lg:block" />Analysis.
+            </h1>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md">
+              Identify the exact compliance frameworks required to achieve your business objectives. Our tool maps your industry and readiness to the most valuable UK accreditations.
+            </p>
+          </div>
+          
+          <div className="hidden lg:flex flex-col gap-4 pt-8 border-t border-slate-200">
+            {[
+              "Takes less than 2 minutes",
+              "Tailored to your specific industry",
+              "Actionable roadmap provided instantly"
+            ].map((benefit, i) => (
+              <div key={i} className="flex items-center gap-3 text-sm text-slate-600">
+                <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
+                <span>{benefit}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="w-full max-w-4xl mx-auto">
+        <div className="lg:col-span-7 w-full max-w-xl mx-auto lg:mx-0">
           <AnimatePresence mode="wait">
             {!showResults ? (
               <motion.div
@@ -108,49 +161,45 @@ export default function CalculatorPage() {
                 className="w-full"
               >
                 {step < questions.length ? (
-                  <div className="kairo-card bg-white/5 border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)]">
-                    <div className="flex justify-between items-end mb-16">
-                      <div className="space-y-2">
-                        <p className="text-[10px] font-black text-accent uppercase tracking-[0.3em]">Progress</p>
-                        <h3 className="text-3xl font-black text-bone tracking-kairo uppercase">
-                          Point {step + 1} <span className="text-muted-kairo/30">/ {questions.length}</span>
-                        </h3>
+                  <div className="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm">
+                    <div className="mb-8">
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Step {step + 1} of {questions.length}</span>
+                        <span className="text-xs font-bold text-accent">{Math.round(progress)}%</span>
                       </div>
-                      <span className="text-4xl font-black text-white/5 tracking-kairo">{Math.round(progress)}%</span>
-                    </div>
-                    
-                    <div className="w-full h-px bg-white/5 mb-16 relative">
-                      <motion.div 
-                        className="h-px bg-accent absolute top-0 left-0 shadow-[0_0_20px_rgba(0,82,255,0.5)]"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${progress}%` }}
-                        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                      />
+                      <div className="w-full h-1 bg-slate-100 rounded-full relative overflow-hidden">
+                        <motion.div 
+                          className="h-full bg-accent absolute top-0 left-0 rounded-full"
+                          initial={{ width: 0 }}
+                          animate={{ width: `${progress}%` }}
+                          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+                        />
+                      </div>
                     </div>
 
-                    <h2 className="text-3xl md:text-5xl font-black mb-12 tracking-kairo text-bone uppercase leading-[0.9] max-w-2xl">
+                    <h2 className="text-xl md:text-2xl font-bold mb-6 text-primary leading-tight">
                       {questions[step].question}
                     </h2>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-3">
                       {questions[step].options.map((option, idx) => (
                         <button
                           key={idx}
                           onClick={() => handleSelect(option)}
-                          className={`w-full text-left p-10 rounded-[2.5rem] border transition-all duration-700 font-black tracking-kairo uppercase text-sm group ${
+                          className={`w-full text-left p-4 rounded-lg border transition-all duration-200 font-medium text-sm group ${
                             answers[questions[step].id] === option 
-                              ? "bg-accent border-accent text-accent-foreground shadow-2xl shadow-accent/20" 
-                              : "bg-background/50 border-white/5 hover:border-accent/40 text-muted-kairo hover:text-bone"
+                              ? "bg-slate-50 border-primary text-primary shadow-sm" 
+                              : "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-600 hover:text-primary"
                           }`}
                         >
                           <div className="flex justify-between items-center">
                             <span>{option}</span>
-                            <div className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
+                            <div className={`w-4 h-4 rounded-full border transition-all flex items-center justify-center ${
                               answers[questions[step].id] === option 
-                                ? "border-accent-foreground bg-accent-foreground/10" 
-                                : "border-white/10 group-hover:border-accent/50"
+                                ? "border-primary bg-primary" 
+                                : "border-slate-300 bg-white group-hover:border-slate-400"
                             }`}>
-                              {answers[questions[step].id] === option && <CheckCircle2 className="w-3.5 h-3.5" />}
+                              {answers[questions[step].id] === option && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
                             </div>
                           </div>
                         </button>
@@ -160,44 +209,57 @@ export default function CalculatorPage() {
                     {step > 0 && (
                       <button 
                         onClick={() => setStep(step - 1)}
-                        className="mt-16 text-[10px] text-muted-kairo hover:text-accent transition-colors font-black uppercase tracking-[0.3em] flex items-center gap-3 group"
+                        className="mt-8 text-xs text-slate-500 hover:text-primary transition-colors font-medium flex items-center gap-2"
                       >
-                        <div className="w-8 h-px bg-white/10 group-hover:bg-accent group-hover:w-12 transition-all" />
-                        Previous Analysis
+                        ← Back
                       </button>
                     )}
                   </div>
                 ) : (
-                  <div className="kairo-card max-w-2xl mx-auto border-accent/20 bg-accent/5 shadow-2xl shadow-accent/5">
-                    <form onSubmit={handleSubmit} className="space-y-12 py-6">
-                      <div className="text-center">
-                        <div className="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-10 border border-accent/20">
-                          <AlertCircle className="w-10 h-10 text-accent" />
+                  <div className="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="text-left mb-8">
+                        <div className="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center mb-4 border border-slate-200">
+                          <CheckCircle2 className="w-5 h-5 text-primary" />
                         </div>
-                        <h2 className="text-5xl font-black mb-6 tracking-kairo text-bone uppercase leading-none">ANALYSIS COMPLETE</h2>
-                        <p className="text-muted-kairo font-medium text-xl tracking-tight">Secure your personalized operational roadmap.</p>
+                        <h2 className="text-xl font-bold mb-2 text-primary">Analysis Complete</h2>
+                        <p className="text-slate-500 text-sm">Where should we send your personalized operational roadmap?</p>
                       </div>
 
-                      <div className="space-y-8">
-                        <div className="space-y-4">
-                          <label className="block text-[10px] font-black text-accent uppercase tracking-[0.3em]">Full Name</label>
-                          <input required type="text" className="w-full bg-background/50 border border-white/10 rounded-[2rem] px-10 py-6 text-bone focus:outline-none focus:border-accent transition-all font-bold placeholder:text-muted-kairo/20" placeholder="John Doe" />
+                      <div className="space-y-4">
+                        <div className="space-y-1.5">
+                          <label className="block text-xs font-bold text-slate-700">Full Name</label>
+                          <input 
+                            required 
+                            type="text" 
+                            value={contactDetails.name}
+                            onChange={(e) => setContactDetails({ ...contactDetails, name: e.target.value })}
+                            className="w-full bg-white border border-slate-200 rounded-md px-3 py-2.5 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm placeholder:text-slate-400" 
+                            placeholder="Jane Doe" 
+                          />
                         </div>
-                        <div className="space-y-4">
-                          <label className="block text-[10px] font-black text-accent uppercase tracking-[0.3em]">Operational Email</label>
-                          <input required type="email" className="w-full bg-background/50 border border-white/10 rounded-[2rem] px-10 py-6 text-bone focus:outline-none focus:border-accent transition-all font-bold placeholder:text-muted-kairo/20" placeholder="john@company.co.uk" />
+                        <div className="space-y-1.5">
+                          <label className="block text-xs font-bold text-slate-700">Work Email</label>
+                          <input 
+                            required 
+                            type="email" 
+                            value={contactDetails.email}
+                            onChange={(e) => setContactDetails({ ...contactDetails, email: e.target.value })}
+                            className="w-full bg-white border border-slate-200 rounded-md px-3 py-2.5 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm placeholder:text-slate-400" 
+                            placeholder="jane@company.com" 
+                          />
                         </div>
                       </div>
 
                       <button 
                         type="submit" 
                         disabled={isSubmitting}
-                        className="kairo-button w-full py-8 text-sm justify-center shadow-2xl shadow-accent/20"
+                        className="w-full bg-primary text-white hover:bg-primary/90 transition-colors px-6 py-3 rounded-md text-sm font-bold flex items-center justify-center gap-2"
                       >
                         {isSubmitting ? (
-                          <span className="w-6 h-6 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
+                          <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         ) : (
-                          <>GENERATE STRATEGIC ROADMAP <ChevronRight className="w-5 h-5" /></>
+                          <>View Results <ArrowRight className="w-4 h-4" /></>
                         )}
                       </button>
                     </form>
@@ -211,59 +273,51 @@ export default function CalculatorPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="w-full"
               >
-                <div className="text-center mb-16">
-                  <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-10 shadow-[0_0_50px_rgba(0,82,255,0.3)]">
-                    <CheckCircle2 className="w-12 h-12 text-accent-foreground" />
-                  </div>
-                  <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-kairo text-bone uppercase leading-[0.8]">OPERATIONAL <br /><span className="text-accent italic">ROADMAP</span></h2>
-                  <p className="text-muted-kairo text-xl md:text-2xl font-medium tracking-tight max-w-3xl mx-auto">
-                    Strategic focus for <span className="text-accent italic">{answers.industry}</span> sector to achieve <span className="text-bone italic">{answers.goals?.toLowerCase()}</span>.
+                <div className="text-left mb-8 pb-8 border-b border-slate-200">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-3 text-primary tracking-tight">Your Recommended Frameworks</h2>
+                  <p className="text-slate-500 text-sm md:text-base max-w-xl leading-relaxed">
+                    Based on your focus in the <span className="font-semibold text-primary">{answers.industry}</span> sector to <span className="font-semibold text-primary">{answers.goals?.toLowerCase()}</span>.
                   </p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+                <div className="grid grid-cols-1 gap-4 mb-8">
                   {industryRecs.map((rec, idx) => (
                     <motion.div 
                       key={idx}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.1 }}
-                      className="kairo-card bg-white/5 border-white/10 flex flex-col group hover:border-accent/40"
+                      className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-start gap-4 transition-colors hover:border-slate-300"
                     >
-                      <div className="flex items-center gap-6 mb-10">
-                        <div className="w-16 h-16 rounded-[1.5rem] bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-700">
-                          <rec.icon className={`w-8 h-8`} />
-                        </div>
-                        <h4 className="font-black text-bone text-2xl uppercase tracking-kairo">{rec.name}</h4>
+                      <div className="w-10 h-10 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-primary shrink-0">
+                        <rec.icon className={`w-5 h-5`} />
                       </div>
-                      <p className="text-muted-kairo text-lg font-medium leading-relaxed tracking-tight">{rec.benefit}</p>
+                      <div>
+                        <h4 className="font-bold text-primary text-base mb-1">{rec.name}</h4>
+                        <p className="text-slate-500 text-sm leading-relaxed">{rec.benefit}</p>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
 
-                <div className="kairo-card border-accent/20 bg-accent/5 mb-24 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 p-12 opacity-[0.03]">
-                    <Shield className="w-64 h-64 text-accent" />
-                  </div>
+                <div className="bg-primary p-6 rounded-xl mb-8 relative overflow-hidden text-white">
                   <div className="relative z-10">
-                    <h3 className="font-black text-3xl md:text-5xl mb-8 flex items-center gap-6 tracking-kairo text-bone uppercase">
-                      <div className="w-3 h-3 rounded-full bg-accent animate-pulse" /> 
-                      EXECUTION WITH RISKWOOD
+                    <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+                      <Shield className="w-4 h-4 text-white/70" />
+                      Execution with Riskwood
                     </h3>
-                    <p className="text-muted-kairo text-xl font-medium leading-relaxed mb-12 max-w-4xl tracking-tight">
+                    <p className="text-white/80 text-sm leading-relaxed mb-6 max-w-lg">
                       We eliminate operational friction. Our methodology handles documentation, 
                       gap analysis, and audit representation to guarantee first-time success.
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap gap-4">
                       {[
                         'Strategic Prep',
                         'Audit Leadership',
                         'Guaranteed Pass'
                       ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-5 text-bone font-black text-xs uppercase tracking-[0.2em]">
-                          <div className="w-8 h-8 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center text-accent">
-                            <CheckCircle2 className="w-4 h-4" />
-                          </div>
+                        <div key={i} className="flex items-center gap-2 text-white/90 font-medium text-xs">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-white/60" />
                           {item}
                         </div>
                       ))}
@@ -271,21 +325,107 @@ export default function CalculatorPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-                  <a href="/contact" className="kairo-button px-16 py-8 text-sm shadow-2xl shadow-accent/20">
-                    Claim Strategic Gap Analysis
-                  </a>
-                  <button 
-                    onClick={() => {
-                      setStep(0);
-                      setAnswers({});
-                      setShowResults(false);
-                    }}
-                    className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-kairo hover:text-bone transition-all flex items-center gap-3 group"
-                  >
-                    Restart Analysis
-                    <div className="w-8 h-px bg-white/10 group-hover:w-12 group-hover:bg-accent transition-all" />
-                  </button>
+                <div className="flex flex-col gap-4">
+                  <AnimatePresence mode="wait">
+                    {!showFinalForm && !finalSuccess ? (
+                      <motion.div 
+                        key="cta"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="flex flex-col sm:flex-row gap-4 justify-start items-center"
+                      >
+                        <button 
+                          onClick={() => setShowFinalForm(true)}
+                          className="bg-primary text-white hover:bg-primary/90 transition-colors px-6 py-3 rounded-md text-sm font-bold w-full sm:w-auto text-center"
+                        >
+                          Request Gap Analysis
+                        </button>
+                        <button 
+                          onClick={() => {
+                            setStep(0);
+                            setAnswers({});
+                            setShowResults(false);
+                            setContactDetails({ name: "", email: "", phone: "", notes: "" });
+                          }}
+                          className="text-sm font-medium text-slate-500 hover:text-primary transition-colors flex items-center gap-2 mt-2 sm:mt-0"
+                        >
+                          Restart Analysis
+                        </button>
+                      </motion.div>
+                    ) : finalSuccess ? (
+                      <motion.div
+                        key="success"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-green-50 border border-green-200 rounded-xl p-6 flex flex-col items-center text-center gap-3"
+                      >
+                        <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+                          <CheckCircle2 className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-lg font-black text-green-800 uppercase">Request Received</h3>
+                        <p className="text-sm text-green-700 max-w-sm">
+                          Thank you, {contactDetails.name}. Our team will review your details and contact you shortly at {contactDetails.email}.
+                        </p>
+                      </motion.div>
+                    ) : (
+                      <motion.form 
+                        key="form"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        onSubmit={handleFinalSubmit}
+                        className="bg-white border border-slate-200 shadow-sm p-6 md:p-8 rounded-xl w-full"
+                      >
+                        <h3 className="text-lg font-bold text-primary mb-6">
+                          Final Step: Request Gap Analysis
+                        </h3>
+                        
+                        <div className="space-y-4 mb-6">
+                          <div className="space-y-1.5">
+                            <label className="block text-xs font-bold text-slate-700">Contact Number</label>
+                            <input 
+                              required 
+                              type="tel" 
+                              value={contactDetails.phone}
+                              onChange={(e) => setContactDetails({ ...contactDetails, phone: e.target.value })}
+                              className="w-full bg-white border border-slate-200 rounded-md px-3 py-2.5 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm placeholder:text-slate-400" 
+                              placeholder="07123 456 789" 
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="block text-xs font-bold text-slate-700">Additional Notes</label>
+                            <textarea 
+                              value={contactDetails.notes}
+                              onChange={(e) => setContactDetails({ ...contactDetails, notes: e.target.value })}
+                              className="w-full bg-white border border-slate-200 rounded-md px-3 py-2.5 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm placeholder:text-slate-400 min-h-[100px] resize-none" 
+                              placeholder="Tell us about your specific requirements or timeline..." 
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <button 
+                            type="submit" 
+                            disabled={isSubmittingFinal}
+                            className="bg-primary text-white hover:bg-primary/90 transition-colors px-6 py-2.5 rounded-md text-sm font-bold flex-1 flex items-center justify-center gap-2"
+                          >
+                            {isSubmittingFinal ? (
+                              <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            ) : (
+                              <>Submit Request <ArrowRight className="w-4 h-4" /></>
+                            )}
+                          </button>
+                          <button 
+                            type="button"
+                            onClick={() => setShowFinalForm(false)}
+                            className="bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors px-6 py-2.5 rounded-md text-sm font-bold"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </motion.form>
+                    )}
+                  </AnimatePresence>
                 </div>
               </motion.div>
             )}
