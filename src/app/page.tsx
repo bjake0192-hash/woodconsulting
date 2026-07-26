@@ -62,6 +62,10 @@ const industries = [
   { title: "Logistics", image: "/ind-logistics.jpg" },
   { title: "Healthcare", image: "/ind-healthcare.jpg" },
   { title: "Facilities Management", image: "/ind-facilities.jpg" },
+  { title: "Technology", image: "/ind-tech.jpg" },
+  { title: "Public Sector", image: "/ind-public.jpg" },
+  { title: "Education", image: "/ind-education.jpg" },
+  { title: "Retail", image: "/ind-retail.jpg" },
 ];
 
 export default function Home() {
@@ -171,17 +175,20 @@ export default function Home() {
       </section>
 
       {/* Industries Section */}
-      <section className="w-full px-6 py-24 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+      <section className="w-full py-24 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-16">
+          <div className="text-center">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">Industries We Support</p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {industries.map((ind, idx) => (
-              <a key={idx} href="/industries" className="relative h-64 rounded-xl overflow-hidden group">
-                <Image src={ind.image} alt={ind.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" unoptimized />
-                <div className="absolute inset-0 bg-primary/70 group-hover:bg-primary/50 transition-colors" />
+        </div>
+        
+        <div className="relative w-full flex overflow-hidden group">
+          <div className="flex animate-[marquee_40s_linear_infinite] group-hover:[animation-play-state:paused] w-max">
+            {/* Double the array for seamless looping */}
+            {[...industries, ...industries].map((ind, idx) => (
+              <a key={idx} href="/industries" className="relative h-64 w-64 mx-3 rounded-xl overflow-hidden shrink-0 group/card">
+                <Image src={ind.image} alt={ind.title} fill className="object-cover transition-transform duration-700 group-hover/card:scale-110" unoptimized />
+                <div className="absolute inset-0 bg-primary/70 group-hover/card:bg-primary/50 transition-colors" />
                 <div className="absolute inset-0 p-6 flex flex-col items-center justify-end text-center">
                   <ShieldCheck className="w-8 h-8 text-accent mb-4" />
                   <h4 className="text-white font-bold text-sm tracking-wide">{ind.title}</h4>
