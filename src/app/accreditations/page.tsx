@@ -114,31 +114,48 @@ export default function AccreditationsPage() {
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full pt-32 pb-20 px-6 bg-primary overflow-hidden">
-        {/* Background Texture */}
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-transparent pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
+      <section className="relative w-full min-h-[calc(100vh-12rem)] flex items-center px-6 py-12 md:py-0 bg-slate-50 border-b border-black/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
             <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-6">Our Services</p>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-8 text-white leading-[1.1]">
-              End-to-End <span className="text-accent">Accreditation</span> Support.
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-primary tracking-tight mb-8 leading-[1.2]">
+              Comprehensive <br className="hidden md:block" /><span className="text-accent">Accreditation</span> Services.
             </h1>
-            <p className="text-white/70 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed font-medium mb-10">
-              We move beyond simple manuals. We integrate with your team through 
-              a structured, high-standard process that guarantees certification and operational excellence.
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
+              Expert guidance and tailored frameworks to ensure your business achieves and maintains industry-leading compliance.
             </p>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <a href="/contact" className="kairo-button w-full sm:w-auto">
+                Schedule a Consultation
+              </a>
+              <a href="#directory" className="kairo-button-outline w-full sm:w-auto">
+                View Directory
+              </a>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+            className="relative w-full md:w-[120%] h-[350px] md:h-[450px] lg:h-[550px] rounded-l-[2rem] rounded-r-none md:-right-6 lg:-right-12 overflow-hidden shadow-2xl shadow-black/10"
+          >
+            {/* TODO: Add professional placeholder image /services-hero.jpg */}
+            <img 
+              src="https://images.unsplash.com/photo-1552581236-e31573ddac28?auto=format&fit=crop&w=1200&q=80" 
+              alt="Consulting meeting regarding accreditation" 
+              className="w-full h-full object-cover" 
+            />
           </motion.div>
         </div>
       </section>
 
       {/* Interactive Directory Section */}
-      <section className="w-full py-24 px-6 bg-slate-50 border-b border-black/5">
+      <section id="directory" className="w-full py-24 px-6 bg-slate-50 border-b border-black/5">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
