@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAFAFA;
-  --foreground: #111111;
-  --card-bg: rgba(255, 255, 255, 0.7);
-  --card-border: rgba(0, 0, 0, 0.08);
-  --accent: #0052FF;
+  --background: #FFFFFF;
+  --foreground: #0f172a;
+  --card-bg: #FFFFFF;
+  --card-border: #e2e8f0;
+  --accent: #10b981; /* Corporate Green */
   --accent-foreground: #FFFFFF;
-  --muted: #E4E4E7;
-  --muted-foreground: #71717A;
+  --primary: #0f172a; /* Dark Navy */
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
 }
 
 @theme inline {
@@ -16,12 +17,13 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-primary: var(--primary);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
-  --radius-kairo: 1.5rem;
-  --radius-kairo-lg: 2rem;
+  --radius-kairo: 0.5rem; /* Reduced for more corporate look */
+  --radius-kairo-lg: 1rem;
 }
 
 @keyframes shimmer {
@@ -50,22 +52,38 @@ body {
 .kairo-button {
   background: var(--accent);
   color: var(--accent-foreground);
-  border-radius: 9999px;
+  border-radius: 4px;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   border: 1px solid transparent;
-  box-shadow: 0 4px 12px rgba(0, 82, 255, 0.2);
 }
 
 .kairo-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 82, 255, 0.3);
+  background: #059669; /* Darker green */
+}
+
+.kairo-button-outline {
+  background: transparent;
+  color: var(--foreground);
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #cbd5e1;
+}
+
+.kairo-button-outline:hover {
+  border-color: var(--foreground);
+  background: #f8fafc;
 }
 
 .kairo-card {
@@ -73,18 +91,17 @@ body {
   border-radius: var(--radius-kairo);
   padding: 2rem;
   border: 1px solid var(--card-border);
-  box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.03);
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease-in-out;
 }
 
 .kairo-card:hover {
-  border-color: rgba(0, 0, 0, 0.15);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .tracking-kairo {
-  letter-spacing: -0.04em;
+  letter-spacing: -0.01em; /* Less aggressive tracking */
 }
 
 .leading-kairo {

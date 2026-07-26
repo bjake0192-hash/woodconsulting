@@ -1,335 +1,227 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen, HardHat } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, TrendingUp, BookOpen, HardHat, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 export const dynamic = "force-static";
 
-const heroAccreditations = [
-  { id: "chas", title: "CHAS", icon: HardHat, color: "text-yellow-500" },
-  { id: "avetta", title: "Avetta", image: "/Avetta-Logo.webp" },
-  { id: "niceic", title: "NICEIC", image: "/NICEIC-logo.png" },
-  { id: "iso-9001", title: "ISO 9001", image: "/iso9001.png" },
-  { id: "iso-27001", title: "ISO 27001", image: "/iso27001.webp" },
-  { id: "constructionline", title: "Constructionline", image: "/Constructionline-Gold-Logo.png" },
-  { id: "safecontractor", title: "SafeContractor", image: "/safecontractor.png" },
-  { id: "cyber-essentials", title: "Cyber Essentials", image: "/cyber essentials.png" },
-];
-
-function HeroBubble({ item, index }: { item: any; index: number }) {
-  const Icon = item.icon;
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 + index * 0.1 }}
-      className="w-20 h-20 rounded-full bg-white/40 backdrop-blur-xl flex items-center justify-center border border-white/80 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.05),inset_0_2px_4px_rgba(255,255,255,0.5)] hover:shadow-[0_8px_24px_-4px_rgba(0,82,255,0.15)] hover:bg-white/60 hover:border-accent/30 transition-all duration-300 group cursor-pointer shrink-0 p-4"
-    >
-      <div className="w-full h-full relative flex items-center justify-center">
-        {item.image ? (
-          <Image 
-            src={item.image} 
-            alt={item.title} 
-            fill 
-            className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" 
-            unoptimized 
-          />
-        ) : Icon ? (
-          <Icon strokeWidth={1.5} className={`w-full h-full ${item.color} filter grayscale group-hover:grayscale-0 transition-all duration-500`} />
-        ) : null}
-      </div>
-    </motion.div>
-  );
-}
-
-const features = [
+const services = [
   {
-    title: "ISO CERTIFICATIONS",
-    description: "Achieve ISO 9001, 14001, and 27001 with our precision-engineered compliance framework.",
-    icon: <ShieldCheck className="w-5 h-5" />
+    title: "ISO 9001",
+    description: "Quality Management Systems",
+    icon: ShieldCheck,
   },
   {
-    title: "INDUSTRY SPECIFIC",
-    description: "Authoritative guidance for Construction (CHAS), Healthcare, and Tech sectors in the UK.",
-    icon: <BookOpen className="w-5 h-5" />
+    title: "ISO 14001",
+    description: "Environmental Management",
+    icon: BookOpen,
   },
   {
-    title: "CONTINUOUS COMPLIANCE",
-    description: "Operational excellence maintained through automated tracking and strategic audits.",
-    icon: <TrendingUp className="w-5 h-5" />
+    title: "ISO 45001",
+    description: "Health & Safety Management",
+    icon: HardHat,
+  },
+  {
+    title: "Internal Audits",
+    description: "Independent audits to ensure preparedness and compliance",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Gap Analysis",
+    description: "Identify gaps and create a clear path to certification",
+    icon: TrendingUp,
+  },
+  {
+    title: "Documentation",
+    description: "Policy, procedure and system documentation that works for you",
+    icon: BookOpen,
+  },
+  {
+    title: "Ongoing Compliance Support",
+    description: "Continuous support to maintain compliance and drive improvement",
+    icon: ShieldCheck,
   }
 ];
 
-const steps = [
-  { number: "01", title: "GAP ANALYSIS", desc: "Precise identification of your compliance trajectory." },
-  { number: "02", title: "IMPLEMENTATION", desc: "Seamless deployment of high-standard documentation." },
-  { number: "03", title: "INTERNAL AUDIT", desc: "Strategic pre-assessment to guarantee first-time success." },
-  { number: "04", title: "CERTIFICATION", desc: "Achievement of your official UK accreditation badge." }
+const journeySteps = [
+  { number: "1", title: "Initial Assessment", desc: "Understand your business and objectives" },
+  { number: "2", title: "Gap Analysis", desc: "Identify gaps against the required standard" },
+  { number: "3", title: "Documentation & Implementation", desc: "Develop and implement bespoke management systems" },
+  { number: "4", title: "Internal Audit", desc: "Evaluate readiness and ensure compliance" },
+  { number: "5", title: "Certification Audit", desc: "Support through the external certification audit" },
+  { number: "6", title: "Certification Achieved", desc: "Celebrate success and embed best practices" },
+  { number: "7", title: "Surveillance & Improvement", desc: "Ongoing support for continuous improvement" }
+];
+
+const industries = [
+  { title: "Construction", image: "/ind-construction.jpg" },
+  { title: "Engineering", image: "/ind-engineering.jpg" },
+  { title: "Manufacturing", image: "/ind-manufacturing.jpg" },
+  { title: "Logistics", image: "/ind-logistics.jpg" },
+  { title: "Healthcare", image: "/ind-healthcare.jpg" },
+  { title: "Facilities Management", image: "/ind-facilities.jpg" },
 ];
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center w-full bg-background min-h-screen">
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-24 overflow-hidden">
-        {/* Premium Background Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-        
-        {/* Cinematic Atmospheric Glows */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[150px] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto text-center z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="flex items-center gap-4 justify-center mb-8"
-          >
-            <div className="h-[1px] w-8 bg-accent/40" />
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">UK's Premier Risk Management</span>
-            <div className="h-[1px] w-8 bg-accent/40" />
-          </motion.div>
-
-          <motion.h1 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 1, ease: [0.23, 1, 0.32, 1] }}
-            className="text-5xl md:text-7xl font-black tracking-kairo mb-10 leading-[0.8] text-bone uppercase"
-          >
-            Master the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600 italic pr-2">Standard</span>
-          </motion.h1>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="max-w-3xl mx-auto mb-16"
-          >
-            <p className="text-lg md:text-xl text-muted-kairo mb-12 leading-relaxed font-medium tracking-tight">
-              We eliminate the friction of UK compliance. High-standard <br className="hidden md:block" />
-              accreditations delivered through strategic operational excellence.
+      {/* Hero Section */}
+      <section className="relative w-full pt-20 pb-32 px-6 bg-slate-50 border-b border-black/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary leading-[1.1] mb-6 tracking-tight">
+              Helping Businesses Achieve & Maintain Industry <span className="text-accent">Accreditation.</span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg leading-relaxed">
+              Practical, expert support to help your organisation meet standards, pass audits and build a culture of compliance.
             </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a href="/accreditations" className="kairo-button px-10 py-5 group shadow-2xl shadow-accent/30 relative overflow-hidden">
-                <span className="relative z-10 flex items-center gap-2">
-                  Explore Services
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover:animate-[shimmer_1.5s_infinite]" />
+            <div className="flex flex-col sm:flex-row gap-4 mb-16">
+              <a href="/contact" className="kairo-button justify-center">
+                Book a Consultation <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="/calculator" className="kairo-button !bg-transparent !border-black/10 hover:!border-accent !text-muted-kairo hover:!text-accent px-10 py-5 group">
-                <span className="flex items-center gap-2">
-                  Strategic Analysis
-                  <TrendingUp className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                </span>
+              <a href="/accreditations" className="kairo-button-outline justify-center">
+                Our Services
               </a>
             </div>
-          </motion.div>
-
-          {/* Trust Bar Section */}
-          <div className="pt-16 border-t border-black/5">
-            <p className="text-[9px] font-black uppercase tracking-[0.3em] text-muted-kairo mb-8">
-              Accredited & Recognised By
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60 hover:opacity-100 transition-opacity duration-500">
-              {heroAccreditations.map((item, i) => (
-                <HeroBubble key={item.id} item={item} index={i} />
-              ))}
-            </div>
-            <p className="mt-8 text-[9px] font-medium text-muted-kairo/60 italic">
-              Riskwood provides strategic consultancy to help UK businesses achieve and maintain these official standards.
-            </p>
-          </div>
-        </div>
-
-        {/* Floating Background Elements */}
-        <motion.div 
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 -left-20 w-64 h-64 bg-accent/10 rounded-full blur-[100px] pointer-events-none"
-        />
-      </section>
-
-      {/* Bento Grid Services Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-24">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
-          <div className="max-w-2xl">
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">Expertise</p>
-            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-kairo text-bone uppercase leading-[0.85]">
-              Strategic <br /> <span className="text-accent italic">Solutions</span>
-            </h2>
-          </div>
-          <div className="pb-4">
-            <a href="/accreditations" className="kairo-button !bg-transparent !border-black/10 hover:!border-accent !text-bone hover:!text-accent">
-              View All Directory
-            </a>
-          </div>
-        </div>
-        
-        <div className="bento-grid">
-          {/* Large Featured Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="col-span-12 md:col-span-8 kairo-card bg-gradient-to-br from-black/[0.03] to-transparent relative group overflow-hidden p-0"
-          >
-            <div className="absolute inset-0 w-full h-full hidden md:block">
-              <Image 
-                src="/hero-corporate.jpg" 
-                alt="Corporate Architecture" 
-                fill 
-                className="object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000" 
-                unoptimized 
-              />
-              {/* TODO: Item 2 - Replace with self-hosted static image /public/hero-corporate.jpg */}
-              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent" />
-            </div>
             
-            <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:opacity-20 transition-opacity z-10">
-              <ShieldCheck className="w-40 h-40 text-accent" />
-            </div>
-            <div className="relative z-10 h-full flex flex-col justify-between min-h-[350px] p-8 md:p-10 w-full md:w-2/3">
+            <div className="flex flex-wrap gap-8 md:gap-12 items-center">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center mb-8 text-accent-foreground shadow-xl shadow-accent/20">
-                  <ShieldCheck className="w-6 h-6" />
+                <div className="flex items-center gap-2 text-2xl font-black text-primary mb-1">
+                  <ShieldCheck className="w-6 h-6 text-accent" />
+                  100+
                 </div>
-                <h3 className="text-3xl font-black mb-4 tracking-kairo text-bone uppercase">ISO Accreditations</h3>
-                <p className="text-muted-kairo text-lg leading-relaxed font-medium max-w-xl">
-                  {/* TODO: Item 8 - Rewrite jargon-heavy copy with concrete specifics (timelines, deliverables) */}
-                  Precision-engineered frameworks for ISO 9001, 14001, and 27001. 
-                  We handle the complexity, you claim the authority.
-                </p>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Businesses Supported</p>
               </div>
-              <div className="flex gap-4 mt-10">
-                {['Audit Ready', 'Documentation', 'GAP Analysis'].map((tag, i) => (
-                  <span key={i} className="px-4 py-1.5 rounded-full bg-black/[0.03] border border-black/[0.03] text-[10px] font-bold uppercase tracking-widest text-muted-kairo">
-                    {tag}
-                  </span>
-                ))}
+              <div>
+                <div className="flex items-center gap-2 text-2xl font-black text-primary mb-1">
+                  <CheckCircle2 className="w-6 h-6 text-accent" />
+                  98%
+                </div>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Audit Success Rate</p>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Smaller Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="col-span-12 md:col-span-4 kairo-card border-accent/30 bg-accent/10"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8 text-accent">
-              <BookOpen className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-black mb-3 tracking-kairo text-bone uppercase">Industry Specific</h3>
-            <p className="text-muted-kairo text-sm leading-relaxed font-medium mb-6">
-              {/* TODO: Item 8 - Rewrite jargon-heavy copy with concrete specifics */}
-              Authoritative guidance for Construction (CHAS), Healthcare, and Tech sectors.
-            </p>
-            <a href="/accreditations" className="text-[10px] font-black uppercase tracking-widest text-accent flex items-center gap-2 group">
-              Learn More <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="col-span-12 md:col-span-4 kairo-card"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8 text-accent">
-              <TrendingUp className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-black mb-3 tracking-kairo text-bone uppercase">Continuous Care</h3>
-            <p className="text-muted-kairo text-sm leading-relaxed font-medium mb-6">
-              {/* TODO: Item 8 - Rewrite jargon-heavy copy with concrete specifics */}
-              Operational excellence maintained through automated tracking and strategic audits.
-            </p>
-            <div className="h-1 w-full bg-black/[0.03] rounded-full overflow-hidden">
-              <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: '100%' }}
-                transition={{ duration: 2 }}
-                className="h-full bg-accent/30"
-              />
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="col-span-12 md:col-span-8 kairo-card bg-black/[0.03] border-black/[0.03] group hover:border-accent/30 overflow-hidden relative"
-          >
-            <div className="absolute inset-0 w-full h-full opacity-10 mix-blend-overlay pointer-events-none">
-              <Image 
-                src="/strategic-bg.jpg"
-                alt="Abstract Background"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                unoptimized
-              />
-              {/* TODO: Item 2 - Replace with self-hosted static image /public/strategic-bg.jpg */}
-            </div>
-            <div className="flex flex-col md:flex-row gap-10 items-center h-full relative z-10">
-              <div className="flex-1">
-                <h3 className="text-2xl font-black mb-4 tracking-kairo text-bone uppercase">Strategic Analysis</h3>
-                <p className="text-muted-kairo text-base leading-relaxed font-medium mb-8">
-                  {/* TODO: Item 8 - Rewrite jargon-heavy copy with concrete specifics */}
-                  Not sure where to start? Our interactive calculator identifies 
-                  the most impactful certifications for your growth trajectory.
-                </p>
-                <a href="/calculator" className="kairo-button">
-                  Run Analysis
-                </a>
-              </div>
-              <div className="flex-1 grid grid-cols-2 gap-4 w-full">
-                {[1, 2, 3, 4].map((_, i) => (
-                  <div key={i} className="aspect-square rounded-2xl bg-black/[0.03] border border-black/[0.03] flex items-center justify-center group-hover:bg-accent/10 transition-colors">
-                    <CheckCircle2 className="w-6 h-6 text-black/10 group-hover:text-accent transition-colors" />
-                  </div>
-                ))}
+              <div>
+                <div className="flex items-center gap-2 text-2xl font-black text-primary mb-1">
+                  <TrendingUp className="w-6 h-6 text-accent" />
+                  15+
+                </div>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Years Experience</p>
               </div>
             </div>
-          </motion.div>
+          </div>
+          
+          <div className="relative h-[500px] md:h-[600px] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/10">
+            <Image 
+              src="/hero-consultants.jpg" 
+              alt="Consultants working with clients" 
+              fill 
+              className="object-cover" 
+              unoptimized 
+            />
+            {/* TODO: Upload /public/hero-consultants.jpg */}
+          </div>
         </div>
       </section>
 
-      {/* Process Section with Refined Steps */}
-      <section className="w-full px-6 py-24 mb-10">
-        <div className="max-w-7xl auto">
-          <div className="text-center mb-24">
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">Methodology</p>
-            <h2 className="text-4xl md:text-7xl font-black tracking-kairo text-bone uppercase leading-[0.8]">
-              Operational <br /> <span className="text-accent italic">Precision</span>
-            </h2>
+      {/* Services Section */}
+      <section className="w-full px-6 py-24 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">Our Services</p>
+            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tight">End-to-End Accreditation Support</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((step, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="relative p-8 rounded-[2rem] bg-black/[0.03] border border-black/[0.03] group hover:border-accent/30 transition-all"
-              >
-                <span className="text-5xl font-black text-black/[0.03] group-hover:text-accent/10 transition-colors tracking-kairo absolute top-6 right-6 leading-none">
-                  {step.number}
-                </span>
-                <div className="relative z-10">
-                  <h4 className="text-lg font-black mb-3 tracking-kairo text-bone uppercase pt-10">{step.title}</h4>
-                  <p className="text-muted-kairo text-xs font-medium leading-relaxed">{step.desc}</p>
+            {services.map((service, idx) => (
+              <a key={idx} href="/accreditations" className="kairo-card group flex flex-col items-start hover:border-accent">
+                <div className="w-12 h-12 rounded-lg bg-slate-50 flex items-center justify-center mb-6 text-primary group-hover:text-accent transition-colors">
+                  <service.icon className="w-6 h-6" />
                 </div>
-                <div className="mt-8 h-px w-full bg-black/10 group-hover:bg-accent/30 transition-colors" />
-              </motion.div>
+                <h3 className="text-lg font-black text-primary mb-2">{service.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">{service.description}</p>
+                <ArrowRight className="w-5 h-5 text-accent opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Journey Section */}
+      <section className="w-full px-6 py-24 bg-slate-50 border-y border-black/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">The Accreditation Journey</p>
+          </div>
+          
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8 relative">
+            <div className="hidden md:block absolute top-6 left-12 right-12 h-[2px] bg-slate-200 border-dashed border-t-2 border-slate-300 z-0" />
+            
+            {journeySteps.map((step, idx) => (
+              <div key={idx} className="flex-1 flex flex-col items-center text-center relative z-10">
+                <div className="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center font-black text-xl mb-6 shadow-lg shadow-accent/20">
+                  {step.number}
+                </div>
+                <h4 className="font-bold text-primary text-sm mb-2 max-w-[120px]">{step.title}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed max-w-[140px]">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Section */}
+      <section className="w-full px-6 py-24 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">Industries We Support</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {industries.map((ind, idx) => (
+              <a key={idx} href="/industries" className="relative h-64 rounded-xl overflow-hidden group">
+                <Image src={ind.image} alt={ind.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" unoptimized />
+                <div className="absolute inset-0 bg-primary/70 group-hover:bg-primary/50 transition-colors" />
+                <div className="absolute inset-0 p-6 flex flex-col items-center justify-end text-center">
+                  <ShieldCheck className="w-8 h-8 text-accent mb-4" />
+                  <h4 className="text-white font-bold text-sm tracking-wide">{ind.title}</h4>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies Section */}
+      <section className="w-full px-6 py-24 bg-slate-50 border-t border-black/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">Case Studies</p>
+              <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tight">Proven Results. Real Impact.</h2>
+            </div>
+            <a href="/case-studies" className="kairo-button-outline">View All Case Studies</a>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { cat: "Engineering", title: "ISO 9001 Certification Achieved in 12 Weeks", desc: "Delivered a fully tailored QMS and successfully achieved certification at first audit." },
+              { cat: "Manufacturing", title: "Integrated ISO 9001 & ISO 14001 Success", desc: "Streamlined processes and achieved dual certification, reducing non-conformities by 80%." },
+              { cat: "Construction", title: "ISO 45001 Implementation & Audit Readiness", desc: "Implemented an effective H&S management system and achieved audit readiness ahead of tender submissions." }
+            ].map((study, idx) => (
+              <div key={idx} className="kairo-card p-0 overflow-hidden flex flex-col group">
+                <div className="relative h-48 w-full bg-slate-200">
+                  <Image src={`/placeholder-case-${idx+1}.jpg`} alt={study.title} fill className="object-cover" unoptimized />
+                </div>
+                <div className="p-8 flex flex-col flex-grow">
+                  <p className="text-xs font-black text-accent uppercase tracking-wider mb-3">{study.cat}</p>
+                  <h3 className="text-xl font-black text-primary mb-4">{study.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-8 flex-grow">{study.desc}</p>
+                  <a href="#" className="text-xs font-black text-accent uppercase tracking-wider flex items-center gap-2 group-hover:text-primary transition-colors">
+                    Read Case Study <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
             ))}
           </div>
         </div>

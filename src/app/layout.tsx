@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight, ShieldCheck, BookOpen, TrendingUp, CheckCircle2 } from "lucide-react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,117 +32,132 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="antialiased min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-accent selection:text-accent-foreground">
-        {/* Floating Pill Navigation */}
-        <div className="fixed top-8 w-full z-50 px-6 flex justify-center pointer-events-none">
-          <nav className="glass-panel pointer-events-auto flex items-center gap-2 p-2 rounded-full shadow-2xl shadow-black/50 border-white/10">
-            <div className="flex items-center gap-8 px-6 py-2">
-              <a href="/" className="flex items-center gap-2 group">
-                <div className="w-7 h-7 rounded-full bg-accent flex items-center justify-center transition-transform duration-500 group-hover:rotate-12">
-                  <span className="text-accent-foreground font-bold text-xs">R</span>
-                </div>
-                <span className="font-bold tracking-kairo text-sm text-foreground">RISKWOOD</span>
-              </a>
-              
-              <div className="hidden md:flex items-center gap-8 text-[11px] font-bold uppercase tracking-[0.15em] text-muted-kairo">
-                <a href="/accreditations" className="hover:text-accent transition-colors">Accreditations</a>
-                <a href="/news" className="hover:text-accent transition-colors">Insights</a>
-                <a href="/calculator" className="hover:text-accent transition-colors">Calculator</a>
+        {/* Corporate Navigation Header */}
+        <header className="w-full bg-primary text-white border-b border-white/10 z-50 sticky top-0">
+          <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="/" className="flex items-center gap-3 group">
+              <div className="w-8 h-8 rounded bg-white flex items-center justify-center">
+                <span className="text-primary font-bold text-lg">R</span>
               </div>
-            </div>
-
-            <a href="/contact" className="kairo-button !py-2.5 !px-6 !text-[11px] shadow-lg shadow-accent/20">
-              Get Started
+              <div className="flex flex-col">
+                <span className="font-bold tracking-tight text-lg leading-none">RISKWOOD</span>
+                <span className="text-[9px] font-medium tracking-[0.2em] text-white/60">CONSULTING</span>
+              </div>
             </a>
-          </nav>
-        </div>
+            
+            <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+              <a href="/" className="text-accent hover:text-accent transition-colors">HOME</a>
+              <a href="/accreditations" className="text-white/80 hover:text-white transition-colors">SERVICES</a>
+              <a href="/industries" className="text-white/80 hover:text-white transition-colors">INDUSTRIES</a>
+              <a href="/case-studies" className="text-white/80 hover:text-white transition-colors">CASE STUDIES</a>
+              <a href="/about" className="text-white/80 hover:text-white transition-colors">ABOUT</a>
+              <a href="/news" className="text-white/80 hover:text-white transition-colors">RESOURCES</a>
+            </nav>
+
+            <a href="/contact" className="hidden md:inline-flex border border-accent text-accent hover:bg-accent hover:text-white transition-all px-6 py-2 rounded text-xs font-bold uppercase tracking-wider">
+              Contact Us
+            </a>
+          </div>
+        </header>
         
         <main className="flex-grow">
           {children}
         </main>
 
-        <footer className="pt-20 pb-10 bg-background relative overflow-hidden border-t border-black/5">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-              {/* Brand Column */}
-              <div className="md:col-span-6">
-                <div className="flex items-center gap-3 mb-6 group">
-                  <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-                    <span className="text-accent-foreground font-bold text-sm">R</span>
-                  </div>
-                  <a href="/" className="font-black tracking-kairo text-xl text-foreground uppercase">RISKWOOD</a>
+        <footer className="bg-primary text-white">
+          {/* Pre-footer CTA */}
+          <div className="max-w-7xl mx-auto px-6 py-16 border-b border-white/10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2 uppercase">Ready to Become</h2>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-accent mb-6 uppercase">Audit Ready?</h2>
+              <p className="text-white/70 mb-8 max-w-md">Let's build a stronger, compliant and more resilient business—together.</p>
+              <a href="/contact" className="kairo-button inline-flex">
+                Schedule a Consultation <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center mb-4 text-accent">
+                  <ShieldCheck className="w-5 h-5" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-black tracking-kairo text-bone leading-tight uppercase mb-8 max-w-lg">
-                  Redefining operational <br />
-                  <span className="text-accent italic">Authority</span> in the UK.
-                </h3>
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-4 group cursor-pointer">
-                    <div className="w-10 h-10 rounded-2xl bg-black/[0.03] border border-black/[0.03] flex items-center justify-center group-hover:bg-accent transition-colors">
-                      <Mail className="w-4 h-4 text-muted-kairo group-hover:text-accent-foreground" />
-                    </div>
-                    <div>
-                      <p className="text-[9px] font-bold uppercase tracking-widest text-muted-kairo mb-0.5">Inquiries</p>
-                      <a href="mailto:hello@riskwood.co.uk" className="text-sm font-bold text-bone hover:text-accent transition-colors tracking-tight">
-                        hello@riskwood.co.uk
-                      </a>
-                    </div>
+                <h4 className="font-bold mb-2">Expert Guidance</h4>
+                <p className="text-sm text-white/60">Practical advice from experienced lead auditors.</p>
+              </div>
+              <div>
+                <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center mb-4 text-accent">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+                <h4 className="font-bold mb-2">Tailored Solutions</h4>
+                <p className="text-sm text-white/60">Solutions built around your business and industry.</p>
+              </div>
+              <div>
+                <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center mb-4 text-accent">
+                  <TrendingUp className="w-5 h-5" />
+                </div>
+                <h4 className="font-bold mb-2">Fixed Fee Approach</h4>
+                <p className="text-sm text-white/60">Transparent pricing with no hidden surprises.</p>
+              </div>
+              <div>
+                <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center mb-4 text-accent">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
+                <h4 className="font-bold mb-2">Long-Term Partnership</h4>
+                <p className="text-sm text-white/60">Ongoing support to help you stay compliant and grow.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 py-12">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+              <div className="md:col-span-1">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-8 rounded bg-white flex items-center justify-center">
+                    <span className="text-primary font-bold text-lg">R</span>
                   </div>
-                  <div className="flex items-center gap-4 group cursor-pointer">
-                    <div className="w-10 h-10 rounded-2xl bg-black/[0.03] border border-black/[0.03] flex items-center justify-center group-hover:bg-accent transition-colors">
-                      <Phone className="w-4 h-4 text-muted-kairo group-hover:text-accent-foreground" />
-                    </div>
-                    <div>
-                      <p className="text-[9px] font-bold uppercase tracking-widest text-muted-kairo mb-0.5">Support</p>
-                      <a href="tel:+442071234567" className="text-sm font-bold text-bone hover:text-accent transition-colors tracking-tight">
-                        +44 (0) 20 7123 4567
-                      </a>
-                    </div>
+                  <div className="flex flex-col">
+                    <span className="font-bold tracking-tight text-lg leading-none">RISKWOOD</span>
+                    <span className="text-[9px] font-medium tracking-[0.2em] text-white/60">CONSULTING</span>
                   </div>
                 </div>
               </div>
-
-              {/* Navigation Columns */}
-              <div className="md:col-span-2 md:col-start-8">
-                <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-accent mb-6">Coordinates</p>
-                <ul className="space-y-4 text-xs font-bold uppercase tracking-widest">
-                  <li><a href="/solutions/iso-9001" className="text-muted-kairo hover:text-bone transition-colors">ISO 9001</a></li>
-                  <li><a href="/solutions/iso-27001" className="text-muted-kairo hover:text-bone transition-colors">ISO 27001</a></li>
-                  <li><a href="/solutions/chas" className="text-muted-kairo hover:text-bone transition-colors">CHAS</a></li>
-                  <li><a href="/solutions/cyber-essentials" className="text-muted-kairo hover:text-bone transition-colors">Cyber Essentials</a></li>
+              <div>
+                <h4 className="font-bold mb-4 text-sm uppercase tracking-wider text-white/50">Quick Links</h4>
+                <ul className="space-y-2 text-sm text-white/80">
+                  <li><a href="/" className="hover:text-accent">Home</a></li>
+                  <li><a href="/accreditations" className="hover:text-accent">Services</a></li>
+                  <li><a href="/industries" className="hover:text-accent">Industries</a></li>
+                  <li><a href="/case-studies" className="hover:text-accent">Case Studies</a></li>
+                  <li><a href="/about" className="hover:text-accent">About</a></li>
+                  <li><a href="/news" className="hover:text-accent">Resources</a></li>
                 </ul>
               </div>
-
-              <div className="md:col-span-2">
-                <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-accent mb-6">Directory</p>
-                <ul className="space-y-4 text-xs font-bold uppercase tracking-widest">
-                  <li><a href="/calculator" className="text-muted-kairo hover:text-bone transition-colors">Calculator</a></li>
-                  <li><a href="/news" className="text-muted-kairo hover:text-bone transition-colors">Insights</a></li>
-                  <li><a href="/contact" className="text-muted-kairo hover:text-bone transition-colors">Contact</a></li>
-                  <li><a href="/legal/privacy-policy" className="text-muted-kairo hover:text-bone transition-colors">Privacy</a></li>
+              <div>
+                <h4 className="font-bold mb-4 text-sm uppercase tracking-wider text-white/50">Contact</h4>
+                <ul className="space-y-4 text-sm text-white/80">
+                  <li className="flex items-center gap-3">
+                    <Mail className="w-4 h-4 text-accent" /> hello@riskwood.co.uk
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Phone className="w-4 h-4 text-accent" /> +44 1234 567 890
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <MapPin className="w-4 h-4 text-accent" /> Birmingham, United Kingdom
+                  </li>
                 </ul>
+              </div>
+              <div>
+                <h4 className="font-bold mb-4 text-sm uppercase tracking-wider text-white/50">Follow Us</h4>
+                <a href="#" className="w-8 h-8 rounded bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
+                  in
+                </a>
               </div>
             </div>
 
-            <div className="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
-              <div className="flex flex-col gap-1 text-center md:text-left">
-                <span className="text-[10px] font-bold text-muted-kairo uppercase tracking-widest">
-                  © {new Date().getFullYear()} Riskwood. 
-                </span>
-                <span className="text-[9px] text-muted-kairo/60 uppercase tracking-[0.2em]">
-                  Operational Efficiency Redefined.
-                </span>
-              </div>
-              
-              <div className="flex items-center gap-3 text-[10px] font-bold text-muted-kairo uppercase tracking-widest">
-                <span>Coded with precision by</span>
-                <a href="https://kairostudio.co.uk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-bone hover:text-accent transition-colors group">
-                  <div className="w-5 h-5 bg-accent rounded-sm flex items-center justify-center transition-transform group-hover:scale-110">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-accent-foreground">
-                      <path d="M4 4L20 20M4 20L20 4" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-                  KAIRO STUDIO
-                </a>
+            <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-white/50">
+              <p>© 2026 Riskwood Consulting Ltd. All rights reserved.</p>
+              <div className="flex gap-4 mt-4 md:mt-0">
+                <a href="/legal/privacy-policy" className="hover:text-white">Privacy Policy</a>
+                <a href="/legal/terms-of-service" className="hover:text-white">Terms & Conditions</a>
               </div>
             </div>
           </div>
