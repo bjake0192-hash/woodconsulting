@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 export default function CyberEssentialsPage() {
   return (
     <div className="min-h-screen w-full flex flex-col items-center pt-32 pb-24 px-6 relative overflow-hidden bg-background">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(0,82,255,0.08),transparent_70%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-10%,rgba(7,30,70,0.08),transparent_70%)] pointer-events-none" />
       
       <div className="max-w-4xl w-full z-10">
         <div className="text-center mb-16">

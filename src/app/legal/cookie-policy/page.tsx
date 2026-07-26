@@ -14,7 +14,7 @@ export default function CookiePolicyPage() {
           className="mb-12"
         >
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-8 text-slate-900 leading-none">
-            Cookie <span className="text-blue-600">Policy</span>
+            Cookie <span className="text-accent">Policy</span>
           </h1>
           <p className="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-8">Last Updated: October 2026</p>
         </motion.div>

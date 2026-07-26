@@ -58,7 +58,7 @@ export default function Navbar() {
 
         <Link 
           href="/contact" 
-          className="hidden md:inline-flex items-center gap-2 bg-accent text-white hover:bg-accent/90 hover:shadow-[0_0_20px_rgba(29,78,216,0.3)] transition-all px-6 py-2.5 rounded text-xs font-bold uppercase tracking-wider group"
+          className="hidden md:inline-flex items-center gap-2 bg-accent text-white hover:bg-accent/90 hover:shadow-[0_0_20px_rgba(7,30,70,0.3)] transition-all px-6 py-2.5 rounded text-xs font-bold uppercase tracking-wider group"
         >
           Contact Us
           <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />

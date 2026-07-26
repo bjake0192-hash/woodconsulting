@@ -6,7 +6,7 @@
   --foreground: #0f172a;
   --card-bg: #FFFFFF;
   --card-border: #e2e8f0;
-  --accent: #1d4ed8; /* Royal Dark Blue */
+  --accent: #071e46; /* Secondary Dark Blue */
   --accent-foreground: #FFFFFF;
   --primary: #0f172a; /* Dark Navy */
   --muted: #f8fafc;
@@ -70,7 +70,7 @@ body {
 }
 
 .kairo-button:hover {
-  background: #1e40af; /* Darker blue */
+  background: #051633; /* Darker blue */
 }
 
 .kairo-button-outline {
@@ -130,7 +130,7 @@ body {
 
 /* Modern Subtle Gradients */
 .bg-glow {
-  background: radial-gradient(circle at center, rgba(0, 82, 255, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(7, 30, 70, 0.08) 0%, transparent 70%);
   filter: blur(80px);
   opacity: 1;
 }

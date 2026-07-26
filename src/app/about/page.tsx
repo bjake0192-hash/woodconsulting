@@ -309,7 +309,7 @@ export default function AboutPage() {
           <p className="text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed md:text-lg">
             Stop worrying about compliance and start focusing on growth. Partner with Riskwood today to streamline your operations and win more business.
           </p>
-          <a href="/contact" className="inline-flex items-center gap-2 bg-accent text-white hover:bg-accent/90 hover:shadow-[0_0_30px_rgba(29,78,216,0.4)] transition-all px-8 py-4 rounded-lg text-sm font-bold uppercase tracking-wider group">
+          <a href="/contact" className="inline-flex items-center gap-2 bg-accent text-white hover:bg-accent/90 hover:shadow-[0_0_30px_rgba(7,30,70,0.4)] transition-all px-8 py-4 rounded-lg text-sm font-bold uppercase tracking-wider group">
             Schedule a Free Consultation
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
