@@ -108,7 +108,21 @@ export default function Home() {
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary leading-[1.2] mb-6 tracking-tight">
-              We get UK contractors accredited: <br className="hidden md:block" /><span className="text-accent text-3xl md:text-4xl lg:text-5xl">CHAS, Safecontractor, Constructionline Gold & ISO.</span>
+              We get UK contractors accredited: <br className="hidden md:block" />
+              <div className="flex flex-wrap items-center gap-3 md:gap-4 mt-4">
+                <div className="flex items-center justify-center px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm h-12 md:h-14">
+                  <span className="font-black text-primary text-lg md:text-xl tracking-tight">CHAS</span>
+                </div>
+                <div className="flex items-center justify-center px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm h-12 md:h-14">
+                  <img src="/safecontractor.png" alt="SafeContractor" className="h-6 md:h-8 w-auto object-contain" />
+                </div>
+                <div className="flex items-center justify-center px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm h-12 md:h-14">
+                  <img src="/Constructionline-Gold-Logo.png" alt="Constructionline Gold" className="h-6 md:h-8 w-auto object-contain" />
+                </div>
+                <div className="flex items-center justify-center px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm h-12 md:h-14">
+                  <img src="/iso9001.png" alt="ISO" className="h-6 md:h-8 w-auto object-contain" />
+                </div>
+              </div>
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed font-bold">
               Handled end to end. Simplifying UK Compliance and accreditations for businesses.
