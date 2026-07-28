@@ -109,19 +109,11 @@ export default function Home() {
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary leading-[1.2] mb-6 tracking-tight">
               We get UK contractors accredited: <br className="hidden md:block" />
-              <div className="flex flex-wrap items-center gap-3 md:gap-4 mt-4">
-                <div className="flex items-center justify-center px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm h-12 md:h-14">
-                  <span className="font-black text-primary text-lg md:text-xl tracking-tight">CHAS</span>
-                </div>
-                <div className="flex items-center justify-center px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm h-12 md:h-14">
-                  <img src="/safecontractor.png" alt="SafeContractor" className="h-6 md:h-8 w-auto object-contain" />
-                </div>
-                <div className="flex items-center justify-center px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm h-12 md:h-14">
-                  <img src="/Constructionline-Gold-Logo.png" alt="Constructionline Gold" className="h-6 md:h-8 w-auto object-contain" />
-                </div>
-                <div className="flex items-center justify-center px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm h-12 md:h-14">
-                  <img src="/iso9001.png" alt="ISO" className="h-6 md:h-8 w-auto object-contain" />
-                </div>
+              <div className="flex flex-wrap items-center gap-6 md:gap-8 mt-4">
+                <img src="/chas.png" alt="CHAS" className="h-8 md:h-10 w-auto object-contain" />
+                <img src="/safecontractor.png" alt="SafeContractor" className="h-8 md:h-10 w-auto object-contain" />
+                <img src="/Constructionline-Gold-Logo.png" alt="Constructionline Gold" className="h-8 md:h-10 w-auto object-contain" />
+                <img src="/iso9001.png" alt="ISO" className="h-8 md:h-10 w-auto object-contain" />
               </div>
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed font-bold">

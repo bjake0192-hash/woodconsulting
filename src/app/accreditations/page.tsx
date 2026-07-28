@@ -23,7 +23,7 @@ const accreditations: Accreditation[] = [
     title: "CHAS",
     shortDesc: "Health & Safety Compliance",
     fullDesc: "The UK's leading provider of risk management and compliance services. CHAS helps contractors and clients manage health and safety risks effectively through standardized pre-qualification assessments.",
-    icon: HardHat,
+    image: "/chas.png",
     color: "text-yellow-500",
     industry: "Construction",
   },

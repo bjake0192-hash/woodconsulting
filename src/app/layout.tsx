@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, ArrowRight, ShieldCheck, BookOpen, TrendingUp, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, ArrowRight, ShieldCheck, BookOpen, TrendingUp, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 

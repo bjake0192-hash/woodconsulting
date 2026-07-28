@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Mail, MapPin, Phone, Send, CheckCircle2, ChevronRight } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2, ChevronRight } from "lucide-react";
 
 export const dynamic = "force-static";
 
