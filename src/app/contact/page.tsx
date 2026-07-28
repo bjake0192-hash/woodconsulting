@@ -59,8 +59,7 @@ export default function ContactPage() {
             <div className="space-y-6">
               {[
                 { icon: Mail, label: "Operational Email", value: "hello@riskwood.co.uk", href: "mailto:hello@riskwood.co.uk" },
-                { icon: Phone, label: "Direct Line", value: "+44 (0) 20 7123 4567", href: "tel:+442071234567" },
-                { icon: MapPin, label: "Headquarters", value: "100 Colmore Row, Birmingham", href: "#" }
+                { icon: MapPin, label: "Headquarters", value: "Kings Lynn, Norfolk", href: "#" }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-6 group">
                   <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shrink-0 border border-slate-200 shadow-sm group-hover:border-accent/30 transition-all duration-300">

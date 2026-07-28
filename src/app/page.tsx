@@ -156,7 +156,7 @@ export default function Home() {
           
           <div className="relative w-full md:w-[110%] h-[300px] md:h-[400px] lg:h-[480px] rounded-l-[2rem] rounded-r-none md:-right-6 lg:-right-12 overflow-hidden shadow-2xl shadow-black/10">
             <Image 
-              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" 
+              src="/homehero.png" 
               alt="Compliance audit and document review" 
               fill 
               className="object-cover" 

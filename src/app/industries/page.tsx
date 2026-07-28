@@ -113,7 +113,7 @@ export default function IndustriesPage() {
             className="relative w-full md:w-[110%] h-[250px] md:h-[350px] lg:h-[400px] rounded-l-[2rem] rounded-r-none md:-right-6 lg:-right-12 overflow-hidden shadow-2xl shadow-black/10"
           >
             <img 
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" 
+              src="/industrieshero.png" 
               alt="Engineers discussing industry compliance" 
               className="w-full h-full object-cover" 
             />

@@ -145,7 +145,7 @@ export default function AccreditationsPage() {
             className="relative w-full md:w-[110%] h-[300px] md:h-[400px] lg:h-[480px] rounded-l-[2rem] rounded-r-none md:-right-6 lg:-right-12 overflow-hidden shadow-2xl shadow-black/10"
           >
             <img 
-              src="https://images.unsplash.com/photo-1552581236-e31573ddac28?auto=format&fit=crop&w=1200&q=80" 
+              src="/serviceshero.png" 
               alt="Consulting meeting regarding accreditation" 
               className="w-full h-full object-cover" 
             />

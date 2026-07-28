@@ -96,12 +96,8 @@ export default function RootLayout({
                       <span>hello@riskwood.co.uk</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 
-                      <span>+44 1234 567 890</span>
-                    </li>
-                    <li className="flex items-start gap-3">
                       <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" /> 
-                      <span className="leading-relaxed">100 Colmore Row<br />Birmingham<br />B3 3AG</span>
+                      <span className="leading-relaxed">Kings Lynn, Norfolk</span>
                     </li>
                   </ul>
                 </div>

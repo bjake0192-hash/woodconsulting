@@ -41,7 +41,7 @@ const storyBlocks = [
   {
     step: "03",
     title: "The Reality Today",
-    desc: "Today, we partner with industry leaders across the UK. We don't just prepare them for audits; we elevate their entire operational standard so that compliance becomes second nature. Audit ready, every time."
+    desc: "We don't just prepare them for audits; we elevate their entire operational standard so that compliance becomes second nature. Audit ready, every time."
   }
 ];
 
@@ -110,7 +110,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
-              We are a team of ex-auditors and industry veterans who grew tired of the generic, template-driven consulting model. We exist to remove the paperwork burden and ensure you pass your audits first time, so you can focus on winning tenders.
+              We are industry veterans who grew tired of the generic, template-driven consulting model. We exist to remove the paperwork burden and ensure you pass your audits first time, so you can focus on winning tenders.
             </p>
           </motion.div>
           
@@ -123,7 +123,7 @@ export default function AboutPage() {
           >
             <motion.img 
               style={{ y: imageY }}
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80" 
+              src="/AboutHero.png" 
               alt="Riskwood consulting team in discussion" 
               className="absolute inset-0 w-full h-[120%] object-cover" 
             />
