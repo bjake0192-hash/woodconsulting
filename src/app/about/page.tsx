@@ -48,26 +48,26 @@ const storyBlocks = [
 const values = [
   {
     icon: Target,
-    title: "Pragmatic Excellence",
-    desc: "We build lean, efficient management systems that actually improve your business operations while ticking every compliance box.",
+    title: "Winning Tenders",
+    desc: "We build lean, efficient management systems that tick every compliance box so you can qualify for larger contracts.",
     colSpan: "md:col-span-2"
   },
   {
     icon: Users,
-    title: "True Partnership",
-    desc: "We embed ourselves in your team, acting as your dedicated compliance department until you achieve certification.",
+    title: "Removing the Paperwork Burden",
+    desc: "We act as your dedicated compliance department, handling the complex documentation so you don't have to.",
     colSpan: "md:col-span-1"
   },
   {
     icon: Shield,
-    title: "Absolute Integrity",
-    desc: "We promise complete transparency about your readiness so there are zero surprises on audit day.",
+    title: "First-Time Pass",
+    desc: "Our pre-audit checks and deep industry knowledge mean we guarantee a first-time pass on your external audits.",
     colSpan: "md:col-span-1"
   },
   {
     icon: Award,
-    title: "Uncompromising Quality",
-    desc: "We only employ qualified lead auditors who know exactly what certification bodies look for during assessment.",
+    title: "Handled End to End",
+    desc: "From initial gap analysis to final certification and ongoing renewals, we manage the entire lifecycle for you.",
     colSpan: "md:col-span-2"
   }
 ];
@@ -110,7 +110,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
-              We are a team of ex-auditors and industry veterans who grew tired of the generic, template-driven consulting model. We exist to build robust, bespoke management systems that make business sense.
+              We are a team of ex-auditors and industry veterans who grew tired of the generic, template-driven consulting model. We exist to remove the paperwork burden and ensure you pass your audits first time, so you can focus on winning tenders.
             </p>
           </motion.div>
           

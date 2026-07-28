@@ -9,38 +9,43 @@ export const dynamic = "force-static";
 
 const services = [
   {
+    title: "Managed Accreditations",
+    description: "We manage and renew your existing accreditations for a fixed monthly fee. From as little as £20/month.",
+    icon: ShieldCheck,
+  },
+  {
     title: "ISO 9001",
-    description: "Quality Management Systems",
+    description: "Win more tenders and improve internal quality with a certified Quality Management System.",
     icon: ShieldCheck,
   },
   {
     title: "ISO 14001",
-    description: "Environmental Management",
+    description: "Meet environmental requirements and secure green contracts.",
     icon: BookOpen,
   },
   {
     title: "ISO 45001",
-    description: "Health & Safety Management",
+    description: "Demonstrate health and safety excellence to major brands and principal contractors.",
     icon: HardHat,
   },
   {
     title: "Internal Audits",
-    description: "Independent audits to ensure preparedness and compliance",
+    description: "Remove the paperwork burden. We conduct independent audits to guarantee a first-time pass.",
     icon: CheckCircle2,
   },
   {
     title: "Gap Analysis",
-    description: "Identify gaps and create a clear path to certification",
+    description: "Identify exactly what you need to fix to achieve your desired accreditation quickly.",
     icon: TrendingUp,
   },
   {
     title: "Documentation",
-    description: "Policy, procedure and system documentation that works for you",
+    description: "Bespoke policy, procedure, and system documentation written completely for you.",
     icon: BookOpen,
   },
   {
     title: "Ongoing Compliance Support",
-    description: "Continuous support to maintain compliance and drive improvement",
+    description: "Continuous retainer support to maintain compliance and pass annual surveillance audits.",
     icon: ShieldCheck,
   }
 ];
@@ -57,12 +62,12 @@ const journeySteps = [
 
 const industries = [
   { title: "Construction", image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" },
-  { title: "Engineering", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" },
+  { title: "Electrical Contractors", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" },
   { title: "Manufacturing", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" },
-  { title: "Logistics", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80" },
-  { title: "Healthcare", image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" },
   { title: "Facilities Management", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" },
+  { title: "Logistics", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80" },
   { title: "Technology", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" },
+  { title: "Healthcare", image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" },
   { title: "Public Sector", image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80" },
   { title: "Education", image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" },
   { title: "Retail", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" },
@@ -103,10 +108,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary leading-[1.2] mb-6 tracking-tight">
-              Audit Ready, <br className="hidden md:block" /><span className="text-accent">Every Time.</span>
+              We get UK contractors accredited: <br className="hidden md:block" /><span className="text-accent text-3xl md:text-4xl lg:text-5xl">CHAS, Safecontractor, Constructionline Gold & ISO.</span>
             </h1>
-            <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
-              Practical, expert support to help your organisation meet standards, pass audits and build a culture of compliance.
+            <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed font-bold">
+              Handled end to end. Simplifying UK Compliance and accreditations for businesses.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <a href="/contact" className="kairo-button justify-center">
@@ -162,7 +167,7 @@ export default function Home() {
             {services.map((service, idx) => (
               <motion.a 
                 key={idx} 
-                href="/accreditations" 
+                href={service.title === "Managed Accreditations" ? "/managed-accreditations" : "/accreditations"} 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

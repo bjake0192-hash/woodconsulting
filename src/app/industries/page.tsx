@@ -21,15 +21,15 @@ const industriesData = [
     ]
   },
   {
-    id: "technology",
-    title: "Technology & Software",
+    id: "electrical",
+    title: "Electrical Contractors",
     icon: Shield,
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-    knowledge: "In an era of relentless cyber threats and strict data protection laws, tech companies must prove they can safeguard client data. Information security accreditations build trust and open doors to enterprise and government contracts.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+    knowledge: "Electrical contractors require strict adherence to safety and quality standards to win premium contracts. We help you cut through the red tape and achieve the certifications necessary to prove your competence and reliability to major clients.",
     accreditations: [
-      { name: "ISO 27001", desc: "Information Security Management System." },
-      { name: "Cyber Essentials", desc: "Government-backed cyber defense scheme." },
-      { name: "ISO 9001", desc: "Quality Management for consistent delivery." }
+      { name: "NICEIC", desc: "Electrical competence and safety." },
+      { name: "ISO 9001", desc: "Quality Management Systems." },
+      { name: "SafeContractor", desc: "Demonstrable H&S excellence." }
     ]
   },
   {
@@ -54,6 +54,18 @@ const industriesData = [
       { name: "FORS", desc: "Fleet Operator Recognition Scheme." },
       { name: "ISO 9001", desc: "Quality in supply chain management." },
       { name: "ISO 14001", desc: "Reducing carbon footprint." }
+    ]
+  },
+  {
+    id: "technology",
+    title: "Technology & Software",
+    icon: Shield,
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+    knowledge: "In an era of relentless cyber threats and strict data protection laws, tech companies must prove they can safeguard client data. Information security accreditations build trust and open doors to enterprise and government contracts.",
+    accreditations: [
+      { name: "ISO 27001", desc: "Information Security Management System." },
+      { name: "Cyber Essentials", desc: "Government-backed cyber defense scheme." },
+      { name: "ISO 9001", desc: "Quality Management for consistent delivery." }
     ]
   },
   {

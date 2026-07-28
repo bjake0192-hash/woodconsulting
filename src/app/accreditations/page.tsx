@@ -126,7 +126,7 @@ export default function AccreditationsPage() {
               Comprehensive <br className="hidden md:block" /><span className="text-accent">Accreditation</span> Services.
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
-              Expert guidance and tailored frameworks to ensure your business achieves and maintains industry-leading compliance.
+              Expert guidance to ensure your business wins tenders, removes the paperwork burden, and passes first time.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <a href="/contact" className="kairo-button w-full sm:w-auto">
@@ -201,7 +201,7 @@ export default function AccreditationsPage() {
                 transition={{ delay: 0.2 }}
                 className="text-white/70 text-sm max-w-sm leading-relaxed mb-6"
               >
-                Our consultancy approach is built on transparency, industry expertise, and long-term partnerships. We don't just secure your certification; we elevate your operational standards.
+                Our consultancy approach is built on transparency, industry expertise, and long-term partnerships. We don't just secure your certification; we remove the paperwork burden and ensure you pass first time, so you can win more tenders.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
