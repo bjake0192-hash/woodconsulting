@@ -98,7 +98,7 @@ export default function IndustriesPage() {
             transition={{ delay: 0.1 }}
           >
             <p className="text-xs font-black uppercase tracking-[0.2em] text-accent mb-4">Sectors</p>
-            <h1 className="text-4xl md:text-5xl font-black text-primary tracking-tight mb-6 leading-[1.2]">
+            <h1 className="text-3xl md:text-5xl font-black text-primary tracking-tight mb-6 leading-[1.2]">
               Specialised <br className="hidden md:block" /><span className="text-accent">Industry</span> Knowledge.
             </h1>
             <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-lg leading-relaxed">

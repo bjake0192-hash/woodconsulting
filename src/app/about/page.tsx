@@ -97,7 +97,7 @@ export default function AboutPage() {
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               About Riskwood
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary tracking-tight mb-6 leading-[1.1]">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-primary tracking-tight mb-6 leading-[1.1]">
               Compliance, <br />
               <span className="text-accent relative inline-block">
                 Without the Complexity.

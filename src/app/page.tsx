@@ -107,7 +107,7 @@ export default function Home() {
       <section className="relative w-full pb-16 md:pb-24 pt-8 md:pt-12 px-6 bg-slate-50 border-b border-black/5 overflow-hidden">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary leading-[1.2] mb-6 tracking-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-primary leading-[1.2] mb-6 tracking-tight">
               We get UK contractors accredited: <br className="hidden md:block" />
               <div className="flex flex-wrap items-center gap-6 md:gap-8 mt-4">
                 <img src="/chas.png" alt="CHAS" className="h-8 md:h-10 w-auto object-contain" />
